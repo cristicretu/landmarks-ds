@@ -1,0 +1,8 @@
+{
+  "name": "landmarks-ds",
+  "version": "1.0.0",
+  "main": "./src/main.ts",
+  "author": "Horia Miron",
+  "license": "-",
+  "private": false
+}
