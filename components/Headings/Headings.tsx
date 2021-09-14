@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 import { Box } from "../Box"
-import { Atoms } from '../../../system/styles/sprinkles.css'
+import { Atoms } from '../../../styles/sprinkles.css'
 
 interface HeadingProps extends Atoms {
   children: ReactNode

@@ -1,7 +1,7 @@
 import { createElement, AllHTMLAttributes, ElementType } from 'react'
 import cn from 'classnames'
 // import * as resetStyles from '../styles/reset.css'
-import { atoms, Atoms } from '../../../system/styles/sprinkles.css'
+import { atoms, Atoms } from '../../../styles/sprinkles.css'
 
 export interface BoxProps extends Omit<
   AllHTMLAttributes<HTMLElement>,

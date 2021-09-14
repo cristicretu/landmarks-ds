@@ -1,6 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css"
 import { breakpoints, vars } from "../../../styles/theme.css"
-import { atoms } from "../../../system/styles/sprinkles.css"
+import { atoms } from "../../../styles/sprinkles.css"
 
 export const button = style([
   atoms({

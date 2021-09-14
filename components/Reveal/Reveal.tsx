@@ -1,6 +1,6 @@
 import { useState, ReactElement } from "react"
 import { Box } from "../Box"
-import { Atoms } from "../../../system/styles/sprinkles.css"
+import { Atoms } from "../../../styles/sprinkles.css"
 
 interface IProps extends Atoms {
   onReveal: () => void

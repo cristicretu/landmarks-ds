@@ -5,6 +5,7 @@ export { Button } from './components/Button'
 export { Container } from './components/Container'
 export { Collapse } from './components/Collapse'
 export { Reveal } from './components/Reveal'
+export { Grid, Col } from './components/Grid'
 export { ImageWithSpinner } from './components/ImageWithSpinner'
 export * from './components/Headings'
 

@@ -6,14 +6,12 @@ import * as styles from './styles.css'
 interface IProps extends Atoms {
   children: any
   className?: string
-  gutter?: boolean
-  style?: any
 }
 
-export function Container({ children, className, gutter = true, ...rest }:IProps) {
+export function Grid({ children, className, ...rest }: IProps) {
   return (
-    <Box {...rest} className={cn(className, styles.container, {
-      [styles.noGutter]: !gutter
-    })}>{children}</Box>
+    <Box {...rest} className={cn(styles.grid, className)}>
+      {children}
+    </Box>
   )
 }
