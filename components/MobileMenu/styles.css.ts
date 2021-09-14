@@ -1,9 +1,11 @@
-import { style, globalStyle } from "@vanilla-extract/css"
-import { breakpoints, vars } from "../../../styles/theme.css"
+import { style } from "@vanilla-extract/css"
+import { breakpoints } from "../../../styles/theme.css"
 
 export const MENU_SIZE = 96
 
 export const menuContainer = style({
+  paddingTop: MENU_SIZE,
+
   '@media': {
     [breakpoints.xx_laptop]: {
       display: 'none'
