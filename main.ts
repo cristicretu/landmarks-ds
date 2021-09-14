@@ -6,6 +6,7 @@ export { Container } from './components/Container'
 export { Collapse } from './components/Collapse'
 export { Reveal } from './components/Reveal'
 export { Grid, Col } from './components/Grid'
+export { Tabs, Tab, TabPanel } from './components/Tabs'
 export { ImageWithSpinner } from './components/ImageWithSpinner'
 export * from './components/Headings'
 
