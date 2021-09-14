@@ -1,7 +1,8 @@
 import { ReactElement, cloneElement } from 'react'
 import cn from 'classnames'
 import * as styles from './styles.css'
-import { Box, BoxProps } from '../Box'
+import { Box } from '../Box'
+import { BoxProps } from '../Box/Box'
 
 interface IProps extends BoxProps {
   children?: any
