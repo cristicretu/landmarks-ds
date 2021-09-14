@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
 
 import { Button } from '../Button'
 
@@ -14,7 +13,6 @@ interface IProps {
 }
 
 export function SimpleMobileMenu({ title, phone, children }: IProps) {
-  const { t } = useTranslation()
 
   return (
     <section className={styles.menuContainer}>
@@ -37,14 +35,14 @@ export function SimpleMobileMenu({ title, phone, children }: IProps) {
             href={`tel:${phone}`}
             marginRight="small"
             onClick={() => logEvent(CUSTOM_EVENTS.SHOW_PHONE)}>
-            {t('callNow')}
+            Sună acum
           </Button>
           <Button
             component="a"
             size="large"
             background="brandLight"
             borderRadius="small"
-            title={t('messageUsWhatsapp')}
+            title="Scrie-ne pe WhatsApp"
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}
             style={{ paddingTop: 0, paddingBottom: 0 }}>
@@ -52,7 +50,7 @@ export function SimpleMobileMenu({ title, phone, children }: IProps) {
               src='/whatsapp.png'
               width="32"
               height="32"
-              alt={t('messageUsWhatsapp')} />
+              alt="Scrie-ne pe WhatsApp" />
           </Button>
         </Box>
       </Box>
