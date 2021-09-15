@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css"
-import { breakpoints } from "../../../styles/theme.css"
+import { breakpoints } from "site/styles/theme.css"
 
 export const MENU_SIZE = 96
 

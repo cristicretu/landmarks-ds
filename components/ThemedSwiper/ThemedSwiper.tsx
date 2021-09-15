@@ -3,7 +3,7 @@ import SwiperCore, { Virtual, Navigation, Pagination, Keyboard, Autoplay, Effect
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import * as styles from './styles.css'
-import 'swiper/css/bundle'
+// import 'swiper/css/bundle'
 
 SwiperCore.use([Virtual, Navigation, Pagination, Autoplay, EffectFade])
 

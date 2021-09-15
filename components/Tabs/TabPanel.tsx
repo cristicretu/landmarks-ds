@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { Atoms } from "../../../styles/sprinkles.css"
+import { Atoms } from "site/styles/sprinkles.css"
 import { Box } from "../Box"
 
 interface IProps extends Atoms {

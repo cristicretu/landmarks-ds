@@ -4,5 +4,24 @@
   "main": "./main.ts",
   "author": "Horia Miron",
   "license": "-",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@vanilla-extract/babel-plugin": "^1.1.0",
+    "@vanilla-extract/css": "^1.5.1",
+    "@vanilla-extract/css-utils": "^0.1.1",
+    "@vanilla-extract/next-plugin": "^1.0.0",
+    "@vanilla-extract/sprinkles": "^1.2.0",
+    "@vanilla-extract/webpack-plugin": "^2.1.0",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "react-icons": "^4.2.0",
+    "react-spring": "^9.2.4",
+    "swiper": "^7.0.5",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171",
+    "@types/react": "17.0.13"
+  }
 }

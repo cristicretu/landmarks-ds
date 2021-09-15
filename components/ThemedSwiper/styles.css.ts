@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css"
-import { vars, breakpoints } from "../../../styles/theme.css"
+import { vars, breakpoints } from "site/styles/theme.css"
 
 export const themedSwiper = style({
   vars: {

@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { Box } from '../Box'
-import { Atoms } from '../../../styles/sprinkles.css'
+import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
 
 interface IProps extends Atoms {

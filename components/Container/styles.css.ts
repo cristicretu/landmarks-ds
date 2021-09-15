@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css"
-import { breakpoints } from "../../../styles/theme.css"
-import { atoms } from '../../../styles/sprinkles.css'
+import { breakpoints } from "site/styles/theme.css"
+import { atoms } from 'site/styles/sprinkles.css'
 
 export const container =
   style([
