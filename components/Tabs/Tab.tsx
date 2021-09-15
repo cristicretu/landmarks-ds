@@ -15,8 +15,7 @@ interface IProps extends Atoms {
 export function Tab({ children, selected, onClick, ...rest }: IProps) {
   return (
     <Box
-      paddingY="medium"
-      paddingX="large"
+      padding="medium"
       cursor="pointer"
       onClick={handleClick} {...rest}>
       {children}

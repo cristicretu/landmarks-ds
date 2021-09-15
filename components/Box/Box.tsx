@@ -51,6 +51,7 @@ export const Box = ({
   textAlign,
   textTransform,
   fontSize,
+  fontFamily,
   ...restProps
 }: BoxProps) => {
   // TODO: get reset to work https://github.com/seek-oss/vanilla-extract/discussions/301
@@ -91,6 +92,7 @@ export const Box = ({
     cursor,
     textAlign,
     fontSize,
+    fontFamily,
     textTransform,
   })
 
