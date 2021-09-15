@@ -2,10 +2,10 @@ import cn from 'classnames'
 import { Box } from '../Box'
 import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
+import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms {
+interface IProps extends Atoms, IUIComponent {
   children?: any
-  className?: string
   mobile?: keyof typeof styles.mobileSizeVariants
   tablet?: keyof typeof styles.tabletSizeVariants
   laptop?: keyof typeof styles.laptopSizeVariants
@@ -30,7 +30,7 @@ export function Col({
     desktop && styles.desktopSizeVariants[desktop],
   )
   return (
-    <Box {...rest} className={finalClassName}>
+    <Box className={finalClassName} {...rest}>
       {children}
     </Box>
   )

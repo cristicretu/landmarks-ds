@@ -1,21 +1,25 @@
 import Image from 'next/image'
+import cn from 'classnames'
 
+import { Atoms } from 'site/styles/sprinkles.css'
+import { IUIComponent } from '../../utils/types'
 import { Button } from '../Button'
-
-import * as styles from './styles.css'
 import { Box } from '../Box'
 import { CUSTOM_EVENTS, logEvent } from '../../utils/gtm'
 
-interface IProps {
-  title: string
+import * as styles from './styles.css'
+
+interface IProps extends Atoms, IUIComponent {
   phone: string
   children: any
+  callText?: string
+
+  buttonProps?: Atoms
 }
 
-export function SimpleMobileMenu({ title, phone, children }: IProps) {
-
+export function SimpleMobileMenu({ phone, callText = 'Sună', children, className, buttonProps = {}, ...rest }: IProps) {
   return (
-    <section className={styles.menuContainer}>
+    <Box component="section" className={cn(styles.menuContainer, className)} {...rest}>
       <Box
         position="fixed"
         background="brand"
@@ -34,8 +38,9 @@ export function SimpleMobileMenu({ title, phone, children }: IProps) {
             borderRadius="small"
             href={`tel:${phone}`}
             marginRight="small"
+            {...buttonProps}
             onClick={() => logEvent(CUSTOM_EVENTS.SHOW_PHONE)}>
-            Sună acum
+            {callText}
           </Button>
           <Button
             component="a"
@@ -45,7 +50,8 @@ export function SimpleMobileMenu({ title, phone, children }: IProps) {
             title="Scrie-ne pe WhatsApp"
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}
-            style={{ paddingTop: 0, paddingBottom: 0 }}>
+            style={{ paddingTop: 0, paddingBottom: 0 }}
+            {...buttonProps}>
             <Image
               src='/whatsapp.png'
               width="32"
@@ -54,6 +60,6 @@ export function SimpleMobileMenu({ title, phone, children }: IProps) {
           </Button>
         </Box>
       </Box>
-    </section>
+    </Box>
   )
 }

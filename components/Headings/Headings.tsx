@@ -1,11 +1,10 @@
 import { ReactNode } from "react"
 import { Box } from "../Box"
 import { Atoms } from 'site/styles/sprinkles.css'
+import { IUIComponent } from "../../utils/types"
 
-interface HeadingProps extends Atoms {
+interface HeadingProps extends Atoms, IUIComponent {
   children: ReactNode
-  className?: string
-  style?: any
 }
 
 export function H1({ children, ...rest }: HeadingProps) {

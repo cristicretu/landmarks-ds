@@ -2,13 +2,11 @@ import cn from 'classnames'
 import { Box } from '../Box'
 import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
+import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms {
+interface IProps extends Atoms, IUIComponent {
   children: any
   gutter?: boolean
-
-  style?: any
-  className?: string
 }
 
 export function Container({ children, className, gutter = true, ...rest }: IProps) {

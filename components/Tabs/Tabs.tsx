@@ -1,16 +1,15 @@
 import { ReactElement, Children, cloneElement } from 'react'
 
 import { Atoms } from 'site/styles/sprinkles.css'
+import { IUIComponent } from '../../utils/types'
 import { Box } from '../Box'
 
 
-interface IProps extends Atoms {
+interface IProps extends Atoms, IUIComponent {
   value: number
   children: ReactElement[]
   onChange: Function
 
-  style?: any
-  className?: string
   selectedClassName?: string
 }
 
