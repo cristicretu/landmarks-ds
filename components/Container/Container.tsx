@@ -5,12 +5,13 @@ import * as styles from './styles.css'
 
 interface IProps extends Atoms {
   children: any
-  className?: string
   gutter?: boolean
+
   style?: any
+  className?: string
 }
 
-export function Container({ children, className, gutter = true, ...rest }:IProps) {
+export function Container({ children, className, gutter = true, ...rest }: IProps) {
   return (
     <Box {...rest} className={cn(className, styles.container, {
       [styles.noGutter]: !gutter

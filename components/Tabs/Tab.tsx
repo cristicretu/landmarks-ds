@@ -7,12 +7,16 @@ interface IProps extends Atoms {
   children: ReactElement | ReactElement[] | string
   selected?: boolean
   onClick?: Function
+
+  style?: any
+  className?: string
 }
 
 export function Tab({ children, selected, onClick, ...rest }: IProps) {
   return (
     <Box
-      padding="medium"
+      paddingY="medium"
+      paddingX="large"
       cursor="pointer"
       onClick={handleClick} {...rest}>
       {children}
