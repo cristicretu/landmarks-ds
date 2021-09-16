@@ -9,7 +9,7 @@ export const button = style([
     cursor: 'pointer',
   }),
   {
-    display: 'inline-flex',
+    display: 'inline-flex', // centers icons with text
     fontFamily: vars.font.body,
     textDecoration: 'none',
   }
@@ -17,7 +17,7 @@ export const button = style([
 
 export const variants = styleVariants({
   text: {
-    color: vars.color.white,
+    // color: vars.color.body,
   },
   regular: {
     color: vars.color.white,

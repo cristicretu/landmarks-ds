@@ -17,7 +17,7 @@ interface IProps extends Atoms, IUIComponent {
   buttonProps?: Atoms
 }
 
-export function SimpleMobileMenu({ phone, callText = 'Sună', children, className, buttonProps = {}, ...rest }: IProps) {
+export function SimpleMobileMenu({ phone, callText = 'Sună acum', children, className, buttonProps = {}, ...rest }: IProps) {
   return (
     <Box component="section" className={cn(styles.menuContainer, className)} {...rest}>
       <Box

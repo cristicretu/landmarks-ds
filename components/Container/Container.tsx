@@ -11,7 +11,9 @@ interface IProps extends Atoms, IUIComponent {
 
 export function Container({ children, className, gutter = true, ...rest }: IProps) {
   return (
-    <Box {...rest} className={cn(className, styles.container, {
+    <Box
+      padding="large"
+      position="relative" {...rest} className={cn(className, styles.container, {
       [styles.noGutter]: !gutter
     })}>{children}</Box>
   )

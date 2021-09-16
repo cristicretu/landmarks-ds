@@ -1,10 +1,9 @@
 import { style } from "@vanilla-extract/css"
-import { breakpoints } from "site/styles/theme.css"
+import { breakpoints, overwrites } from "site/styles/theme.css"
 
-export const MENU_SIZE = 96
 
 export const menuContainer = style({
-  paddingTop: MENU_SIZE,
+  paddingTop: overwrites.MENU_HEIGHT,
 
   '@media': {
     [breakpoints.xx_laptop]: {
@@ -17,6 +16,6 @@ export const menu = style({
   left: 0,
   right: 0,
   bottom: 0,
-  height: `${MENU_SIZE}px`,
+  height: `${overwrites.MENU_HEIGHT}px`,
   zIndex: 4,
 })

@@ -8,6 +8,7 @@ export { Reveal } from './components/Reveal'
 export { Grid, Col } from './components/Grid'
 export { Tabs, Tab, TabPanel } from './components/Tabs'
 export { ImageWithSpinner } from './components/ImageWithSpinner'
+export { MapboxMap } from './components/MapboxMap'
 export * from './components/Headings'
 
 export * from './utils/gtm'

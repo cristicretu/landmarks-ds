@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { MENU_SIZE } from '../components/MobileMenu/styles.css'
+import { breakpoints, overwrites } from 'site/styles/theme.css'
 
 export const expanded = style({
   left: 0,
@@ -9,5 +9,11 @@ export const expanded = style({
 })
 
 export const fullScreenHeight = style({
-  height: `calc(100vh - ${MENU_SIZE}px)`
+  height: `calc(100vh - ${overwrites.MENU_HEIGHT}px)`,
+
+  '@media': {
+    [breakpoints.xx_laptop]: {
+      height: '100vh'
+    }
+  }
 })
