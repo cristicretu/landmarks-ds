@@ -16,7 +16,6 @@ export function Tab({ children, selected, onClick, ...rest }: IProps) {
       paddingX={{ mobile: 'medium', laptop: 'large' }}
       paddingY="medium"
       cursor="pointer"
-      marginX={{ mobile: '-large', laptop: 'none' }}
       onClick={handleClick} {...rest}>
       {children}
     </Box>

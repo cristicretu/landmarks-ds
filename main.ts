@@ -10,6 +10,7 @@ export { Tabs, Tab, TabPanel } from './components/Tabs'
 export { ImageWithSpinner } from './components/ImageWithSpinner'
 export { MapboxMap } from './components/MapboxMap'
 export { Floorplan, Floor } from './components/Floorplan'
+export { Spinner } from './components/Spinner'
 export * from './components/Headings'
 
 export * from './utils/gtm'

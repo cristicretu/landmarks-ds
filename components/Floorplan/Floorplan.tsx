@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import Image from 'next/image'
 import cn from 'classnames'
 import { useSpring } from 'react-spring'
 import { Box } from '../Box'
@@ -13,6 +12,11 @@ interface IProps {
   children: any
   background: string
   viewBox: string
+  intro: {
+    from: number
+    to: number
+  }
+  extraContent?: any
   backgroundSizes?: string
   blurDataURL?: any
   expandOnMobile?: boolean
@@ -22,17 +26,19 @@ interface IProps {
   overlays?: Array<React.ReactElement>
 }
 
-export const Floorplan = ({ background, backgroundSizes, children, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor }: IProps) => {
+export const Floorplan = ({ background, backgroundSizes, children, extraContent, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor, intro }: IProps) => {
   const [loaded, setLoaded] = useState(false)
   const mobileViewportRef = useRef<HTMLDivElement>(null)
-  const [_, animation] = useSpring(() => ({ scrollX: 300 }))
+  const [_, animation] = useSpring(() => ({
+    from: intro.from
+  }))
 
   // scroll viewport sideways on mobile
   useEffect(() => {
     if (!expandOnMobile || !loaded) { return }
     animation({
-      from: { scrollX: 300 },
-      to: { scrollX: 1200 - window.innerWidth },
+      from: { scrollX: intro.from - window.innerWidth },
+      to: { scrollX: intro.to - window.innerWidth / 2 },
       config: {
         damping: 0.3,
         frequency: 12,
@@ -55,6 +61,7 @@ export const Floorplan = ({ background, backgroundSizes, children, className, vi
       <Box
         position="relative"
         className={cn({ [styles.floorplanExpanded]: expandOnMobile })}>
+        {extraContent}
         <ImageWithSpinner
           priority
           sizes={backgroundSizes}
