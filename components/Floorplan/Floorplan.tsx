@@ -43,7 +43,7 @@ export const Floorplan = ({ background, backgroundSizes, children, extraContent,
         damping: 0.3,
         frequency: 12,
       },
-      onChange: ({ value }) => {
+      onChange: ({ value }: any) => {
         if (mobileViewportRef) {
           mobileViewportRef.current?.scroll(value.scrollX, 0)
         }
