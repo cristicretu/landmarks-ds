@@ -11,6 +11,7 @@ export { ImageWithSpinner } from './components/ImageWithSpinner'
 export { MapboxMap } from './components/MapboxMap'
 export { Floorplan, Floor } from './components/Floorplan'
 export { Spinner } from './components/Spinner'
+export { SubmitLeadForm } from './components/SubmitLeadForm'
 export * from './components/Headings'
 
 export * from './utils/gtm'
