@@ -5,6 +5,7 @@
   "author": "Horia Miron",
   "license": "-",
   "private": false,
+  "sideEffects": false,
   "dependencies": {
     "@vanilla-extract/babel-plugin": "^1.1.0",
     "@vanilla-extract/css": "^1.5.1",
