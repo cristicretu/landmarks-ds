@@ -15,9 +15,10 @@ interface IProps {
   number: string | null
   rooms: number
   animation?: any
+  className?: string
 }
 
-export function Unit({ path, url, position, status = EUnitStatus.inactiv, animation, number, rooms }: IProps) {
+export function Unit({ path, url, position, status = EUnitStatus.inactiv, animation, number, rooms, className }: IProps) {
   const [x, y] = position.split('/')
   const modelGroup = useRef<SVGGElement>(null)
   const inactiv = !isAvailable(status)
@@ -59,7 +60,7 @@ export function Unit({ path, url, position, status = EUnitStatus.inactiv, animat
 
   return (
     <svg
-      className={cn(styles.unit, styles.unitStatusVariants[status], {
+      className={cn(styles.unit, className, styles.unitStatusVariants[status], {
         [styles.unitInactiv]: inactiv
       })}
       x={`${x}px`} y={`${y}px`}>
