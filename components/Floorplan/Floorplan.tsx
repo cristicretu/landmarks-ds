@@ -63,7 +63,6 @@ export const Floorplan = ({ background, backgroundSizes, children, extraContent,
         className={cn({ [styles.floorplanExpanded]: expandOnMobile })}>
         {extraContent}
         <ImageWithSpinner
-          priority
           sizes={backgroundSizes}
           src={background as any}
           {...blurDataURL && {
