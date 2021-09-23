@@ -9,9 +9,9 @@ import { H1, H3 } from '../Headings'
 import * as styles from './styles.css'
 
 interface IProps extends Atoms {
-  // projectTitle: string
-  // buildingSlug: string
-  // unitSlug: string
+  projectTitle: string
+  buildingSlug: string
+  unitSlug: string
   className?: string
   classes?: {
     submit?: string
@@ -28,7 +28,7 @@ type Inputs = {
   acordInformari: boolean
 }
 
-export function SubmitLeadForm({ className, classes, ...rest }: IProps) {
+export function SubmitLeadForm({ className, projectTitle, buildingSlug, unitSlug, classes, ...rest }: IProps) {
   const { register, handleSubmit, formState } = useForm<Inputs>()
   const { errors, isSubmitSuccessful, isSubmitting } = formState
 
@@ -99,7 +99,7 @@ export function SubmitLeadForm({ className, classes, ...rest }: IProps) {
   async function onSubmit(data: Inputs) {
     const finalData = {
       ...data,
-      // unit: `${projectTitle}/${buildingSlug}/${unitSlug}`,
+      unit: `${projectTitle}/${buildingSlug}/${unitSlug}`,
       day: new Date().getDate().toString() + "-" + (new Date().getMonth() + 1).toString() + "-" + new Date().getFullYear().toString()
     }
     try {
