@@ -11,15 +11,18 @@ export function Loading() {
   useEffect(() => {
     const handleStart = (url: string) => (url !== router.asPath) && setLoading(true)
     const handleComplete = (url: string) => setLoading(false)
+    const handleScrollTop = () => window.scrollTo(0, 0)
 
     router.events.on('routeChangeStart', handleStart)
     router.events.on('routeChangeComplete', handleComplete)
     router.events.on('routeChangeError', handleComplete)
+    router.events.on('routeChangeComplete', handleScrollTop)
 
     return () => {
       router.events.off('routeChangeStart', handleStart)
       router.events.off('routeChangeComplete', handleComplete)
       router.events.off('routeChangeError', handleComplete)
+      router.events.off('routeChangeComplete', handleScrollTop)
     }
   })
 

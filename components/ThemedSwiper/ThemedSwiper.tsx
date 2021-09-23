@@ -1,10 +1,10 @@
 import { Children } from 'react'
-import SwiperCore, { Virtual, Navigation, Pagination, Keyboard, Autoplay, EffectFade, SwiperOptions } from 'swiper'
+import SwiperCore, { Virtual, Navigation, Pagination, Keyboard, Autoplay, EffectFade, SwiperOptions, HashNavigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import * as styles from './styles.css'
 
-SwiperCore.use([Virtual, Navigation, Pagination, Autoplay, EffectFade])
+SwiperCore.use([Virtual, Navigation, Pagination, Autoplay, EffectFade, HashNavigation])
 
 interface IProps {
   children: Array<React.ReactElement>
@@ -13,10 +13,12 @@ interface IProps {
   keyboard?: boolean
   autoplay?: boolean
   loop?: boolean
+  hashNavigation?: boolean
+  hashPrefix?: string
   effect?: SwiperOptions['effect']
 }
 
-export function ThemedSwiper({ children, virtual = true, navigation = false, keyboard = false, autoplay = false, loop = false, effect }: IProps) {
+export function ThemedSwiper({ children, virtual = true, navigation = false, keyboard = false, autoplay = false, loop = false, hashNavigation, hashPrefix = 'slide', effect }: IProps) {
   return (
     <Swiper
       virtual={virtual}
@@ -25,9 +27,10 @@ export function ThemedSwiper({ children, virtual = true, navigation = false, key
       autoplay={autoplay}
       loop={loop}
       effect={effect}
+      hashNavigation={hashNavigation && { replaceState: true }}
       className={styles.themedSwiper}>
-      {Children.map(children, (child) => (
-        <SwiperSlide>
+      {Children.map(children, (child, i) => (
+        <SwiperSlide {...hashNavigation && { 'data-hash': `${hashPrefix}-${i}`}}>
           {child}
         </SwiperSlide>
       ))}
