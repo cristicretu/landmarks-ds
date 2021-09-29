@@ -10,7 +10,7 @@ interface IProps extends Atoms {
   title: string
   description: string
   children: any
-  shareImage: string
+  shareImage?: string
   siteTitle?: string
   consentText?: string
 }
@@ -19,7 +19,7 @@ export function Page({
   children,
   title,
   description,
-  shareImage,
+  shareImage = 'share-preview.jpg',
   siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE,
   consentText = `Acest site web folosește cookie-uri care ajută la funcționarea site-ului și urmărește modul în care interacționați cu acesta, astfel încât să vă putem oferi o experiență de utilizare îmbunătățită și personalizată. Vom folosi cookie-urile numai dacă sunteți de acord cu acestea făcând clic pe Accept.`,
   ...rest
