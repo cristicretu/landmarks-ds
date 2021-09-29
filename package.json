@@ -7,6 +7,7 @@
   "private": false,
   "sideEffects": false,
   "dependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
     "@vanilla-extract/babel-plugin": "^1.1.0",
     "@vanilla-extract/css": "^1.5.1",
     "@vanilla-extract/css-utils": "^0.1.1",
