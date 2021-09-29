@@ -27,7 +27,7 @@ export function ThemedSwiper({ children, virtual = true, navigation = false, key
       autoplay={autoplay}
       loop={loop}
       effect={effect}
-      hashNavigation={hashNavigation && { replaceState: true }}
+      hashNavigation={hashNavigation}
       className={styles.themedSwiper}>
       {Children.map(children, (child, i) => (
         <SwiperSlide {...hashNavigation && { 'data-hash': `${hashPrefix}-${i}`}}>

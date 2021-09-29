@@ -13,6 +13,7 @@ export { Floorplan, Floor, Unit } from './components/Floorplan'
 export { Spinner } from './components/Spinner'
 export { SubmitLeadForm } from './components/SubmitLeadForm'
 export { Loading } from './components/Loading'
+export { Page } from './components/Page'
 export * from './components/Headings'
 
 export * from './utils'
