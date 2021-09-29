@@ -26,7 +26,7 @@ interface IProps {
   overlays?: Array<React.ReactElement>
 }
 
-export const Floorplan = ({ background, backgroundSizes, children, extraContent, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor, intro }: IProps) => {
+export const Floorplan = ({ background, backgroundSizes, children, extraContent, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor="brand", intro }: IProps) => {
   const [loaded, setLoaded] = useState(false)
   const mobileViewportRef = useRef<HTMLDivElement>(null)
   const [_, animation] = useSpring(() => ({
