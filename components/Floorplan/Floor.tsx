@@ -3,6 +3,7 @@ import { animated } from 'react-spring'
 import cn from 'classnames'
 
 import * as styles from './styles.css'
+import { H3, H4 } from '../Headings'
 
 interface IProps {
   path: string
@@ -33,22 +34,15 @@ export function Floor({ path, url, position, pinPosition, title, unitsCount, ava
 
   const contentWithoutLink = (
     <>
-      {/* <animated.foreignObject
+      <animated.foreignObject
         width="180"
         height="96"
         x={`${pinX}px`}
         y={`${pinY}px`}
         className={styles.foreignObject}
         style={animation}>
-        <div className={styles.pin}>
-          <div className={styles.pinTitle}>
-            <span className={styles.pinTitleSmall}>something</span>
-            <strong>{title}</strong>
-          </div>
-          <div className={styles.pinDescription}>{description}</div>
-          <div className={styles.arrowDown} />
-        </div>
-      </animated.foreignObject> */}
+        <H3>{title}</H3>
+      </animated.foreignObject>
       <g className={classes?.floor} dangerouslySetInnerHTML={{ __html: path }} />
     </>
   )
