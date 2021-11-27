@@ -1,4 +1,6 @@
-export interface IUIComponent {
+import { Atoms } from "site/styles/sprinkles.css"
+
+export interface IUIComponent extends Atoms {
   style?: any
   className?: string
 }

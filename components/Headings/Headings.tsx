@@ -1,9 +1,8 @@
 import { ReactNode } from "react"
 import { Box } from "../Box"
-import { Atoms } from 'site/styles/sprinkles.css'
 import { IUIComponent } from "../../utils/types"
 
-interface HeadingProps extends Atoms, IUIComponent {
+interface HeadingProps extends IUIComponent {
   children: ReactNode
 }
 

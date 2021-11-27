@@ -1,31 +1,10 @@
 import { style, styleVariants } from '@vanilla-extract/css'
+import { calc } from '@vanilla-extract/css-utils'
 import { vars, breakpoints } from 'site/styles/theme.css'
 
 export const grid = style({
   display: 'flex',
   flexWrap: 'wrap',
-
-  // '@media': {
-  //   [breakpoints.x_tablet]: {
-  //     display: 'flex',
-  //   },
-  //   [breakpoints.xx_laptop]: {
-
-  //   },
-  //   [breakpoints.xxx_desktop]: {
-
-  //   }
-  // }
-})
-
-export const col = style({
-  flex: 1,
-  // tablets and up default to side by side columns
-  '@media': {
-    [breakpoints.x_tablet]: {
-      flex: 1,
-    }
-  }
 })
 
 const widthScale = {
@@ -48,44 +27,40 @@ export const mobileSizeVariants = styleVariants(widthScale, (scale) => {
   if (scale === 'fit') {
     return { flex: 1 }
   }
-  return { flex: `0 0 ${scale}%` }
+  return { width: `${scale}%` }
 })
 
-export const tabletSizeVariants = styleVariants(widthScale, (scale) => {
-  if (scale === 'fit') {
-    return { flex: 1 }
+export const tabletSizeVariants = styleVariants(widthScale, (scale) => ({
+  '@media': {
+    [breakpoints.x_tablet]: (scale === 'fit')
+      ? { flex: 1 }
+      : { width: `${scale}%`, flex: 'none' }
   }
-  return {
-    '@media': {
-      [breakpoints.x_tablet]: {
-        flex: `0 0 ${scale}%`
-      }
-    }
-  }
-})
+}))
 
-export const laptopSizeVariants = styleVariants(widthScale, (scale) => {
-  if (scale === 'fit') {
-    return { flex: 1 }
+export const laptopSizeVariants = styleVariants(widthScale, (scale) => ({
+  '@media': {
+    [breakpoints.xx_laptop]: (scale === 'fit')
+      ? { flex: 1 }
+      : { width: `${scale}%`, flex: 'none' }
   }
-  return {
-    '@media': {
-      [breakpoints.xx_laptop]: {
-        flex: `0 0 ${scale}%`
-      }
-    }
-  }
-})
+}))
 
-export const desktopSizeVariants = styleVariants(widthScale, (scale) => {
-  if (scale === 'fit') {
-    return { flex: 1 }
+export const desktopSizeVariants = styleVariants(widthScale, (scale) => ({
+  '@media': {
+    [breakpoints.xxx_desktop]: (scale === 'fit')
+      ? { flex: 1 }
+      : { width: `${scale}%`, flex: 'none' }
   }
-  return {
-    '@media': {
-      [breakpoints.xxx_desktop]: {
-        flex: `0 0 ${scale}%`
-      }
-    }
-  }
-})
+}))
+
+export const gridGutter = styleVariants(vars.spacing, (gutter) => ({
+  marginLeft: calc(gutter).negate().toString(),
+  marginRight: calc(gutter).negate().toString(),
+}))
+
+export const colGutter = styleVariants(vars.spacing, (gutter) => ({
+  paddingLeft: gutter,
+  paddingRight: gutter,
+  marginBottom: gutter,
+}))

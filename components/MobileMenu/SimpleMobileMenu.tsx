@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import cn from 'classnames'
+import { FaPhoneAlt } from 'react-icons/fa'
 
-import { Atoms } from 'site/styles/sprinkles.css'
 import { IUIComponent } from '../../utils/types'
 import { Button } from '../Button'
 import { Box } from '../Box'
@@ -9,54 +9,59 @@ import { CUSTOM_EVENTS, logEvent } from '../../utils/gtm'
 
 import * as styles from './styles.css'
 
-interface IProps extends Atoms, IUIComponent {
-  phone: string
-  children: any
-  callText?: string
-
-  buttonProps?: Atoms
+const defaultLabels = {
+  callNow: 'Sună acum',
+  messageUsWhatsapp: 'Scrie-ne pe WhatsApp',
 }
 
-export function SimpleMobileMenu({ phone, callText = 'Sună acum', children, className, buttonProps = {}, ...rest }: IProps) {
+const defaultClasses = {
+  menu: styles.defaultMenu,
+  otherButtons: styles.defaultOtherButtons
+}
+
+interface IProps extends IUIComponent {
+  phone: string
+  children: any
+
+  classes?: Partial<typeof defaultClasses>
+  labels?: Partial<typeof defaultLabels>
+}
+
+export function SimpleMobileMenu({ phone, children, className, labels = defaultLabels, classes = defaultClasses, ...rest }: IProps) {
   return (
     <Box component="section" className={cn(styles.menuContainer, className)} {...rest}>
       <Box
         position="fixed"
-        background="brand"
-        color="white"
         padding="medium"
         display="flex"
         alignItems="flex-start"
         justifyContent="space-between"
-        className={styles.menu}>
+        className={cn(styles.menu, classes.menu)}>
         {children}
         <Box display="flex">
           <Button
             component="a"
-            size="large"
-            background="brandLight"
-            borderRadius="small"
+            size="medium"
             href={`tel:${phone}`}
             marginRight="small"
-            {...buttonProps}
+            className={classes.otherButtons}
             onClick={() => logEvent(CUSTOM_EVENTS.SHOW_PHONE)}>
-            {callText}
+            <Box component={FaPhoneAlt} marginX="small" />
+            {labels.callNow}
           </Button>
           <Button
             component="a"
-            size="large"
-            background="brandLight"
-            borderRadius="small"
-            title="Scrie-ne pe WhatsApp"
+            size="medium"
+            title={labels.messageUsWhatsapp}
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}
-            style={{ paddingTop: 0, paddingBottom: 0 }}
-            {...buttonProps}>
+            className={classes.otherButtons}
+            style={{ paddingTop: 0, paddingBottom: 0 }}>
             <Image
               src='/whatsapp.png'
               width="32"
               height="32"
-              alt="Scrie-ne pe WhatsApp" />
+              alt={labels.messageUsWhatsapp} />
           </Button>
         </Box>
       </Box>

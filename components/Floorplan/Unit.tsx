@@ -7,6 +7,13 @@ import * as styles from './styles.css'
 import { isAvailable } from '../../utils'
 import { EUnitStatus } from '../../utils/types'
 
+const defaultClasses = {
+  disponibil: styles.unitStatusVariants.disponibil,
+  rezervat: styles.unitStatusVariants.rezervat,
+  vandut: styles.unitStatusVariants.vandut,
+  inactiv: styles.unitStatusVariants.inactiv,
+}
+
 interface IProps {
   path: string
   url: string
@@ -16,12 +23,17 @@ interface IProps {
   rooms: number
   animation?: any
   className?: string
+  classes?: Partial<typeof defaultClasses>
 }
 
-export function Unit({ path, url, position, status = EUnitStatus.inactiv, animation, number, rooms, className }: IProps) {
+export function Unit({ path, url, position, status = EUnitStatus.inactiv, animation, number, rooms, className, classes }: IProps) {
   const [x, y] = position.split('/')
   const modelGroup = useRef<SVGGElement>(null)
   const inactiv = !isAvailable(status)
+  const mergedClasses = {
+    ...defaultClasses,
+    ...classes,
+  }
 
   useEffect(() => {
     if (modelGroup.current) {
@@ -60,7 +72,7 @@ export function Unit({ path, url, position, status = EUnitStatus.inactiv, animat
 
   return (
     <svg
-      className={cn(styles.unit, className, styles.unitStatusVariants[status], {
+      className={cn(styles.unit, className, mergedClasses[status], {
         [styles.unitInactiv]: inactiv
       })}
       x={`${x}px`} y={`${y}px`}>

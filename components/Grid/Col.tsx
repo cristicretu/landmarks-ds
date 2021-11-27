@@ -1,15 +1,15 @@
 import cn from 'classnames'
 import { Box } from '../Box'
-import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
 import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms, IUIComponent {
+interface IProps extends IUIComponent {
   children?: any
   mobile?: keyof typeof styles.mobileSizeVariants
   tablet?: keyof typeof styles.tabletSizeVariants
   laptop?: keyof typeof styles.laptopSizeVariants
   desktop?: keyof typeof styles.desktopSizeVariants
+  gutter?: keyof typeof styles.gridGutter
 }
 
 export function Col({
@@ -19,11 +19,12 @@ export function Col({
   tablet,
   laptop,
   desktop,
+  gutter = 'none',
   ...rest
 }: IProps) {
   const finalClassName = cn(
     className,
-    styles.col,
+    styles.colGutter[gutter],
     mobile && styles.mobileSizeVariants[mobile],
     tablet && styles.tabletSizeVariants[tablet],
     laptop && styles.laptopSizeVariants[laptop],

@@ -1,13 +1,13 @@
 import { style } from "@vanilla-extract/css"
-import { breakpoints } from "site/styles/theme.css"
-import { atoms } from 'site/styles/sprinkles.css'
+import { breakpoints, overwrites } from "site/styles/theme.css"
 
 export const container = style({
-  margin: 'auto',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 
   '@media': {
     [breakpoints.xxx_desktop]: {
-      maxWidth: '1440px',
+      maxWidth: `${overwrites.MAX_WIDTH || 1440}px`,
     }
   }
 })

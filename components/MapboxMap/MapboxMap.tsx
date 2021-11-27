@@ -5,23 +5,23 @@ import cn from 'classnames'
 import * as styles from './styles.css'
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
-import { Atoms } from 'site/styles/sprinkles.css'
 
 const mapContainer = 'mapbox-container'
 
 // @ts-ignore
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
 
-interface IProps extends Atoms, IUIComponent {
+interface IProps extends IUIComponent {
   location: [number, number],
   title: string
   subtitle: string
   googleMapsLink: string
   startZoom?: number
   endZoom?: number
+  interactive?: boolean
 }
 
-export function MapboxMap({ location, title, subtitle, className, googleMapsLink, startZoom = 10, endZoom = 11, ...rest }: IProps) {
+export function MapboxMap({ location, title, subtitle, className, googleMapsLink, startZoom = 10, endZoom = 11, interactive = false, ...rest }: IProps) {
   const [mapInstance, setMapInstance] = useState<any>(null)
   const [initialView, setInitialView] = useState(true)
 
@@ -29,7 +29,7 @@ export function MapboxMap({ location, title, subtitle, className, googleMapsLink
     const map = new mapboxgl.Map({
       container: mapContainer,
       style: 'mapbox://styles/mapbox/light-v10',
-      interactive: false,
+      interactive,
       // scrollZoom: false,
       // @ts-ignore
       center: location,

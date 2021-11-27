@@ -110,3 +110,5 @@ export function mergeUnitData(dbUnits: any, sheetUnits: any) {
     }
   })
 }
+
+export function noop() {}

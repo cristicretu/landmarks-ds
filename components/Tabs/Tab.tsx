@@ -1,10 +1,9 @@
 import { ReactElement } from 'react'
 
 import { Box } from "../Box"
-import { Atoms } from 'site/styles/sprinkles.css'
 import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms, IUIComponent {
+interface IProps extends IUIComponent {
   children: ReactElement | ReactElement[] | string
   selected?: boolean
   onClick?: Function

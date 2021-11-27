@@ -1,4 +1,4 @@
-import { createElement, AllHTMLAttributes, ElementType } from 'react'
+import { createElement, AllHTMLAttributes, ElementType, Ref } from 'react'
 import cn from 'classnames'
 // import * as resetStyles from '../styles/reset.css'
 import { atoms, Atoms } from 'site/styles/sprinkles.css'
@@ -9,6 +9,7 @@ export interface BoxProps extends Omit<
 >,
   Atoms {
   component?: ElementType
+  innerRef?: Ref<HTMLElement>
 }
 
 export const Box = ({
@@ -29,6 +30,7 @@ export const Box = ({
   marginLeft,
   marginRight,
   display,
+  overflow,
   alignItems,
   justifyContent,
   flexDirection,
@@ -43,6 +45,7 @@ export const Box = ({
   right,
   background,
   color,
+  order,
   width,
   zIndex,
   opacity,
@@ -52,6 +55,7 @@ export const Box = ({
   textTransform,
   fontSize,
   fontFamily,
+  innerRef,
   ...restProps
 }: BoxProps) => {
   // TODO: get reset to work https://github.com/seek-oss/vanilla-extract/discussions/301
@@ -71,6 +75,7 @@ export const Box = ({
     marginLeft,
     marginRight,
     display,
+    overflow,
     alignItems,
     justifyContent,
     flexDirection,
@@ -85,6 +90,7 @@ export const Box = ({
     right,
     background,
     color,
+    order,
     width,
     zIndex,
     opacity,
@@ -98,6 +104,7 @@ export const Box = ({
 
   return createElement(component, {
     className: cn(atomClasses, className),
+    ref: innerRef,
     ...restProps
   })
 }

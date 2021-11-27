@@ -5,6 +5,7 @@ import CookieConsent from 'react-cookie-consent'
 
 import { Box } from 'landmarks-ds'
 import { Atoms } from 'site/styles/sprinkles.css'
+import * as styles from './styles.css'
 
 interface IProps extends Atoms {
   title: string
@@ -46,7 +47,7 @@ export function Page({
       </Head>
 
       {/* Because we set the body background color for safari, we set it back to white here */}
-      <Box background="white" {...rest}>
+      <Box background="white" {...rest} className={styles.page}>
         {children}
       </Box>
 
