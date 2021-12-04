@@ -89,7 +89,15 @@ export function DesktopMenu({
             display="flex"
             marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
             <LanguageSwitcher />
-            <Button>{t(mergedLabels.callNow)}</Button>
+            <Button
+              background="brand"
+              borderRadius="full"
+              size="medium"
+              display="flex"
+              className={cn(styles.mainButton, mergedClasses?.button)}>
+              <Box component={FaPhoneAlt} marginRight="small" />
+              {t(mergedLabels.callNow)}
+            </Button>
           </Box>
         </Box>
       </Box>
