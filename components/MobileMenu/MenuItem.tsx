@@ -13,7 +13,6 @@ interface IProps extends IUIComponent {
 }
 
 export function MenuItem({ title, href, toggleMenu = noop, className, ...rest }: IProps) {
-  console.log(className)
   return (
     <Link href={href}>
       <Box

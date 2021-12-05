@@ -80,7 +80,7 @@ export function SubmitLeadForm({ className, projectTitle, buildingSlug, unitSlug
           {errors.acordPolitica && <div className={styles.error}>{errors.acordPolitica.message}</div>}
         </label>
         <label>
-          <input type="checkbox" {...register('acordInformari')} /> sunt de acord să primesc informări comerciale referitoare la proiectul Cartierul Soarelui
+          <input type="checkbox" {...register('acordInformari')} /> sunt de acord să primesc informări comerciale referitoare la proiect
         </label>
       </Box>
       <Box paddingY="small">
