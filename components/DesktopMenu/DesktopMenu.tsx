@@ -48,6 +48,7 @@ export function DesktopMenu({
   labels,
   ...rest
 }: Props) {
+  // TODO: find out why translation is not working
   const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
@@ -96,7 +97,7 @@ export function DesktopMenu({
             display="flex"
             className={cn(styles.mainButton, mergedClasses?.button)}>
             <Box component={FaPhoneAlt} marginRight="small" />
-            {t(mergedLabels.callNow)}
+            {mergedLabels.callNow}
           </Button>
         </Box>
       </Box>
@@ -141,7 +142,7 @@ export function DesktopMenu({
           style={{ order: buttonOrder }}
           className={cn(styles.mainButton, mergedClasses?.button)}>
           <Box component={FaPhoneAlt} marginRight="small" />
-          {t(mergedLabels.callNow)}
+          {mergedLabels.callNow}
         </Button>
       </Box>
     )
