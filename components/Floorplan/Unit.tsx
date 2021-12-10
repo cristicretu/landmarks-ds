@@ -22,11 +22,25 @@ interface IProps {
   number: string | null
   rooms: number
   animation?: any
+  titleSelector?: string
+  descriptionSelector?: string
   className?: string
   classes?: Partial<typeof defaultClasses>
 }
 
-export function Unit({ path, url, position, status = EUnitStatus.inactiv, animation, number, rooms, className, classes }: IProps) {
+export function Unit({
+  path,
+  url,
+  position,
+  status = EUnitStatus.inactiv,
+  animation,
+  number,
+  rooms,
+  titleSelector = '.cls-2 tspan',
+  descriptionSelector = '.cls-3 tspan',
+  className,
+  classes
+}: IProps) {
   const [x, y] = position.split('/')
   const modelGroup = useRef<SVGGElement>(null)
   const inactiv = !isAvailable(status)
@@ -37,8 +51,8 @@ export function Unit({ path, url, position, status = EUnitStatus.inactiv, animat
 
   useEffect(() => {
     if (modelGroup.current) {
-      const roomNumberEl = modelGroup?.current?.querySelector('.cls-2 tspan')
-      const descriptionEl = modelGroup?.current?.querySelector('.cls-3 tspan')
+      const roomNumberEl = modelGroup?.current?.querySelector(titleSelector)
+      const descriptionEl = modelGroup?.current?.querySelector(descriptionSelector)
       // Overwrite apartment number from UnitModel.svg
       if (roomNumberEl) {
         roomNumberEl.innerHTML = number || '00'

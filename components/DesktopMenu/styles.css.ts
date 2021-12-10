@@ -7,7 +7,7 @@ export const hideOnMobile = style({
 
   '@media': {
     [breakpoints.xx_laptop]: {
-      display: 'block',
+      display: 'inherit',
     }
   }
 })

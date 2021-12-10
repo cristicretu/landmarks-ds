@@ -48,6 +48,7 @@ export function DesktopMenu({
   labels,
   ...rest
 }: Props) {
+  // TODO: find out why translation is not working
   const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
@@ -63,34 +64,41 @@ export function DesktopMenu({
 
   if (logoPlacement === 'left') {
     return (
-      <Box className={cls} component="section" {...rest}>
+      <Box
+        component={contained ? Container : 'section'}
+        className={cls}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        {...rest}>
         <Box
-          component={contained ? Container : 'div'}
-          className={styles.noPadding}
           display="flex"
-          justifyContent="space-between"
-          alignItems="center">
-          <Box
+          marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
+          {logo}
+          {extra}
+        </Box>
+        <Box
+          className={styles.hideOnMobile}
+          style={{
+            ...(menuPlacement === 'left') && { marginRight: 'auto' },
+            ...(menuPlacement === 'right') && { marginLeft: 'auto' },
+          }}>
+          {children}
+        </Box>
+        <Box
+          className={styles.hideOnMobile}
+          display="flex"
+          marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
+          <LanguageSwitcher />
+          <Button
+            background="brand"
+            borderRadius="full"
+            size="medium"
             display="flex"
-            marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
-            {logo}
-            {extra}
-          </Box>
-          <Box
-            className={styles.hideOnMobile}
-            style={{
-              ...(menuPlacement === 'left') && { marginRight: 'auto' },
-              ...(menuPlacement === 'right') && { marginLeft: 'auto' },
-            }}>
-            {children}
-          </Box>
-          <Box
-            className={styles.hideOnMobile}
-            display="flex"
-            marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
-            <LanguageSwitcher />
-            <Button>{t(mergedLabels.callNow)}</Button>
-          </Box>
+            className={cn(styles.mainButton, mergedClasses?.button)}>
+            <Box component={FaPhoneAlt} marginRight="small" />
+            {mergedLabels.callNow}
+          </Button>
         </Box>
       </Box>
     )
@@ -100,43 +108,42 @@ export function DesktopMenu({
     const buttonOrder = childCount + 1
 
     return (
-      <Box className={cls} component="section" {...rest}>
+      <Box
+        component={contained ? Container : 'section'}
+        className={cls}
+        display="flex"
+        justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
+        alignItems="center"
+        {...rest}>
         <Box
-          component={contained ? Container : 'div'}
-          className={styles.noPadding}
           display="flex"
-          justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
-          alignItems="center">
-          <Box
-            display="flex"
-            marginX={{ laptop: 'xxlarge' }}
-            style={{
-              ...(menuPlacement === 'far') && { margin: 'auto' },
-              order: logoOrder,
-            }}>
-            {logo}
-            {extra}
-          </Box>
-          {Children.map(children, (child, i) => cloneElement(child, {
-            className: cn(styles.hideOnMobile, child.props.className),
-            style: {
-              order: i < logoOrder ? i : logoOrder + 1
-            }
-          }))}
-          <LanguageSwitcher
-            className={styles.hideOnMobile}
-            style={{ order: childCount }} />
-          <Button
-            background="brand"
-            borderRadius="full"
-            size="medium"
-            display="flex"
-            style={{ order: buttonOrder }}
-            className={cn(styles.mainButton, mergedClasses?.button)}>
-            <Box component={FaPhoneAlt} marginRight="small" />
-            {t(mergedLabels.callNow)}
-          </Button>
+          marginX={{ laptop: 'xxlarge' }}
+          style={{
+            ...(menuPlacement === 'far') && { margin: 'auto' },
+            order: logoOrder,
+          }}>
+          {logo}
+          {extra}
         </Box>
+        {Children.map(children, (child, i) => cloneElement(child, {
+          className: cn(styles.hideOnMobile, child.props.className),
+          style: {
+            order: i < logoOrder ? i : logoOrder + 1
+          }
+        }))}
+        <LanguageSwitcher
+          className={styles.hideOnMobile}
+          style={{ order: childCount }} />
+        <Button
+          background="brand"
+          borderRadius="full"
+          size="medium"
+          display="flex"
+          style={{ order: buttonOrder }}
+          className={cn(styles.mainButton, mergedClasses?.button)}>
+          <Box component={FaPhoneAlt} marginRight="small" />
+          {mergedLabels.callNow}
+        </Button>
       </Box>
     )
   }
