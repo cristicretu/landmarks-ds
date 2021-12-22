@@ -1,6 +1,6 @@
 import { style, globalStyle, styleVariants } from '@vanilla-extract/css'
 import { breakpoints, vars } from 'site/styles/theme.css'
-import { atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 
 export const floorplanContainer = style({
   overflowX: 'auto',
@@ -20,7 +20,7 @@ export const floorplanExpanded = style({
   }
 })
 
-export const containerSVG = atoms({
+export const containerSVG = sprinkles({
   position: 'relative',
   display: 'block',
   zIndex: 2

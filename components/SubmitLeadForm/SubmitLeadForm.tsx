@@ -87,7 +87,7 @@ export function SubmitLeadForm({ className, projectTitle, buildingSlug, unitSlug
         <Button
           type="submit"
           disabled={isSubmitting}
-          variant="regular"
+          variant="contained"
           className={classes?.submit}>
           {isSubmitting ? '...' : 'Trimite'}
         </Button>

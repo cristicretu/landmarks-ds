@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 import { breakpoints } from 'site/styles/theme.css'
 
 export const hideOnMobile = style({
@@ -17,7 +17,7 @@ export const noPadding = style({
 })
 
 export const stickyMenu = style([
-  atoms({
+  sprinkles({
     position: 'fixed',
     zIndex: 3,
   }),

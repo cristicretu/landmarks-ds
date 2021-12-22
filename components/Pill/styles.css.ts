@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css'
-import { atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 
 export const pill = style([
-  atoms({
+  sprinkles({
     borderRadius: 'full',
     fontSize: '-2x',
     paddingX: 'small',

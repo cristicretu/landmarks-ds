@@ -1,10 +1,10 @@
 import { style } from "@vanilla-extract/css"
 
-import { atoms } from "site/styles/sprinkles.css"
+import { sprinkles } from "site/styles/sprinkles.css"
 import { overwrites } from 'site/styles/theme.css'
 
 export const loading = style([
-  atoms({
+  sprinkles({
     position: 'fixed',
     display: 'flex',
     alignItems: 'center',

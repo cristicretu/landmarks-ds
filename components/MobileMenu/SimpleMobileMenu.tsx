@@ -40,7 +40,6 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
         {children}
         <Box display="flex">
           <Button
-            component="a"
             size="medium"
             href={`tel:${phone}`}
             marginRight="small"
@@ -50,7 +49,6 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
             {labels.callNow}
           </Button>
           <Button
-            component="a"
             size="medium"
             title={labels.messageUsWhatsapp}
             href={`https://wa.me/${phone}`}

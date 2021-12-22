@@ -1,7 +1,7 @@
 import { createElement, AllHTMLAttributes, ElementType, Ref } from 'react'
 import cn from 'classnames'
 // import * as resetStyles from '../styles/reset.css'
-import { atoms, Atoms } from 'site/styles/sprinkles.css'
+import { sprinkles, Atoms } from 'site/styles/sprinkles.css'
 
 export interface BoxProps extends Omit<
   AllHTMLAttributes<HTMLElement>,
@@ -59,7 +59,7 @@ export const Box = ({
   ...restProps
 }: BoxProps) => {
   // TODO: get reset to work https://github.com/seek-oss/vanilla-extract/discussions/301
-  const atomClasses = atoms({
+  const atomClasses = sprinkles({
     padding,
     paddingX,
     paddingY,

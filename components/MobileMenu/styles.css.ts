@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css"
-import { atoms } from "site/styles/sprinkles.css"
+import { sprinkles } from "site/styles/sprinkles.css"
 import { breakpoints, overwrites, vars } from "site/styles/theme.css"
 
 
@@ -38,7 +38,7 @@ export const content = style({
 })
 
 export const item = style([
-  atoms({
+  sprinkles({
     display: 'block',
     fontSize: '2x',
     padding: 'large',
@@ -60,34 +60,34 @@ export const bgImage = style({
 
 // like a default theme that is meant to be overwritten
 export const defaultMenu = style([
-  atoms({
+  sprinkles({
     background: 'brand',
     color: 'white',
   })
 ])
 
 export const defaultMainButton = style([
-  atoms({
+  sprinkles({
     background: 'secondary',
     color: 'white',
   })
 ])
 
 export const defaultMainButtonActive = style([
-  atoms({
+  sprinkles({
     opacity: '0.7',
   })
 ])
 
 export const defaultOtherButtons = style([
-  atoms({
+  sprinkles({
     background: 'tertiary',
     color: 'white',
   })
 ])
 
 export const defaultContent = style([
-  atoms({
+  sprinkles({
     background: 'tertiary',
     color: 'white',
   })

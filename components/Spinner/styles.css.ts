@@ -1,8 +1,8 @@
 import { globalStyle, style, keyframes } from "@vanilla-extract/css"
-import { atoms } from "site/styles/sprinkles.css"
+import { sprinkles } from "site/styles/sprinkles.css"
 
 export const spinner = style([
-  atoms({
+  sprinkles({
     display: 'inline-block',
     position: 'relative',
   }),

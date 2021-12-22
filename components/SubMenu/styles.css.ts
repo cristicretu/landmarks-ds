@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css'
-import { atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 
 export const container = style([
-  atoms({
+  sprinkles({
     position: { mobile: 'fixed', laptop: 'relative' },
     zIndex: 3,
   }),
@@ -19,7 +19,7 @@ export const stretch = style({
 })
 
 export const headerContainer = style([
-  atoms({
+  sprinkles({
     overflow: 'hidden',
   }),
   {
