@@ -1,4 +1,4 @@
-import { Atoms } from "site/styles/sprinkles.css"
+import { Atoms } from 'site/styles/sprinkles.css'
 
 export interface IUIComponent extends Atoms {
   style?: any
@@ -9,20 +9,20 @@ export enum EUnitStatus {
   disponibil = 'disponibil',
   rezervat = 'rezervat',
   vandut = 'vandut',
-  inactiv = 'inactiv',
+  inactiv = 'inactiv'
 }
 
 export enum EPricePolicy {
   hide = 'hide',
   fixed = 'fixed',
-  starting = 'starting',
+  starting = 'starting'
 }
 
 export enum EBuildingStatus {
   autorizare = 'autorizare',
   constructie = 'constructie',
   finalizat = 'finalizat',
-  finalizatCuCF = 'finalizat cu cf',
+  finalizatCuCF = 'finalizat cu cf'
 }
 
 export interface ISize {
