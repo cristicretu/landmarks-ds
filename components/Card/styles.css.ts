@@ -31,16 +31,13 @@ export const cardRecipe = recipe({
       // gradients generated from:
       // https://shadows.brumm.af
       small: {
-        boxShadow:
-          '0px 0px 0.1px rgba(0, 0, 0, 0.039),   0px 0px 0.3px rgba(0, 0, 0, 0.049),   0px 0px 0.5px rgba(0, 0, 0, 0.054),   0px 0px 0.9px rgba(0, 0, 0, 0.059),   0px 0px 1.7px rgba(0, 0, 0, 0.068),   0px 0px 4px rgba(0, 0, 0, 0.1)'
+        boxShadow: vars.shadows.small
       },
       medium: {
-        boxShadow:
-          '0px 0.4px 0.3px rgba(0, 0, 0, 0.039),   0px 0.8px 0.7px rgba(0, 0, 0, 0.049),   0px 1.3px 1.3px rgba(0, 0, 0, 0.054),   0px 2.2px 2.2px rgba(0, 0, 0, 0.059),   0px 3.7px 4.2px rgba(0, 0, 0, 0.068),   0px 8px 10px rgba(0, 0, 0, 0.1)'
+        boxShadow: vars.shadows.medium
       },
       large: {
-        boxShadow:
-          '0px 1.3px 0.8px rgba(0, 0, 0, 0.039),   0px 2.9px 2px rgba(0, 0, 0, 0.049),   0px 5px 3.8px rgba(0, 0, 0, 0.054),   0px 8.1px 6.7px rgba(0, 0, 0, 0.059),   0px 13.8px 12.5px rgba(0, 0, 0, 0.068),   0px 30px 30px rgba(0, 0, 0, 0.1)'
+        boxShadow: vars.shadows.large
       }
     },
     radius: {
