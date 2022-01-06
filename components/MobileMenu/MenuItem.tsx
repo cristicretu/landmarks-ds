@@ -12,9 +12,9 @@ interface IProps extends IUIComponent {
   toggleMenu?: () => void
 }
 
-export function MenuItem({ title, href, toggleMenu = noop, className, ...rest }: IProps) {
+export function MobileMenuItem({ title, href, toggleMenu = noop, className, ...rest }: IProps) {
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <Box
         component="a"
         title={title}

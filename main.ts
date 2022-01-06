@@ -3,7 +3,7 @@ export { ThemedSwiper } from './components/ThemedSwiper'
 export {
   SimpleMobileMenu,
   ToggleMobileMenu,
-  MenuItem
+  MobileMenuItem
 } from './components/MobileMenu'
 export { Button } from './components/Button'
 export { Container } from './components/Container'
@@ -22,11 +22,12 @@ export { AnimateText } from './components/AnimateText'
 export { RevealX } from './components/RevealX'
 export { Section } from './components/Section'
 export { SubMenu } from './components/SubMenu'
-export { DesktopMenu } from './components/DesktopMenu'
+export { DesktopMenu, DesktopMenuItem } from './components/DesktopMenu'
 export { LanguageSwitcher } from './components/LanguageSwitcher'
 export { Pill } from './components/Pill'
 export { Sunshine } from './components/Sunshine'
 export { Tooltip } from './components/Tooltip'
+export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export * from './components/Headings'
 
 export * from './utils'

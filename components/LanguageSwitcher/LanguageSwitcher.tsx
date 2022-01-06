@@ -3,9 +3,13 @@ import cn from 'classnames'
 
 import { IUIComponent } from '../../utils/types'
 import * as styles from './styles.css'
+import { TLightDarkRecipe } from '../DesktopMenu/styles.css'
+import { Box } from '../Box'
+import { DesktopMenuItem } from '../DesktopMenu'
 
 interface IProps extends IUIComponent {
   toggleMenu?: () => void
+  variant?: 'dropdown' | 'sidebyside'
 }
 
 const languageNames: {
@@ -17,7 +21,13 @@ const languageNames: {
   it: 'Italiano',
 }
 
-export function LanguageSwitcher({ className, style, toggleMenu }: IProps) {
+export function LanguageSwitcher({
+  variant = 'dropdown',
+  hue,
+  className,
+  style,
+  toggleMenu
+}: IProps & TLightDarkRecipe) {
   const router = useRouter()
   const { locales, locale } = router
 
@@ -26,20 +36,35 @@ export function LanguageSwitcher({ className, style, toggleMenu }: IProps) {
     return null
   }
 
+  if (variant === 'sidebyside') {
+    return (
+      <Box display="flex" marginRight="large">
+        {locales?.map((l: string) => (
+          <DesktopMenuItem
+            hue={hue}
+            active={l === locale}
+            title={l.toUpperCase()}
+            marginRight="medium"
+            onClick={() => changeLang(l)} />
+        ))}
+      </Box>
+    )
+  }
+
   return (
-    <select className={cn(styles.select, className)} value={locale} onChange={changeLang} style={style}>
+    <select className={cn(styles.select, className)} value={locale} onChange={(e) => changeLang(e.target.value)} style={style}>
       {locales?.map((l: string) => (
         <option key={l} value={l}>{languageNames[l]}</option>
       ))}
     </select>
   )
 
-  function changeLang(e: any) {
+  function changeLang(lang: string) {
     if (toggleMenu) {
       toggleMenu()
     }
     router.push(`${router.asPath}`, `${router.asPath}`, {
-      locale: e.target.value
+      locale: lang
     })
   }
 }
