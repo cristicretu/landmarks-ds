@@ -81,7 +81,6 @@ export function ToggleMobileMenu({
         classes={classes}
         {...rest}>
         <Button
-          size="large"
           onClick={toggleMenu}
           className={cn(classes.mainButton, {
             [classes.mainButtonActive]: isOpen,
