@@ -2,10 +2,15 @@ import { style, globalStyle, styleVariants } from '@vanilla-extract/css'
 import { breakpoints, vars } from 'site/styles/theme.css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
-export const floorplanContainer = style({
-  overflowX: 'auto',
-  transform: 'scale(1)', // fix zIndex bugs with svg
-})
+export const floorplanContainer = style([
+  sprinkles({
+    userSelect: 'none',
+  }),
+  {
+    overflowX: 'auto',
+    transform: 'scale(1)', // fix zIndex bugs with svg
+  }
+])
 
 export const floorplanExpanded = style({
   minWidth: '1200px',
@@ -45,7 +50,7 @@ export const building = style({
   selectors: {
     [`${enabledBuildingSVG}:hover &`]: {
       cursor: 'pointer',
-      opacity: 0.2,
+      opacity: 0.4,
     },
   }
 })
@@ -106,16 +111,21 @@ globalStyle(`${unitInactiv}:hover .cls-1`, {
   opacity: INITIAL_BG_OPACITY,
 })
 
-export const pin = style({
-  display: 'flex',
-  height: '80px',
-  borderRadius: '5px',
-  backgroundColor: '#fff',
-  boxShadow: '-6px 3px 6px rgba(0,0,0, 0.3)',
-  marginLeft: '10px',
-  userSelect: 'none',
-  cursor: 'pointer',
-})
+export const pin = style([
+  sprinkles({
+    display: 'flex',
+    background: 'white',
+    borderRadius: 'small',
+    overflow: 'hidden',
+    cursor: 'pointer',
+    marginLeft: 'medium',
+    boxShadow: 'medium',
+  }),
+  {
+    height: '80px',
+    userSelect: 'none',
+  }
+])
 
 export const foreignObject = style({
   transition: 'all 0.3s',
@@ -126,27 +136,27 @@ export const foreignObject = style({
   }
 })
 
-export const pinTitle = style({
-  padding: '10px',
-  backgroundColor: '#D5D5D5',
-  borderTopLeftRadius: '5px',
-  borderBottomLeftRadius: '5px',
-  textTransform: 'uppercase',
-  fontSize: '40px',
-  lineHeight: '26px',
-  color: vars.color.white,
-  fontWeight: 'bold',
-  selectors: {
-    [`${enabledBuildingSVG} &`]: {
-      backgroundColor: vars.color.brand
+export const pinTitle = style([
+  sprinkles({
+    background: 'primary',
+    color: 'white',
+    padding: 'medium',
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: 'heading',
+    fontSize: '6x',
+  }),
+  {
+    textTransform: 'uppercase',
+    lineHeight: '26px',
+    fontWeight: 'bold',
+    selectors: {
+      [`${enabledBuildingSVG} &`]: {
+        backgroundColor: vars.color.secondary
+      }
     }
   }
-})
-
-export const pinTitleSmall = style({
-  fontSize: '10px',
-  display: 'block',
-})
+])
 
 export const pinDescription = style({
   alignSelf: 'center',
@@ -161,13 +171,13 @@ export const arrowDown = style({
   height: 0,
   borderLeft: '15px solid transparent',
   borderRight: '15px solid transparent',
-  borderTop: `15px solid #D5D5D5`,
+  borderTop: `15px solid ${vars.color.secondary}`,
   position: 'absolute',
-  left: '19px',
+  left: '32px',
   bottom: '5px',
   selectors: {
     [`${enabledBuildingSVG} &`]: {
-      borderTopColor: vars.color.brand
+      borderTopColor: vars.color.secondary
     }
   }
 })

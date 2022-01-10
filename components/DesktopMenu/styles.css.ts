@@ -47,6 +47,7 @@ export const lightDarkRecipe = recipe({
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
+      userSelect: 'none',
     }),
     {
       textDecoration: 'none',

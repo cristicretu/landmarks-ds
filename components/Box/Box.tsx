@@ -57,6 +57,7 @@ export const Box = ({
   cursor,
   textAlign,
   textTransform,
+  userSelect,
   fontSize,
   fontFamily,
   innerRef,
@@ -108,6 +109,7 @@ export const Box = ({
     fontSize,
     fontFamily,
     textTransform,
+    userSelect,
   })
 
   return createElement(component, {

@@ -63,6 +63,7 @@ export function DesktopMenu({
         display="flex"
         justifyContent="space-between"
         alignItems="center"
+        userSelect='none'
         {...rest}>
         <Box
           display="flex"
@@ -105,6 +106,7 @@ export function DesktopMenu({
         display="flex"
         justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
         alignItems="center"
+        userSelect='none'
         {...rest}>
         <Box
           display="flex"

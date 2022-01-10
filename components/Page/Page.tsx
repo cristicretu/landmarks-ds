@@ -2,12 +2,14 @@ import Script from 'next/script'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import CookieConsent from 'react-cookie-consent'
+import cn from 'classnames'
 
 import { Box } from 'landmarks-ds'
 import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
+import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms {
+interface IProps extends IUIComponent {
   title: string
   description: string
   children: any
@@ -20,6 +22,7 @@ export function Page({
   children,
   title,
   description,
+  className,
   shareImage = 'share-preview.jpg',
   siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE,
   consentText = `Acest site web folosește cookie-uri care ajută la funcționarea site-ului și urmărește modul în care interacționați cu acesta, astfel încât să vă putem oferi o experiență de utilizare îmbunătățită și personalizată. Vom folosi cookie-urile numai dacă sunteți de acord cu acestea făcând clic pe Accept.`,
@@ -47,7 +50,7 @@ export function Page({
       </Head>
 
       {/* Because we set the body background color for safari, we set it back to white here */}
-      <Box background="white" {...rest} className={styles.page}>
+      <Box {...rest} className={cn(styles.page, className)}>
         {children}
       </Box>
 
