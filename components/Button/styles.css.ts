@@ -71,7 +71,9 @@ export const button = recipe({
     },
     hue: {
       primary: {},
-      secondary: {}
+      secondary: {},
+      onLight: {},
+      onDark: {},
     },
     variant: {
       text: {
@@ -128,6 +130,26 @@ export const button = recipe({
         background: 'transparent'
       })
     },
+    {
+      variants: {
+        variant: 'text',
+        hue: 'onLight'
+      },
+      style: sprinkles({
+        color: 'neutral_5',
+        background: 'transparent'
+      })
+    },
+    {
+      variants: {
+        variant: 'text',
+        hue: 'onDark'
+      },
+      style: sprinkles({
+        color: 'white',
+        background: 'transparent'
+      })
+    },
     // contained
     {
       variants: {
@@ -147,6 +169,26 @@ export const button = recipe({
       style: sprinkles({
         color: 'white',
         background: 'secondary'
+      })
+    },
+    {
+      variants: {
+        variant: 'contained',
+        hue: 'onLight'
+      },
+      style: sprinkles({
+        color: 'neutral_0',
+        background: 'black_alpha_08',
+      })
+    },
+    {
+      variants: {
+        variant: 'contained',
+        hue: 'onDark'
+      },
+      style: sprinkles({
+        color: 'neutral_6',
+        background: 'white_alpha_08',
       })
     },
     // outlined
@@ -180,6 +222,36 @@ export const button = recipe({
         })
       ]
     },
+    {
+      variants: {
+        variant: 'outlined',
+        hue: 'onLight'
+      },
+      style: [
+        sprinkles({
+          color: 'black_alpha_08',
+          background: 'transparent'
+        }),
+        style({
+          border: `1px solid ${vars.color.black_alpha_04}`
+        })
+      ]
+    },
+    {
+      variants: {
+        variant: 'outlined',
+        hue: 'onDark'
+      },
+      style: [
+        sprinkles({
+          color: 'white_alpha_08',
+          background: 'transparent'
+        }),
+        style({
+          border: `1px solid ${vars.color.white_alpha_04}`
+        })
+      ]
+    },
     // underlined
     {
       variants: {
@@ -208,6 +280,36 @@ export const button = recipe({
         }),
         style({
           borderBottom: `2px solid ${vars.color.secondary}`
+        })
+      ]
+    },
+    {
+      variants: {
+        variant: 'underlined',
+        hue: 'onLight'
+      },
+      style: [
+        sprinkles({
+          color: 'black_alpha_08',
+          background: 'transparent'
+        }),
+        style({
+          borderBottom: `2px solid ${vars.color.black_alpha_04}`
+        })
+      ]
+    },
+    {
+      variants: {
+        variant: 'underlined',
+        hue: 'onDark'
+      },
+      style: [
+        sprinkles({
+          color: 'white_alpha_08',
+          background: 'transparent'
+        }),
+        style({
+          borderBottom: `2px solid ${vars.color.white_alpha_04}`
         })
       ]
     },
