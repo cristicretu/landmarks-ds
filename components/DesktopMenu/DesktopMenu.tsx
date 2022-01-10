@@ -21,7 +21,7 @@ type ConditionalProps =
   | { logoPlacement?: 'left', menuPlacement?: 'left' | 'center' | 'right' }
   | { logoPlacement?: 'center', menuPlacement?: 'close' | 'far' }
 
-type Props = CommonProps & ConditionalProps
+export type TDesktopMenuProps = CommonProps & ConditionalProps
 
 /**
  * RESPONSIBILITIES:
@@ -49,7 +49,7 @@ export function DesktopMenu({
   contained = true,
   className,
   ...rest
-}: Props & styles.TLightDarkRecipe) {
+}: TDesktopMenuProps & styles.TLightDarkRecipe) {
   const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky

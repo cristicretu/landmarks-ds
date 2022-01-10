@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import cn from 'classnames'
 import React from 'react'
 
@@ -16,6 +17,8 @@ interface IProps extends IUIComponent {
   [key: string]: any
 }
 
+export type TDesktopMenuItemProps = IProps & styles.TLightDarkRecipe & styles.TVariantRecipe
+
 const variantHandler = {
   split: SplitText,
   regular: RegularTitle,
@@ -31,9 +34,14 @@ export const DesktopMenuItem = React.forwardRef(({
   variant = 'regular',
   prefix,
   suffix,
-  active = false,
+  active,
   ...rest
-}: IProps & styles.TLightDarkRecipe & styles.TVariantRecipe, ref: React.ForwardedRef<HTMLAnchorElement>) => {
+}: TDesktopMenuItemProps, ref: React.ForwardedRef<HTMLAnchorElement>) => {
+  const { asPath } = useRouter()
+  // can be manually activated by passing the active prop, or automatically based on url/href
+  const isLinkActive = typeof active !== 'undefined'
+    ? active
+    : asPath === href
   // here we are calling the component function without JSX and it expects props to be passed as an object
   const processedTitle = variantHandler[variant]({ children: title })
   const content = (
@@ -45,15 +53,15 @@ export const DesktopMenuItem = React.forwardRef(({
         className,
         styles.lightDarkRecipe({
           hue,
-          active
+          active: isLinkActive
         }),
         styles.variantRecipe({
           variant
         }),
         // optional indicators applied on for active element
         {
-          [styles.activeIndicatorPartialUnderlineRecipe({ active })]: activeIndicator === 'partialUnderline',
-          [styles.activeIndicatorFullUnderlineRecipe({ active })]: activeIndicator === 'fullUnderline'
+          [styles.activeIndicatorPartialUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'partialUnderline',
+          [styles.activeIndicatorFullUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'fullUnderline'
         }
       )}
       {...rest}>
