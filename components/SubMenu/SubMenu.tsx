@@ -3,7 +3,7 @@ import { useSpring, animated, config } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
 import cn from 'classnames'
 
-import { Box, H3, useWindowSize } from 'landmarks-ds'
+import { Box, useWindowSize } from 'landmarks-ds'
 import * as styles from './styles.css'
 import { overwrites } from 'site/styles/theme.css'
 import { IUIComponent } from '../../utils/types'
@@ -91,7 +91,7 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
             className={styles.header}
             paddingY="small"
             onClick={() => isOpen ? close() : open({ canceled: false })}>
-            <H3>{title}</H3>
+            <h3>{title}</h3>
             {subtitle && <span>{subtitle}</span>}
           </Box>
 

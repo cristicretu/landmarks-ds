@@ -5,6 +5,7 @@ export const container = style([
   sprinkles({
     position: { mobile: 'fixed', laptop: 'relative' },
     zIndex: 3,
+    userSelect: 'none',
   }),
   {
     touchAction: 'none',

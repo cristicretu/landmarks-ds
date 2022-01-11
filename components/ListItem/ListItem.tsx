@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 
-import { Box, H4, H5 } from "landmarks-ds"
+import { Box } from "landmarks-ds"
 import { IUIComponent } from 'landmarks-ds/utils/types'
 
 import * as styles from './styles.css'
@@ -26,7 +26,7 @@ export function ListItem({ title, url, selected, extra, className, ...rest }: IP
       alignItems="center"
       justifyContent="space-between"
       {...rest}>
-      <H5>{title}</H5>
+      <h5>{title}</h5>
       {extra && extra}
     </Box>
   )
