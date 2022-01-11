@@ -61,7 +61,6 @@ export const bgImage = style({
 // like a default theme that is meant to be overwritten
 export const defaultMenu = style([
   sprinkles({
-    background: 'brand',
     color: 'white',
   })
 ])
@@ -93,9 +92,15 @@ export const defaultContent = style([
   })
 ])
 
-export const bottomChrome = style({
-  left: 0,
-  right: 0,
-  bottom: '-200px',
-  height: '200px',
-})
+export const bottomChrome = style([
+  sprinkles({
+    position: 'fixed',
+    background: 'chrome',
+  }),
+  {
+    left: 0,
+    right: 0,
+    bottom: '-200px',
+    height: '200px',
+  }
+])

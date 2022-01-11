@@ -70,17 +70,13 @@ export function ToggleMobileMenu({
 
   return (
     <>
-      <Box
-        position="fixed"
-        background="chrome"
-        className={styles.bottomChrome} />
-
       <SimpleMobileMenu
         phone={phone}
         labels={labels}
         classes={classes}
         {...rest}>
         <Button
+          size="small"
           onClick={toggleMenu}
           className={cn(classes.mainButton, {
             [classes.mainButtonActive]: isOpen,
@@ -131,6 +127,7 @@ export function ToggleMobileMenu({
           </Box>
         )}
       </animated.nav>
+      <Box className={styles.bottomChrome} />
     </>
   )
 

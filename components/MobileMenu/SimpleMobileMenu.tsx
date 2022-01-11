@@ -40,7 +40,7 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
         {children}
         <Box display="flex">
           <Button
-            size="medium"
+            size="small"
             href={`tel:${phone}`}
             marginRight="small"
             className={classes.otherButtons}
@@ -49,7 +49,7 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
             {labels.callNow}
           </Button>
           <Button
-            size="medium"
+            size="small"
             title={labels.messageUsWhatsapp}
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}
