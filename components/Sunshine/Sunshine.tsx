@@ -2,6 +2,8 @@ import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
 import { Tooltip } from '../Tooltip'
 
+import * as styles from './styles.css'
+
 interface IProps extends IUIComponent {
   children?: any
   orientation?: number
@@ -149,17 +151,15 @@ export function Sunshine({
   ...rest
 }: IProps) {
   return (
-    <Box style={{ width: '100%', height: '100%' }}>
+    <Box>
       {!!children && (
-        <Box position="absolute" zIndex={3}>
+        <Box position="relative">
           {children}
         </Box>
       )}
       <Box
-        position="relative"
+        className={styles.absoluteFill}
         style={{
-          width: '100%',
-          height: '100%',
           background: `linear-gradient(${orientation}deg, rgba(237,206,126, 0.5) 0%, rgba(237,206,126, 0) 30%)`
         }}
         {...rest}
@@ -172,6 +172,7 @@ export function Sunshine({
             viewBox="0 0 70 70"
             style={{
               position: 'absolute',
+              zIndex: 2,
               ...quadrantToCssPosition[findPos(orientation)]
             }}
           >

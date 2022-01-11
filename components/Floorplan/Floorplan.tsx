@@ -60,6 +60,7 @@ export const Floorplan = ({ background, backgroundSizes, children, extraContent,
       ref={mobileViewportRef}>
       <Box
         position="relative"
+        userSelect="none"
         className={cn({ [styles.floorplanExpanded]: expandOnMobile })}>
         {extraContent}
         <ImageWithSpinner
