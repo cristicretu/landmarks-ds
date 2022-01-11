@@ -8,22 +8,32 @@ import * as styles from './styles.css'
 import { overwrites } from 'site/styles/theme.css'
 import { IUIComponent } from '../../utils/types'
 
+const defaultClasses = {
+  title: styles.title,
+  list: styles.list,
+}
+
 interface IProps extends IUIComponent {
   title: string
-  subtitle: string
+  subtitle?: string
   children: ReactElement | ReactElement[]
   actionLeft?: ReactElement
   actionRight?: ReactElement
+  classes?: Partial<typeof defaultClasses>
 }
 
 const UNKNOWN_OFFSET_Y = 7
 
-export function SubMenu({ title, subtitle, children, actionLeft, actionRight, className, ...rest }: IProps) {
+export function SubMenu({ title, subtitle, children, actionLeft, actionRight, className, classes = {}, ...rest }: IProps) {
   const [windowWidth] = useWindowSize(true, false)
   const isMobile = windowWidth < 991
   const [isOpen, setOpen] = useState(false)
   const height = 400
   const [{ y }, api] = useSpring(() => ({ y: height }))
+  const mergedClasses = {
+    ...defaultClasses,
+    ...classes,
+  }
   const open = ({ canceled }: any) => {
     // when cancel is true, it means that the user passed the upwards threshold
     // so we change the spring config to create a nice wobbly effect
@@ -62,7 +72,7 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
 
   return (
     <animated.div
-      className={cn(styles.container, className)}
+      className={styles.container}
       style={isMobile ? {
         bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
         height: `calc(100vh + ${overwrites.MENU_HEIGHT}px)`,
@@ -71,11 +81,9 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
       <animated.div {...bind()} className={styles.headerContainer}>
         <Box
           display="flex"
-          background="quaternary"
-          color="white"
           textAlign="center"
           justifyContent="center"
-          className={styles.stretch}>
+          className={cn(styles.stretch, mergedClasses.title)}>
 
           {actionLeft}
 
@@ -84,15 +92,14 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
             paddingY="small"
             onClick={() => isOpen ? close() : open({ canceled: false })}>
             <H3>{title}</H3>
-            <span>{subtitle}</span>
+            {subtitle && <span>{subtitle}</span>}
           </Box>
 
           {actionRight}
         </Box>
       </animated.div>
       <Box
-        background="secondary"
-        paddingY="large"
+        className={mergedClasses.list}
         style={{ height: '100%' }}>
         <Box
           paddingX="large"

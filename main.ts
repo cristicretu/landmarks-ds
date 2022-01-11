@@ -29,6 +29,7 @@ export { Sunshine } from './components/Sunshine'
 export { Tooltip } from './components/Tooltip'
 export { Card, CardMedia } from './components/Card'
 export { CardCarousel } from './components/CardCarousel'
+export { ListItem } from './components/ListItem'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export * from './components/Headings'
 

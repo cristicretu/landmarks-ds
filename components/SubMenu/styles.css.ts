@@ -31,3 +31,18 @@ export const headerContainer = style([
 export const header = style({
   flex: 1,
 })
+
+// Default classes
+export const title = style([
+  sprinkles({
+    background: 'primary',
+    color: 'white',
+  })
+])
+
+export const list = style([
+  sprinkles({
+    background: 'secondary',
+    paddingY: 'large',
+  })
+])
