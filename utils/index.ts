@@ -21,7 +21,7 @@ export async function fetchUnits(sheetTitle: string): Promise<any[]> {
     `${process.env.APP_URL}/api/get-units?secret=${process.env.API_SECRET}&sheetTitle=${sheetTitle}`
   )
   const { data } = await rawResponse.json()
-  return data
+  return data || []
 }
 
 export function isAvailable(status: string): boolean {
