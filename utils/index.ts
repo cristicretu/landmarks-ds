@@ -13,17 +13,6 @@ export function addLocaleToPaths(locales: string[], paths: any[]): any[] {
   return flatten(localizedPaths)
 }
 
-/**
- * We use this to call already deployed nextjs apis at build time
- */
-export async function fetchUnits(sheetTitle: string): Promise<any[]> {
-  const rawResponse = await fetch(
-    `${process.env.APP_URL}/api/get-units?secret=${process.env.API_SECRET}&sheetTitle=${sheetTitle}`
-  )
-  const { data } = await rawResponse.json()
-  return data || []
-}
-
 export function isAvailable(status: string): boolean {
   return status === EUnitStatus.disponibil
 }
