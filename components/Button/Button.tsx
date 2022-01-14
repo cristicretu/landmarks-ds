@@ -52,9 +52,9 @@ export function Button({
       href={disabled ? undefined : href}
       {...rest}
     >
-      {!!suffix && <span className={styles.suffix[size]}>{suffix}</span>}
-      {children}
       {!!prefix && <span className={styles.prefix[size]}>{prefix}</span>}
+      {children}
+      {!!suffix && <span className={styles.suffix[size]}>{suffix}</span>}
     </Box>
   )
 }
