@@ -15,6 +15,7 @@ export interface BoxProps extends Omit<
 export const Box = ({
   component = 'div',
   className,
+  boxShadow,
   padding,
   paddingX,
   paddingY,
@@ -65,6 +66,7 @@ export const Box = ({
 }: BoxProps) => {
   // TODO: get reset to work https://github.com/seek-oss/vanilla-extract/discussions/301
   const atomClasses = sprinkles({
+    boxShadow,
     padding,
     paddingX,
     paddingY,
