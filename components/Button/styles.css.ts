@@ -47,7 +47,8 @@ export const button = recipe({
       outline: 'none',
       transition: 'all 0.2s ease-in-out',
       fontFamily: vars.font.body,
-      textDecoration: 'none'
+      textDecoration: 'none',
+      flexShrink: 0,
     })
   ],
   variants: {
