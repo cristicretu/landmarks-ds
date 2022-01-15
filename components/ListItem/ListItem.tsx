@@ -11,7 +11,7 @@ interface IProps extends IUIComponent {
   title: string
   url?: string
   selected?: boolean
-  extra?: ReactElement
+  extra?: any
 }
 
 export function ListItem({ title, url, selected, extra, className, ...rest }: IProps) {
