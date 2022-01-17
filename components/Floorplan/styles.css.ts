@@ -145,10 +145,10 @@ export const pinTitle = style([
     alignItems: 'center',
     fontFamily: 'heading',
     fontSize: '6x',
+    lineHeight: '2x',
   }),
   {
     textTransform: 'uppercase',
-    lineHeight: '26px',
     fontWeight: 'bold',
     selectors: {
       [`${enabledBuildingSVG} &`]: {
@@ -158,12 +158,11 @@ export const pinTitle = style([
   }
 ])
 
-export const pinDescription = style({
-  alignSelf: 'center',
-  padding: '10px',
-  color: '#8B8B8B',
-  fontSize: '14px',
-  lineHeight: '16px',
+export const pinDescription = sprinkles({
+  color: 'onDark',
+  fontSize: '-1x',
+  lineHeight: '1x',
+  padding: 'medium',
 })
 
 export const arrowDown = style({

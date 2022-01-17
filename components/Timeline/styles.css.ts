@@ -23,10 +23,10 @@ export const status = recipe({
         sprinkles({
           background: 'neutral_2',
           textAlign: 'center',
+          lineHeight: '1x',
         }),
         {
           width: '80px',
-          lineHeight: '1.5',
         }
       ]
     }

@@ -61,6 +61,7 @@ export const Box = ({
   userSelect,
   fontSize,
   fontFamily,
+  lineHeight,
   innerRef,
   ...restProps
 }: BoxProps) => {
@@ -110,6 +111,7 @@ export const Box = ({
     textAlign,
     fontSize,
     fontFamily,
+    lineHeight,
     textTransform,
     userSelect,
   })

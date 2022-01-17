@@ -32,6 +32,7 @@ export { CardCarousel } from './components/CardCarousel'
 export { SplitText } from './components/SplitText'
 export { ListItem } from './components/ListItem'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
+export { Typography } from './components/Typography'
 export * from './components/Headings'
 
 export * from './utils'

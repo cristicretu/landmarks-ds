@@ -120,15 +120,11 @@ export const variantRecipe = recipe({
   variants: {
     variant: {
       regular: {},
-      split: [
-        sprinkles({
-          textTransform: 'uppercase',
-          paddingBottom: 'small',
-        }),
-        {
-          lineHeight: '1.5rem',
-        }
-      ]
+      split: sprinkles({
+        textTransform: 'uppercase',
+        paddingBottom: 'small',
+        lineHeight: '1x',
+      }),
     }
   }
 })
