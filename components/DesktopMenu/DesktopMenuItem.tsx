@@ -18,6 +18,8 @@ interface IProps extends IUIComponent {
   [key: string]: any
 }
 
+import * as styleUtils from '../../../site/styles/utils.css'
+
 export type TDesktopMenuItemProps = IProps & styles.TLightDarkRecipe & styles.TVariantRecipe
 
 const variantHandler = {
@@ -61,8 +63,8 @@ export const DesktopMenuItem = React.forwardRef(({
         }),
         // optional indicators applied on for active element
         {
-          [styles.activeIndicatorPartialUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'partialUnderline',
-          [styles.activeIndicatorFullUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'fullUnderline'
+          [styleUtils.activeIndicatorPartialUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'partialUnderline',
+          [styleUtils.activeIndicatorFullUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'fullUnderline'
         }
       )}
       {...rest}>
