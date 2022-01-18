@@ -1,5 +1,6 @@
 import { EUnitStatus, ISize } from './types'
 
+import Link from 'next/link'
 import flatten from 'lodash/flatten'
 import get from 'lodash/get'
 import isArray from 'lodash/isArray'
@@ -11,6 +12,10 @@ export function addLocaleToPaths(locales: string[], paths: any[]): any[] {
     return paths.map((path) => Object.assign({}, path, { locale }))
   })
   return flatten(localizedPaths)
+}
+
+export function isInternalLink(href: string): boolean {
+  return !!href && (href.startsWith('/') || href.startsWith('#'))
 }
 
 export function isAvailable(status: string): boolean {

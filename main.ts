@@ -31,6 +31,7 @@ export { Card, CardMedia } from './components/Card'
 export { CardCarousel } from './components/CardCarousel'
 export { SplitText } from './components/SplitText'
 export { ListItem } from './components/ListItem'
+export { Footer } from './components/Footer'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export { Typography } from './components/Typography'
 export * from './components/Headings'
@@ -40,4 +41,7 @@ export * from './utils/gtm'
 export * from './utils/hooks'
 export * from './utils/api'
 
-export type { TDesktopMenuProps, TDesktopMenuItemProps } from './components/DesktopMenu'
+export type {
+  TDesktopMenuProps,
+  TDesktopMenuItemProps
+} from './components/DesktopMenu'
