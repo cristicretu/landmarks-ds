@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { H5 } from '../Headings'
 import { Box } from '../Box'
 import * as styles from './styles.css'
+import { Typography } from '../Typography'
 
 interface IProps {
   title: string
@@ -28,13 +29,14 @@ export function Collapse({ title, children, defaultOpen = false }: IProps) {
         className={styles.icon}>
         {isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
       </Box>
-      <H5
+      <Typography
+        variant="h5"
         cursor="pointer"
         paddingRight="xxlarge"
         textTransform="capitalize"
         opacity="0.7">
         {title}
-      </H5>
+      </Typography>
       <div className={styles.content}>{children}</div>
     </Box>
   )

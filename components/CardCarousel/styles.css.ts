@@ -4,7 +4,7 @@ import { sprinkles } from 'site/styles/sprinkles.css'
 import { style } from '@vanilla-extract/css'
 
 export const card = style({
-  minWidth: 'calc(100vw - 80px)',
+  minWidth: 'calc(100vw - 120px)',
   '@media': {
     [breakpoints.xx_laptop]: {
       minWidth: 'auto'
@@ -15,10 +15,11 @@ export const card = style({
 export const cardCarousel = style([
   sprinkles({
     padding: 'large',
-    display: { mobile: 'flex', laptop: 'grid' }
+    display: { mobile: 'flex', laptop: 'grid' },
+    userSelect: 'none',
   }),
   {
-    gap: vars.spacing.large,
+    gap: vars.spacing.xlarge,
     overflow: 'auto',
     scrollbarWidth: 'none',
     selectors: {
@@ -30,7 +31,8 @@ export const cardCarousel = style([
       [breakpoints.xx_laptop]: {
         // gridTemplateColumns: '3'
         // gridColumn: '3'
-        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'
+        gap: vars.spacing.xxlarge,
+        gridTemplateColumns: 'repeat(4, minmax(0, 1fr))'
       }
     }
   }
