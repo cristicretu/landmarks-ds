@@ -42,7 +42,7 @@ interface IProps extends IUIComponent {
   email: string
   projects: ExternalLink[]
   links: ExternalLink[]
-  height: string
+  height?: string
 }
 
 export function Footer({

@@ -7,7 +7,6 @@ export const wrapper = style({
   color: vars.color.neutral_4,
   fontFamily: vars.font.body,
   fontSize: vars.fontSize['-1x'],
-  lineHeight: vars.lineHeight
 })
 
 export const links = style({
