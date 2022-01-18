@@ -12,14 +12,7 @@ export const cardRecipe = recipe({
       overflow: 'hidden'
     }),
     style({
-      boxSizing: 'border-box',
-      color: vars.color.white,
-      backgroundColor: vars.color.primary,
-      whiteSpace: 'nowrap',
-      userSelect: 'none',
-      outline: 'none',
       transition: 'all 0.2s ease-in-out',
-      fontFamily: vars.font.body,
       textDecoration: 'none'
     })
   ],
@@ -28,8 +21,6 @@ export const cardRecipe = recipe({
       none: {
         boxShadow: 'none'
       },
-      // gradients generated from:
-      // https://shadows.brumm.af
       small: {
         boxShadow: vars.shadows.small
       },

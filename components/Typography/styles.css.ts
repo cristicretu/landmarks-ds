@@ -1,15 +1,7 @@
-import { style } from '@vanilla-extract/css'
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
 export const headingRecipe = recipe({
-  base: style([
-    sprinkles({
-    }),
-    {
-      fontWeight: 'bold',
-    }
-  ]),
   variants: {
     variant: {
       // large headings don't fit on mobile
@@ -44,17 +36,13 @@ export const headingRecipe = recipe({
         fontSize: '1x',
         lineHeight: '1x',
       }),
-      span: sprinkles({
+      p: sprinkles({
         fontSize: '1x',
-        lineHeight: '1x',
+        lineHeight: '3x',
       }),
       small: sprinkles({
         fontSize: '-1x',
         lineHeight: '-1x',
-      }),
-      xsmall: sprinkles({
-        fontSize: '-2x',
-        lineHeight: '-2x',
       }),
     }
   }
