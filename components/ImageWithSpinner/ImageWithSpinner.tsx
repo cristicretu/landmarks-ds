@@ -7,6 +7,7 @@ import * as styles from './styles.css'
 
 interface IProps extends ImageProps {
   children: ReactElement
+  [key: string]: any
 }
 
 declare type OnLoadingComplete = (result: {
@@ -35,6 +36,7 @@ export function ImageWithSpinner({ children, onLoadingComplete = noop, ...imageP
         </Box>
       )}
       <Image
+        unselectable="off"
         onLoadingComplete={handleLoadingComplete}
         {...imageProps} />
     </>
