@@ -3,6 +3,7 @@ import * as styles from './styles.css'
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
 import { TCardRecipe } from './styles.css'
+import { Typography } from '../Typography'
 import cn from 'classnames'
 
 interface IProps extends IUIComponent {
@@ -13,6 +14,7 @@ interface IProps extends IUIComponent {
 interface ICardMediaProps extends IUIComponent {
   children: any
   height: string
+  title?: string
 }
 
 export function Card({
@@ -32,10 +34,23 @@ export function Card({
   )
 }
 
-export function CardMedia({ children, height, ...rest }: ICardMediaProps) {
+export function CardMedia({
+  children,
+  height,
+  title,
+  ...rest
+}: ICardMediaProps) {
   return (
-    <Box position="relative" style={{ height }} {...rest}>
+    <Box
+      position="relative"
+      style={{ height }}
+      {...rest}
+      className={styles.vignette}
+    >
       {children}
+      <Typography variant="h4" className={styles.mediaTitle}>
+        {title}
+      </Typography>
     </Box>
   )
 }

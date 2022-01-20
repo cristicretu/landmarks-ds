@@ -4,6 +4,19 @@ import { fontFace, style } from '@vanilla-extract/css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 import { vars } from 'site/styles/theme.css'
 
+export const mediaTitle = style({
+  position: 'absolute',
+  bottom: '0',
+  left: '0',
+  paddingLeft: vars.spacing.medium,
+  paddingBottom: vars.spacing.medium
+})
+
+export const vignette = style({
+  background:
+    'linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 32%, rgba(0,0,0,0.3) 71%, rgba(0,0,0,0.7) 100%)'
+})
+
 export const cardRecipe = recipe({
   base: [
     sprinkles({
