@@ -40,6 +40,11 @@ export const headingRecipe = recipe({
         fontSize: '1x',
         lineHeight: '3x',
       }),
+      strong: sprinkles({
+        fontSize: '1x',
+        lineHeight: '3x',
+        fontWeight: 'bold',
+      }),
       small: sprinkles({
         fontSize: '-1x',
         lineHeight: '-1x',
