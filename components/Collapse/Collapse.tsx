@@ -2,7 +2,6 @@ import { useState } from 'react'
 import cn from 'classnames'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
-import { H5 } from '../Headings'
 import { Box } from '../Box'
 import * as styles from './styles.css'
 import { Typography } from '../Typography'

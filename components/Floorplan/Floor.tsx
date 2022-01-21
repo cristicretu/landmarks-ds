@@ -3,7 +3,6 @@ import { animated } from 'react-spring'
 import cn from 'classnames'
 
 import * as styles from './styles.css'
-import { H3, H4 } from '../Headings'
 import { Typography } from '../Typography'
 
 interface IProps {
