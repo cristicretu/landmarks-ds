@@ -34,6 +34,7 @@ export const cardCarouselRecipe = recipe({
       },
       '@media': {
         [breakpoints.xx_laptop]: {
+          overflow: 'visible',
           // gridTemplateColumns: '3'
           // gridColumn: '3'
           gap: vars.spacing.xxlarge,

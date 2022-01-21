@@ -12,6 +12,7 @@ interface IProps extends IUIComponent {
   variant: keyof typeof styles.variantsStart
   children: ReactElement | ReactElement[]
   backgroundImageUrl?: string
+  [key: string]: any
 }
 
 export function Section({ children, className, variant, backgroundImageUrl, ...rest }: IProps) {
