@@ -4,6 +4,7 @@ import cn from 'classnames'
 
 import * as styles from './styles.css'
 import { H3, H4 } from '../Headings'
+import { Typography } from '../Typography'
 
 interface IProps {
   path: string
@@ -41,7 +42,7 @@ export function Floor({ path, url, position, pinPosition, title, unitsCount, ava
         y={`${pinY}px`}
         className={styles.foreignObject}
         style={animation}>
-        <H3>{title}</H3>
+        <Typography variant="h3">{title}</Typography>
       </animated.foreignObject>
       <g className={classes?.floor} dangerouslySetInnerHTML={{ __html: path }} />
     </>

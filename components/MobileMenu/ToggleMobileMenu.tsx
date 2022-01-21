@@ -12,6 +12,7 @@ import { H2 } from '../Headings'
 import { Box } from '../Box'
 import { SimpleMobileMenu } from '.'
 import { IUIComponent } from '../../utils/types'
+import { Typography } from '../Typography'
 
 const defaultLabels = {
   close: 'inchide',
@@ -104,7 +105,7 @@ export function ToggleMobileMenu({
                 </Col>
                 {title ? (
                   <Col mobile="fit">
-                    <H2>{title}</H2>
+                    <Typography variant="h2">{title}</Typography>
                     <small>{subtitle}</small>
                   </Col>
                 ) : <></>}

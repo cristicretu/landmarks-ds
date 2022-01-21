@@ -35,7 +35,6 @@ export { Footer } from './components/Footer'
 export { SmartLink } from './components/SmartLink'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export { Typography } from './components/Typography'
-export * from './components/Headings'
 
 export * from './utils'
 export * from './utils/gtm'
