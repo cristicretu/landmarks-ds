@@ -14,7 +14,7 @@ interface IProps extends IUIComponent {
 interface ICardMediaProps extends IUIComponent {
   children: any
   height: string
-  title?: string
+  title?: any
 }
 
 export function Card({
@@ -48,9 +48,11 @@ export function CardMedia({
       className={styles.vignette}
     >
       {children}
-      <Typography variant="h4" className={styles.mediaTitle}>
-        {title}
-      </Typography>
+      {title && (
+        <Box className={styles.mediaTitle}>
+          {title}
+        </Box>
+      )}
     </Box>
   )
 }
