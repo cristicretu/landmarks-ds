@@ -5,9 +5,12 @@ import { IUIComponent } from '../../utils/types'
 import { TCardRecipe } from './styles.css'
 import { Typography } from '../Typography'
 import cn from 'classnames'
+import { SmartLink } from '../SmartLink'
 
 interface IProps extends IUIComponent {
   children: any
+  href?: string
+  title?: string
   [key: string]: any
 }
 
@@ -22,11 +25,24 @@ export function Card({
   className,
   elevation,
   radius,
+  href,
+  title,
   ...rest
 }: IProps & TCardRecipe) {
   return (
     <Box
-      className={cn(styles.cardRecipe({ elevation, radius }), className)}
+      {...href && {
+        component: SmartLink,
+        href,
+        title,
+      }}
+      className={cn(
+        className,
+        styles.cardRecipe({ elevation, radius }),
+        {
+          [styles.onHoverScale]: href
+        }
+      )}
       {...rest}
     >
       {children}

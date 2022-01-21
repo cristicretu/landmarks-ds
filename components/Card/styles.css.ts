@@ -64,4 +64,13 @@ export const cardRecipe = recipe({
   }
 })
 
+// This could become a recipe of hover effects in the future and a prop on the Card component
+export const onHoverScale = style({
+  selectors: {
+    '&:hover': {
+      transform: 'scale(1.03)',
+    }
+  }
+})
+
 export type TCardRecipe = RecipeVariants<typeof cardRecipe>

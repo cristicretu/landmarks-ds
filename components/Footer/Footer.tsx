@@ -9,28 +9,11 @@ import Link from 'next/link'
 import React from 'react'
 import { Reveal } from '../Reveal'
 import { isInternalLink } from '../../utils/index'
-
-const CustomLink = (props: any) => {
-  const href = props.href
-
-  if (isInternalLink(href)) {
-    return (
-      <Link href={href}>
-        <a {...props}>{props.children}</a>
-      </Link>
-    )
-  }
-
-  return (
-    <a target="_blank" rel="noopener noreferrer" {...props}>
-      {props.children}
-    </a>
-  )
-}
+import { SmartLink } from '../SmartLink'
 
 interface ExternalLink {
-  href: string
-  title: string
+    href: string
+    title: string
 }
 
 interface IProps extends IUIComponent {
@@ -105,13 +88,14 @@ export function Footer({
               </Box>
               <Box className={styles.links}>
                 {projects.map((project, index) => (
-                  <CustomLink
+                  <SmartLink
                     href={project.href}
                     key={index}
+                    title={project.title}
                     className={styles.text}
                   >
                     {project.title}
-                  </CustomLink>
+                  </SmartLink>
                 ))}
               </Box>
             </Box>
@@ -121,13 +105,14 @@ export function Footer({
               </Box>
               <Box className={styles.links}>
                 {links.map((link, index) => (
-                  <CustomLink
+                  <SmartLink
                     href={link.href}
                     key={index}
+                    title={link.title}
                     className={styles.text}
                   >
                     {link.title}
-                  </CustomLink>
+                  </SmartLink>
                 ))}
               </Box>
             </Box>
