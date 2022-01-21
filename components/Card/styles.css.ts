@@ -8,8 +8,10 @@ export const mediaTitle = style({
   position: 'absolute',
   bottom: '0',
   left: '0',
+  right: '0',
   paddingLeft: vars.spacing.medium,
-  paddingBottom: vars.spacing.medium
+  paddingBottom: vars.spacing.medium,
+  background: `linear-gradient(0deg, rgba(0,0,0, 0.5) 0%, rgba(0,0,0, 0) 100%)`,
 })
 
 export const vignette = style({
