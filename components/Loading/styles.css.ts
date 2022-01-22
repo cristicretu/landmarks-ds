@@ -9,13 +9,13 @@ export const loading = style([
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    background: 'chrome',
   }),
   {
     left: 0,
     right: 0,
     bottom: 0,
     height: `${overwrites.MENU_HEIGHT}px`,
-    backgroundColor: 'rgba(1,1,1, .3)',
     zIndex: 5,
   }
 ])
