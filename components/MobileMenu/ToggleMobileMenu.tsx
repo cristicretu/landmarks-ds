@@ -16,7 +16,6 @@ import { Typography } from '../Typography'
 const defaultLabels = {
   close: 'inchide',
   menu: 'meniu',
-  logoTitle: 'Inapoi la pagina principala',
   callNow: 'Sună acum',
   messageUsWhatsapp: 'Scrie-ne pe WhatsApp',
 }
@@ -32,9 +31,8 @@ const defaultClasses = {
 interface IProps extends IUIComponent {
   title?: string
   subtitle?: string
-  logo: ReactElement
   phone: string
-  children: any
+  children: ({ toggleMenu }: { toggleMenu: any }) => void
 
   decoration?: string
   classes?: Partial<typeof defaultClasses>
@@ -44,7 +42,6 @@ interface IProps extends IUIComponent {
 export function ToggleMobileMenu({
   title,
   subtitle,
-  logo,
   decoration,
   phone,
   children,
@@ -81,43 +78,18 @@ export function ToggleMobileMenu({
           className={cn(classes.mainButton, {
             [classes.mainButtonActive]: isOpen,
           })}
-          startIcon={isOpen
-            ? <MdClose className={styles.icon} />
-            : <MdMenu className={styles.icon} />}>
+          prefix={(
+            <Box
+              component={isOpen ? MdClose : MdMenu}
+              fontSize="2x"
+              marginRight="small" />
+          )}>
           {isOpen ? labels.close : labels.menu}
         </Button>
       </SimpleMobileMenu>
 
       <animated.nav className={cn(styles.content, classes.content)} style={animation}>
-        <Box
-          marginBottom="xxlarge">
-          <Link href="/" passHref>
-            <Box
-              component="a"
-              title={labels.logoTitle}
-              color="white"
-              display="block"
-              style={{ textDecoration: 'none' }}>
-              <Grid>
-                <Col mobile="fit">
-                  {logo}
-                </Col>
-                {title ? (
-                  <Col mobile="fit">
-                    <Typography variant="h2">{title}</Typography>
-                    <small>{subtitle}</small>
-                  </Col>
-                ) : <></>}
-              </Grid>
-            </Box>
-          </Link>
-        </Box>
-        {Children.map(children, (child) => {
-          return cloneElement(child, {
-            key: child.props.title,
-            toggleMenu
-          })
-        })}
+        {children({toggleMenu})}
         {decoration && (
           <Box
             position="absolute"

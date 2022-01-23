@@ -49,10 +49,6 @@ export const item = style([
   }
 ])
 
-export const icon = style({
-  fontSize: '20px',
-})
-
 export const bgImage = style({
   right: 0,
   bottom: '20%',
