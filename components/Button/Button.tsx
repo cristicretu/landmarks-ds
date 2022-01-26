@@ -6,6 +6,7 @@ import React from 'react'
 import { ReactElement } from 'react'
 import { TButtonRecipe } from './styles.css'
 import cn from 'classnames'
+import { SmartLink } from '../SmartLink'
 
 interface IProps extends IUIComponent {
   children?: any
@@ -38,7 +39,7 @@ export function Button({
   return (
     <Box
       onClick={clickHandler}
-      component={href ? 'a' : 'button'}
+      component={href ? SmartLink : 'button'}
       disabled={disabled}
       className={cn(
         className,

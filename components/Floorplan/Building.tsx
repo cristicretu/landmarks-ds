@@ -16,7 +16,16 @@ interface IProps {
   animation?: any
 }
 
-export function Building({ path, url, position, pinPosition, title, unitsCount, availableUnitsCount, animation = {} }: IProps) {
+export function Building({
+  path,
+  url,
+  position,
+  pinPosition,
+  title,
+  unitsCount,
+  availableUnitsCount,
+  animation = {} }: IProps
+) {
   const { t } = useTranslation()
   const [x, y] = position.split('/')
   const [pinX, pinY] = pinPosition.split('/')
