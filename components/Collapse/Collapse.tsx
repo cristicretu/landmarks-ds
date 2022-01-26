@@ -32,7 +32,6 @@ export function Collapse({ title, children, defaultOpen = false }: IProps) {
         variant="h5"
         cursor="pointer"
         paddingRight="xxlarge"
-        textTransform="capitalize"
         opacity="0.7">
         {title}
       </Typography>
