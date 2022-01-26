@@ -39,7 +39,7 @@ export function Building({
   const contentWithoutLink = (
     <>
       <animated.foreignObject
-        width="180"
+        width="200"
         height="96"
         x={`${pinX}px`}
         y={`${pinY}px`}

@@ -159,7 +159,7 @@ export const pinTitle = style([
 ])
 
 export const pinDescription = sprinkles({
-  color: 'onDark',
+  color: 'onLight',
   fontSize: '-1x',
   lineHeight: '1x',
   padding: 'medium',
