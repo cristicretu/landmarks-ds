@@ -91,15 +91,6 @@ globalStyle(`${unit}:hover .cls-1`, {
   opacity: 1
 })
 
-globalStyle(`${unit} .cls-2`, {
-  fontSize: 40,
-  fontWeight: 500,
-})
-
-globalStyle(`${unit} .cls-3`, {
-  fontSize: 10,
-})
-
 // Keep this last to overwrite CSS
 export const unitInactiv = style({
   cursor: 'default'
