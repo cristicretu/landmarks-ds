@@ -1,4 +1,5 @@
 import * as styles from './styles.css'
+import * as styleUtils from '@styles/utils.css'
 
 import { Box } from '../Box'
 import { Button } from '../Button'
@@ -10,22 +11,24 @@ import React from 'react'
 import { Reveal } from '../Reveal'
 import { isInternalLink } from '../../utils/index'
 import { SmartLink } from '../SmartLink'
+import { Typography } from '../Typography'
+import { Col, Grid } from '../Grid'
+import { useTranslation } from 'next-i18next'
 
 interface ExternalLink {
-    href: string
-    title: string
+  href: string
+  title: string
 }
 
 interface IProps extends IUIComponent {
-  logo: string
-  description: string
+  logo: any
+  description: any
   copyright: string
   address: string
   phone: string
   email: string
   projects: ExternalLink[]
   links: ExternalLink[]
-  height?: string
 }
 
 export function Footer({
@@ -38,41 +41,35 @@ export function Footer({
   email,
   projects,
   links,
-  height,
   ...rest
 }: IProps) {
+  const { t } = useTranslation()
+
   return (
     <Box className={styles.wrapper} {...rest}>
       <Container>
         <Box>
           {!!logo && (
-            <Box position="relative" style={{ height }}>
-              {/* image? */}
-              <Image src={logo} layout="fill" objectFit="cover" />
+            <Box
+              position="relative"
+              marginY="medium">
+              {logo}
             </Box>
           )}
 
-          <Box className={styles.fluidGrid}>
-            <Box>
-              <Box>
-                {/* fix here this is just a replacement */}.
-                <hr className={styles.line}></hr>
-              </Box>
-              <p>{description}</p>
-            </Box>
-            <Box>
-              <Box as="h1" className={styles.heading}>
-                Contact
-              </Box>
+          <Grid gutter="large">
+            <Col laptop="5">{description}</Col>
+            <Col laptop="2">
+              <Typography variant="h5">{t('contact')}</Typography>
               <p>{address}</p>
-              <hr className={styles.line}></hr>
+              <Box component="hr" marginY="small" className={styles.line} />
               <a className={styles.text} href={`mailto:${email}`}>
                 {email}
               </a>
               <div>
                 <Reveal
                   onReveal={() => console.log('calling')}
-                  before={<a className={styles.text}>Call now</a>}
+                  before={<a href="#" className={styles.text}>{t('callNow')}</a>}
                   after={
                     <a href={`tel:${phone}`} className={styles.text}>
                       {phone}
@@ -81,47 +78,40 @@ export function Footer({
                   paddingRight="medium"
                 />
               </div>
-            </Box>
-            <Box>
-              <Box as="h1" className={styles.heading}>
-                Projects
-              </Box>
-              <Box className={styles.links}>
-                {projects.map((project, index) => (
-                  <SmartLink
-                    href={project.href}
-                    key={index}
-                    title={project.title}
-                    className={styles.text}
-                  >
-                    {project.title}
-                  </SmartLink>
-                ))}
-              </Box>
-            </Box>
-            <Box>
-              <Box as="h1" className={styles.heading}>
-                Other links
-              </Box>
-              <Box className={styles.links}>
-                {links.map((link, index) => (
-                  <SmartLink
-                    href={link.href}
-                    key={index}
-                    title={link.title}
-                    className={styles.text}
-                  >
-                    {link.title}
-                  </SmartLink>
-                ))}
-              </Box>
-            </Box>
-          </Box>
+            </Col>
+            <Col laptop="2">
+              <Typography variant="h5">{t('projects')}</Typography>
+              {projects.map((project, index) => (
+                <SmartLink
+                  href={project.href}
+                  key={index}
+                  title={project.title}
+                  display="block"
+                  className={styles.text}
+                >
+                  {project.title}
+                </SmartLink>
+              ))}
+            </Col>
+            <Col laptop="2">
+              <Typography variant="h5">{t('otherLinks')}</Typography>
+              {links.map((link, index) => (
+                <SmartLink
+                  href={link.href}
+                  key={index}
+                  title={link.title}
+                  display="block"
+                  className={styles.text}
+                >
+                  {link.title}
+                </SmartLink>
+              ))}
+            </Col>
+          </Grid>
 
-          <Box as="p">
+          <Typography variant="small">
             {copyright}
-            {address}
-          </Box>
+          </Typography>
         </Box>
       </Container>
     </Box>
