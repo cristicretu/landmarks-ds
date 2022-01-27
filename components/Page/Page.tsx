@@ -17,6 +17,7 @@ interface IProps extends IUIComponent {
   siteTitle?: string
   consentText?: string
   type?: string
+  favicon?: string
 }
 
 export function Page({
@@ -28,6 +29,7 @@ export function Page({
   shareImage = 'share-preview.jpg',
   siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE,
   consentText = `Acest site web folosește cookie-uri care ajută la funcționarea site-ului și urmărește modul în care interacționați cu acesta, astfel încât să vă putem oferi o experiență de utilizare îmbunătățită și personalizată. Vom folosi cookie-urile numai dacă sunteți de acord cu acestea făcând clic pe Accept.`,
+  favicon = '/favicon.ico',
   ...rest
 }: IProps) {
   const router = useRouter()
@@ -57,6 +59,7 @@ export function Page({
         <meta property="og:type" content={type} />
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}${shareImage}`} />
         <link rel="canonical" href={canonicalUrl} />
+        <link rel="shortcut icon" href={favicon} />
       </Head>
 
       {/* Because we set the body background color for safari, we set it back to white here */}
