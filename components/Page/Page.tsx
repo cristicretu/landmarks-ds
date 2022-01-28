@@ -1,6 +1,5 @@
 import * as styles from './styles.css'
 
-import { Atoms } from 'site/styles/sprinkles.css'
 import { Box } from 'landmarks-ds'
 import CookieConsent from 'react-cookie-consent'
 import Head from 'next/head'
@@ -8,6 +7,7 @@ import { IUIComponent } from '../../utils/types'
 import Script from 'next/script'
 import cn from 'classnames'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 
 interface IProps extends IUIComponent {
   title: string
@@ -28,11 +28,13 @@ export function Page({
   type = 'website',
   shareImage = 'share-preview.jpg',
   siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE,
-  consentText = `Acest site web folosește cookie-uri care ajută la funcționarea site-ului și urmărește modul în care interacționați cu acesta, astfel încât să vă putem oferi o experiență de utilizare îmbunătățită și personalizată. Vom folosi cookie-urile numai dacă sunteți de acord cu acestea făcând clic pe Accept.`,
+  consentText,
   favicon = '/favicon.ico',
   ...rest
 }: IProps) {
   const router = useRouter()
+  const { t } = useTranslation()
+  const consentMessage = consentText || t('consentMessage')
   // should remove query params and leave a clean canonical url
   const pathSliceLength = Math.min.apply(Math, [
     router.asPath.indexOf('?') > 0 ? router.asPath.indexOf('?') : router.asPath.length,
@@ -70,10 +72,10 @@ export function Page({
       <CookieConsent
         disableStyles
         enableDeclineButton
-        declineButtonText="Refuz"
-        buttonText="Accept">
+        declineButtonText={t('consentDecline')}
+        buttonText={t('consentAccept')}>
         <Box fontSize="-1x" marginBottom="large">
-          {consentText}
+          {consentMessage}
         </Box>
       </CookieConsent>
 

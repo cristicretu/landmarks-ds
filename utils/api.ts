@@ -1,5 +1,11 @@
 import qs from 'query-string'
 
+export const API_ENDPOINTS = {
+  UPDATE_SHEET: 'update-sheet',
+  SAVE_LEAD: 'save-lead',
+  GET_UNITS: 'get-units',
+}
+
 /**
  * compose the API url
  */
@@ -16,14 +22,14 @@ export function getApiUrl(endpoint: string, query: { [key: string]: any } = {}):
  * We use this to call already deployed nextjs apis at build time
  */
 export async function fetchUnits(sheetTitle: string): Promise<any[]> {
-  const url = getApiUrl('get-units', { sheetTitle })
+  const url = getApiUrl(API_ENDPOINTS.GET_UNITS, { sheetTitle })
   const rawResponse = await fetch(url)
   const { data } = await rawResponse.json()
   return data || []
 }
 
 export async function updateSheet(data: any): Promise<any> {
-  const url = getApiUrl('update-sheet')
+  const url = getApiUrl(API_ENDPOINTS.UPDATE_SHEET)
   const rawResponse = await fetch(url, {
     method: 'POST',
     headers: {
