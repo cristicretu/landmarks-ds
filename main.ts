@@ -1,5 +1,4 @@
 export { Box } from './components/Box'
-export { ThemedSwiper } from './components/ThemedSwiper'
 export {
   SimpleMobileMenu,
   ToggleMobileMenu,

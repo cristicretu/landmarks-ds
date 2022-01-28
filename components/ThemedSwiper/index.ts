@@ -1,1 +1,0 @@
-export { ThemedSwiper } from './ThemedSwiper'
