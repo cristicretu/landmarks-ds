@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 import { vars } from 'site/styles/theme.css'
 
 export const wrapper = style({
-  backgroundColor: vars.color.neutral_2,
+  backgroundColor: vars.color.neutral_0,
   padding: vars.spacing.large,
   color: vars.color.neutral_4,
   fontFamily: vars.font.body,
