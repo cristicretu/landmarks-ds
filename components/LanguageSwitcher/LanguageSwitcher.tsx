@@ -26,7 +26,8 @@ export function LanguageSwitcher({
   hue,
   className,
   style,
-  toggleMenu
+  toggleMenu,
+  ...rest
 }: IProps & TLightDarkRecipe) {
   const router = useRouter()
   const { locales, locale } = router
@@ -38,7 +39,7 @@ export function LanguageSwitcher({
 
   if (variant === 'sidebyside') {
     return (
-      <Box display="flex" marginRight="large">
+      <Box display="flex" marginRight="large" {...rest}>
         {locales?.map((l: string) => (
           <DesktopMenuItem
             hue={hue}
