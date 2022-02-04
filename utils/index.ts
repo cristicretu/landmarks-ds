@@ -18,6 +18,10 @@ export function isInternalLink(href: string): boolean {
   return !!href && (href.startsWith('/') || href.startsWith('#'))
 }
 
+export function isActionLink(href: string): boolean {
+  return !!href && (href.startsWith('tel:') || href.startsWith('mailto:'))
+}
+
 export function isAvailable(status: string): boolean {
   return status === EUnitStatus.disponibil
 }
