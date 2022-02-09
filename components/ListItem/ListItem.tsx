@@ -1,4 +1,3 @@
-import { ReactElement } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 
@@ -6,6 +5,7 @@ import { Box } from "landmarks-ds"
 import { IUIComponent } from 'landmarks-ds/utils/types'
 
 import * as styles from './styles.css'
+import { SmartLink } from '../SmartLink'
 
 interface IProps extends IUIComponent {
   title: string
@@ -17,7 +17,7 @@ interface IProps extends IUIComponent {
 export function ListItem({ title, url, selected, extra, className, ...rest }: IProps) {
   const content = (
     <Box
-      component={url ? 'a' : 'div'}
+      component={url ? SmartLink : 'div'}
       className={cn(styles.item, className, {
         [styles.selectedItem]: selected,
       })}
