@@ -6,7 +6,6 @@ import Head from 'next/head'
 import { IUIComponent } from '../../utils/types'
 import Script from 'next/script'
 import cn from 'classnames'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
 interface IProps extends IUIComponent {
@@ -32,18 +31,8 @@ export function Page({
   favicon = '/favicon.ico',
   ...rest
 }: IProps) {
-  const router = useRouter()
   const { t } = useTranslation()
   const consentMessage = consentText || t('consentMessage')
-  // should remove query params and leave a clean canonical url
-  const pathSliceLength = Math.min.apply(Math, [
-    router.asPath.indexOf('?') > 0 ? router.asPath.indexOf('?') : router.asPath.length,
-    router.asPath.indexOf('#') > 0 ? router.asPath.indexOf('#') : router.asPath.length
-  ])
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath.substring(
-    0,
-    pathSliceLength
-  )}`
 
   return (
     <>
@@ -57,10 +46,8 @@ export function Page({
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
-        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content={type} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}${shareImage}`} />
-        <link rel="canonical" href={canonicalUrl} />
+        {/* <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}${shareImage}`} /> */}
         <link rel="shortcut icon" href={favicon} />
       </Head>
 
