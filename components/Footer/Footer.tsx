@@ -43,13 +43,11 @@ export function Footer({
   return (
     <Box className={styles.wrapper} {...rest}>
       <Container>
-        <Box>
+        <div>
           {!!logo && (
-            <Box
-              position="relative"
-              marginY="medium">
+            <div className={styles.logo}>
               {logo}
-            </Box>
+            </div>
           )}
 
           <Grid gutter="large">
@@ -107,7 +105,7 @@ export function Footer({
           <Typography variant="small">
             {copyright}
           </Typography>
-        </Box>
+        </div>
       </Container>
     </Box>
   )

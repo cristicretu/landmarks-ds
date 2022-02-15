@@ -1,5 +1,17 @@
+import { sprinkles } from '@styles/sprinkles.css'
 import { style } from '@vanilla-extract/css'
 import { vars } from 'site/styles/theme.css'
+
+export const logo = style([
+  sprinkles({
+    position: 'relative',
+    marginY: 'medium'
+  }),
+  {
+    width: '300px',
+    height: '40px'
+  }
+])
 
 export const wrapper = style({
   backgroundColor: vars.color.neutral_0,
