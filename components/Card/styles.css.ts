@@ -11,7 +11,7 @@ export const mediaTitle = style({
   right: '0',
   paddingLeft: vars.spacing.medium,
   paddingBottom: vars.spacing.medium,
-  background: `linear-gradient(0deg, rgba(0,0,0, 0.5) 0%, rgba(0,0,0, 0) 100%)`,
+  background: `linear-gradient(0deg, rgba(0,0,0, 0.7) 0%, rgba(0,0,0, 0) 100%)`,
 })
 
 export const vignette = style({
