@@ -85,6 +85,8 @@ export const DesktopMenuItem = React.forwardRef(({
   return content
 })
 
+DesktopMenuItem.displayName = 'DesktopMenuItem'
+
 function RegularTitle({ children }: { children: string }) {
   return children
 }
