@@ -5,7 +5,10 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 import { calc } from '@vanilla-extract/css-utils'
 
 function createSelector(classes: string) {
-  return classes.replaceAll(' ', '.')
+  if (typeof classes === 'string') {
+    return classes.replaceAll(' ', '.')
+  }
+  return classes
 }
 
 export const collapseRecipe = recipe({
@@ -22,7 +25,7 @@ export const collapseRecipe = recipe({
         paddingBottom: vars.spacing.medium
       },
       fill: {
-        padding: vars.spacing.large,
+        padding: vars.spacing.large
       }
     }
   },
@@ -62,10 +65,10 @@ export const trigger = style([
       },
       [`${createSelector(
         collapseRecipe({
-          variant: 'fill',
+          variant: 'fill'
         })
-      )} &`]: {
-        // background: vars.color.surfaceFaded
+      )} &:hover`]: {
+        color: vars.color.body
       }
     }
   }
