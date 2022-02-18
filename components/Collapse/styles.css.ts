@@ -6,7 +6,7 @@ import { calc } from '@vanilla-extract/css-utils'
 
 function createSelector(classes: string) {
   if (typeof classes === 'string') {
-    return classes.replaceAll(' ', '.')
+    return classes.split(' ').join('')
   }
   return classes
 }
