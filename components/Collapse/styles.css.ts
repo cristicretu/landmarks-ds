@@ -1,6 +1,6 @@
 import { sprinkles } from '@styles/sprinkles.css'
 import { vars } from '@styles/theme.css'
-import { style, styleVariants } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css'
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 import { calc } from '@vanilla-extract/css-utils'
 
