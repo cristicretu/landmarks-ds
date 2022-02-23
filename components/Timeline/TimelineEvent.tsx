@@ -6,6 +6,8 @@ import { IUIComponent } from '../../utils/types'
 import { IoIosCheckmark } from 'react-icons/io'
 import cn from 'classnames'
 import { SplitText } from '../SplitText'
+import { useTranslation } from 'next-i18next'
+import { Typography } from '../Typography'
 
 interface ITimelineProps extends IUIComponent {
   children?: any
@@ -24,21 +26,34 @@ export function TimelineEvent({
   variant = 'normal',
   ...rest
 }: ITimelineProps) {
+  const { t } = useTranslation()
+
   return (
     <Box className={cn(className, styles.container)} {...rest}>
-      <Box className={styles.status({
-        variant
-      })}>
+      <Box
+        className={styles.status({
+          variant
+        })}>
         {!!done ? (
           <IoIosCheckmark size={36} />
         ) : (
           <SplitText className={cn(styles.unfinished, styles.date)}>{date}</SplitText>
         )}
       </Box>
-      <Box className={styles.detail({
-        variant
-      })}>
-        <p className={cn({ [styles.unfinished]: !done })}>{title}</p>
+      <Box
+        className={styles.detail({
+          variant
+        })}>
+        <Box lineHeight="-1x">
+          <Typography variant="p" className={cn({ [styles.unfinished]: !done })}>
+            {title}
+          </Typography>
+          {!!done && (
+            <Typography variant="small" color="neutral_3">
+              {t('completedAt')} - {date}
+            </Typography>
+          )}
+        </Box>
         {children}
       </Box>
     </Box>

@@ -14,6 +14,7 @@ export const status = recipe({
     sprinkles({
       display: 'flex',
       alignItems: 'center',
+      flexDirection: 'column',
       justifyContent: 'center'
     }),
   ],
