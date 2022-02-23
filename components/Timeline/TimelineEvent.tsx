@@ -49,8 +49,8 @@ export function TimelineEvent({
             {title}
           </Typography>
           {!!done && (
-            <Typography variant="small" color="neutral_3">
-              {t('completedAt')} - {date}
+            <Typography variant="small" color="neutral_3" textTransform="capitalize">
+              {t('finalizat')} - {date}
             </Typography>
           )}
         </Box>
