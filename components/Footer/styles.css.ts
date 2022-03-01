@@ -30,3 +30,20 @@ export const text = style({
   textDecoration: 'none',
   color: vars.color.link
 })
+
+export const socialContainer = style({
+  gap: vars.spacing.medium
+})
+
+export const socialLink = style([
+  sprinkles({
+    color: 'neutral_3',
+  }),
+  {
+    'selectors': {
+      '&:hover': {
+        color: vars.color.link
+      }
+    }
+  }
+])

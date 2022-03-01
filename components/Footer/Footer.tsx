@@ -9,6 +9,7 @@ import { SmartLink } from '../SmartLink'
 import { Typography } from '../Typography'
 import { Col, Grid } from '../Grid'
 import { useTranslation } from 'next-i18next'
+import { FaFacebookSquare, FaTwitterSquare, FaLinkedin, FaInstagramSquare } from 'react-icons/fa'
 
 interface ExternalLink {
   href: string
@@ -24,6 +25,12 @@ interface IProps extends IUIComponent {
   email: string
   projects: ExternalLink[]
   links: ExternalLink[]
+  socialUrls?: {
+    facebook?: string
+    instagram?: string
+    linkedin?: string
+    twitter?: string
+  }
 }
 
 export function Footer({
@@ -36,6 +43,7 @@ export function Footer({
   email,
   projects,
   links,
+  socialUrls,
   ...rest
 }: IProps) {
   const { t } = useTranslation()
@@ -44,14 +52,52 @@ export function Footer({
     <Box className={styles.wrapper} {...rest}>
       <Container>
         <div>
-          {!!logo && (
-            <div className={styles.logo}>
-              {logo}
-            </div>
-          )}
+          {!!logo && <div className={styles.logo}>{logo}</div>}
 
           <Grid gutter="large">
-            <Col laptop="5">{description}</Col>
+            <Col laptop="5">
+              {description}
+              {socialUrls && (
+                <Box display="flex" paddingY="medium" className={styles.socialContainer}>
+                  {socialUrls.facebook && (
+                    <a
+                      className={styles.socialLink}
+                      href={socialUrls.facebook}
+                      rel="noreferrer"
+                      target="_blank">
+                      <Box component={FaFacebookSquare} fontSize="3x" />
+                    </a>
+                  )}
+                  {socialUrls.instagram && (
+                    <a
+                      className={styles.socialLink}
+                      href={socialUrls.instagram}
+                      rel="noreferrer"
+                      target="_blank">
+                      <Box component={FaInstagramSquare} fontSize="3x" />
+                    </a>
+                  )}
+                  {socialUrls.twitter && (
+                    <a
+                      className={styles.socialLink}
+                      href={socialUrls.twitter}
+                      rel="noreferrer"
+                      target="_blank">
+                      <Box component={FaTwitterSquare} fontSize="3x" />
+                    </a>
+                  )}
+                  {socialUrls.linkedin && (
+                    <a
+                      className={styles.socialLink}
+                      href={socialUrls.linkedin}
+                      rel="noreferrer"
+                      target="_blank">
+                      <Box component={FaLinkedin} fontSize="3x" />
+                    </a>
+                  )}
+                </Box>
+              )}
+            </Col>
             <Col laptop="2">
               <Typography variant="h5">{t('contact')}</Typography>
               <p>{address}</p>
@@ -62,7 +108,11 @@ export function Footer({
               <div>
                 <Reveal
                   onReveal={() => console.log('calling')}
-                  before={<a href="#" className={styles.text}>{t('callNow')}</a>}
+                  before={
+                    <a href="#" className={styles.text}>
+                      {t('callNow')}
+                    </a>
+                  }
                   after={
                     <a href={`tel:${phone}`} className={styles.text}>
                       {phone}
@@ -80,8 +130,7 @@ export function Footer({
                   key={index}
                   title={project.title}
                   display="block"
-                  className={styles.text}
-                >
+                  className={styles.text}>
                   {project.title}
                 </SmartLink>
               ))}
@@ -94,17 +143,14 @@ export function Footer({
                   key={index}
                   title={link.title}
                   display="block"
-                  className={styles.text}
-                >
+                  className={styles.text}>
                   {link.title}
                 </SmartLink>
               ))}
             </Col>
           </Grid>
 
-          <Typography variant="small">
-            {copyright}
-          </Typography>
+          <Typography variant="small">{copyright}</Typography>
         </div>
       </Container>
     </Box>
