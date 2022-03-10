@@ -9,6 +9,7 @@ import { SmartLink } from '../SmartLink'
 
 interface IProps extends IUIComponent {
   children: any
+  interactive?: boolean
   href?: string
   title?: string
   [key: string]: any
@@ -26,6 +27,7 @@ export function Card({
   elevation,
   radius,
   href,
+  interactive,
   title,
   ...rest
 }: IProps & TCardRecipe) {
@@ -40,7 +42,7 @@ export function Card({
         className,
         styles.cardRecipe({ elevation, radius }),
         {
-          [styles.onHoverScale]: href
+          [styles.onHoverScale]: href || interactive
         }
       )}
       {...rest}

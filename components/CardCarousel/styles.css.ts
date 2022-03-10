@@ -5,7 +5,7 @@ import { style } from '@vanilla-extract/css'
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
 export const card = style({
-  minWidth: 'calc(100vw - 120px)',
+  minWidth: 'calc(100vw - 80px)',
   '@media': {
     [breakpoints.xx_laptop]: {
       minWidth: 'auto'
