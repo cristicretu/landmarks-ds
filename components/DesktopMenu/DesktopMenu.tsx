@@ -10,7 +10,7 @@ import * as styles from './styles.css'
 
 interface CommonProps extends IUIComponent {
   logo: ReactElement
-  children: ReactElement | ReactElement[]
+  children: any
   cta?: ReactElement
   sticky?: boolean
   contained?: boolean
