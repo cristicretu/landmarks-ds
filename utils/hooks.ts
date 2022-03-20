@@ -3,13 +3,11 @@ import { overwrites } from 'site/styles/theme.css'
 
 export function useWindowSize(withListener = false, withMenu = true) {
   // [width, height]
-  const [windowSize, setWindowSize] = useState([0,0])
+  const [windowSize, setWindowSize] = useState([0, 0])
 
   useLayoutEffect(() => {
     const handleResize = () => {
-      const height = withMenu
-        ? window.innerHeight - overwrites.MENU_HEIGHT
-        : window.innerHeight
+      const height = withMenu ? window.innerHeight - overwrites.MENU_HEIGHT : window.innerHeight
       setWindowSize([window.innerWidth, height])
     }
 
@@ -19,8 +17,7 @@ export function useWindowSize(withListener = false, withMenu = true) {
       window.addEventListener('resize', handleResize)
       return () => window.removeEventListener('resize', handleResize)
     }
-
-  }, [])
+  }, [withListener, withMenu])
 
   return windowSize
 }
