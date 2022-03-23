@@ -110,7 +110,6 @@ export function DesktopMenu({
         {...rest}>
         <Box
           display="flex"
-          marginX={{ laptop: 'xxlarge' }}
           style={{
             ...(menuPlacement === 'far') && { margin: 'auto' },
             order: logoOrder,

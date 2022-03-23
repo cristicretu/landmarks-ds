@@ -24,66 +24,71 @@ export type TDesktopMenuItemProps = IProps & styles.TLightDarkRecipe & styles.TV
 
 const variantHandler = {
   split: SplitText,
-  regular: RegularTitle,
+  regular: RegularTitle
 }
 
-export const DesktopMenuItem = React.forwardRef(({
-  title,
-  href,
-  className,
-  hue = 'onLight',
-  activeIndicator = 'partialUnderline',
-  // variant are handled using both custom components and variantRecipe
-  variant = 'regular',
-  prefix,
-  suffix,
-  active,
-  ...rest
-}: TDesktopMenuItemProps, ref: React.ForwardedRef<HTMLAnchorElement>) => {
-  const { asPath } = useRouter()
-  // can be manually activated by passing the active prop, or automatically based on url/href
-  const isLinkActive = typeof active !== 'undefined'
-    ? active
-    : asPath === href
-  // here we are calling the component function without JSX and it expects props to be passed as an object
-  const processedTitle = variantHandler[variant]({ children: title })
-  const content = (
-    <Box
-      component="a"
-      innerRef={ref}
-      title={title}
-      className={cn(
-        className,
-        styles.lightDarkRecipe({
-          hue,
-          active: isLinkActive
-        }),
-        styles.variantRecipe({
-          variant
-        }),
-        // optional indicators applied on for active element
-        {
-          [styleUtils.activeIndicatorPartialUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'partialUnderline',
-          [styleUtils.activeIndicatorFullUnderlineRecipe({ active: isLinkActive })]: activeIndicator === 'fullUnderline'
-        }
-      )}
-      {...rest}>
-      {prefix}
-      {processedTitle}
-      {suffix}
-    </Box>
-  )
-
-  if (href) {
-    return (
-      <Link href={href} passHref>
-        {content}
-      </Link>
+export const DesktopMenuItem = React.forwardRef(
+  (
+    {
+      title,
+      href,
+      className,
+      hue = 'onLight',
+      activeIndicator = 'partialUnderline',
+      // variant are handled using both custom components and variantRecipe
+      variant = 'regular',
+      prefix,
+      suffix,
+      active,
+      ...rest
+    }: TDesktopMenuItemProps,
+    ref: React.ForwardedRef<HTMLAnchorElement>
+  ) => {
+    const { asPath } = useRouter()
+    // can be manually activated by passing the active prop, or automatically based on url/href
+    const isLinkActive = typeof active !== 'undefined' ? active : asPath === href
+    // here we are calling the component function without JSX and it expects props to be passed as an object
+    const processedTitle = variantHandler[variant]({ children: title })
+    const content = (
+      <Box
+        component="a"
+        innerRef={ref}
+        title={title}
+        className={cn(
+          className,
+          styles.lightDarkRecipe({
+            hue,
+            active: isLinkActive
+          }),
+          styles.variantRecipe({
+            variant
+          }),
+          // optional indicators applied on for active element
+          {
+            [styleUtils.activeIndicatorPartialUnderlineRecipe({ active: isLinkActive })]:
+              activeIndicator === 'partialUnderline',
+            [styleUtils.activeIndicatorFullUnderlineRecipe({ active: isLinkActive })]:
+              activeIndicator === 'fullUnderline'
+          }
+        )}
+        {...rest}>
+        {prefix}
+        {processedTitle}
+        {suffix}
+      </Box>
     )
-  }
 
-  return content
-})
+    if (href) {
+      return (
+        <Link href={href} passHref>
+          {content}
+        </Link>
+      )
+    }
+
+    return content
+  }
+)
 
 DesktopMenuItem.displayName = 'DesktopMenuItem'
 
