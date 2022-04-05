@@ -1,4 +1,5 @@
 import * as styles from './styles.css'
+import * as styleUtils from '@styles/utils.css'
 
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
@@ -12,6 +13,7 @@ interface IProps extends IUIComponent {
   children?: any
   href?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  hover?: keyof typeof styleUtils.genericHover
   disabled?: boolean
   prefix?: ReactElement
   suffix?: ReactElement
@@ -26,6 +28,7 @@ export function Button({
   hue = 'primary',
   suffix,
   prefix,
+  hover = 'scaleUp',
   disabled = false,
   onClick,
   href,
@@ -48,11 +51,13 @@ export function Button({
           size,
           hue,
           disabled
-        })
+        }),
+        {
+          [styleUtils.genericHover[hover]]: !disabled
+        }
       )}
       href={disabled ? undefined : href}
-      {...rest}
-    >
+      {...rest}>
       {!!prefix && <span className={styles.prefix[size]}>{prefix}</span>}
       {children}
       {!!suffix && <span className={styles.suffix[size]}>{suffix}</span>}
