@@ -15,10 +15,12 @@ export const logo = style([
 
 export const wrapper = style({
   backgroundColor: vars.color.neutral_0,
-  padding: vars.spacing.large,
+  paddingTop: vars.spacing.large,
+  paddingBottom: vars.spacing.large,
+  overflow: 'hidden',
   color: vars.color.neutral_4,
   fontFamily: vars.font.body,
-  fontSize: vars.fontSize['-1x'],
+  fontSize: vars.fontSize['-1x']
 })
 
 export const line = style({
