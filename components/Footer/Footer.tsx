@@ -1,5 +1,6 @@
 import * as styles from './styles.css'
 
+import cn from 'classnames'
 import { Box } from '../Box'
 import { Container } from '../Container'
 import { IUIComponent } from '../../utils/types'
@@ -49,7 +50,7 @@ export function Footer({
   const { t } = useTranslation()
 
   return (
-    <Box className={styles.wrapper} {...rest}>
+    <Box className={cn(styles.wrapper, className)} {...rest}>
       <Container>
         <div>
           {!!logo && <div className={styles.logo}>{logo}</div>}

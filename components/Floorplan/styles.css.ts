@@ -161,7 +161,7 @@ export const arrowDown = style({
   height: 0,
   borderLeft: '15px solid transparent',
   borderRight: '15px solid transparent',
-  borderTop: `15px solid ${vars.color.secondary}`,
+  borderTop: `15px solid ${vars.color.primary}`,
   position: 'absolute',
   left: '32px',
   bottom: '5px',
