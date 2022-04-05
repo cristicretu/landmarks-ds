@@ -100,30 +100,6 @@ export function Footer({
               )}
             </Col>
             <Col laptop="2">
-              <Typography variant="h5">{t('contact')}</Typography>
-              <p>{address}</p>
-              <Box component="hr" marginY="small" className={styles.line} />
-              <a className={styles.text} href={`mailto:${email}`}>
-                {email}
-              </a>
-              <div>
-                <Reveal
-                  onReveal={() => console.log('calling')}
-                  before={
-                    <a href="#" className={styles.text}>
-                      {t('callNow')}
-                    </a>
-                  }
-                  after={
-                    <a href={`tel:${phone}`} className={styles.text}>
-                      {phone}
-                    </a>
-                  }
-                  paddingRight="medium"
-                />
-              </div>
-            </Col>
-            <Col laptop="2">
               <Typography variant="h5">{t('projects')}</Typography>
               {projects.map((project, index) => (
                 <SmartLink
