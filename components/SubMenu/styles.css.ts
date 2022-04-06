@@ -1,3 +1,4 @@
+import { overwrites } from '@styles/theme.css'
 import { style } from '@vanilla-extract/css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
@@ -16,7 +17,7 @@ export const container = style([
 
 export const stretch = style({
   alignItems: 'center',
-  height: '73px',
+  height: overwrites.MENU_HEIGHT,
 })
 
 export const headerContainer = style([
@@ -37,7 +38,7 @@ export const header = style({
 export const title = style([
   sprinkles({
     background: 'primary',
-    color: 'white',
+    color: 'white'
   })
 ])
 

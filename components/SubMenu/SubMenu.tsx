@@ -22,8 +22,6 @@ interface IProps extends IUIComponent {
   classes?: Partial<typeof defaultClasses>
 }
 
-const UNKNOWN_OFFSET_Y = 7
-
 export function SubMenu({ title, subtitle, children, actionLeft, actionRight, className, classes = {}, ...rest }: IProps) {
   const [windowWidth] = useWindowSize(true, false)
   const isMobile = windowWidth < 991
@@ -73,24 +71,25 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
   return (
     <animated.div
       className={styles.container}
-      style={isMobile ? {
-        bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
-        height: `calc(100vh + ${overwrites.MENU_HEIGHT}px)`,
-        y
-      } : {}}>
+      style={
+        isMobile
+          ? {
+              bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT}px)`,
+              height: `calc(100vh + ${overwrites.MENU_HEIGHT}px)`,
+              y
+            }
+          : {}
+      }>
       <animated.div {...bind()} className={styles.headerContainer}>
         <Box
           display="flex"
           textAlign="center"
           justifyContent="center"
-          className={cn(styles.stretch, mergedClasses.title)}>
-
+          className={cn(styles.stretch, mergedClasses.title)}
+          onClick={() => (isOpen ? close() : open({ canceled: false }))}>
           {actionLeft}
 
-          <Box
-            className={styles.header}
-            paddingY="small"
-            onClick={() => isOpen ? close() : open({ canceled: false })}>
+          <Box className={styles.header} paddingY="small">
             <h3>{title}</h3>
             {subtitle && <span>{subtitle}</span>}
           </Box>
@@ -98,9 +97,7 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
           {actionRight}
         </Box>
       </animated.div>
-      <Box
-        className={mergedClasses.list}
-        style={{ height: '100%' }}>
+      <Box className={mergedClasses.list} style={{ height: '100%' }}>
         <Box
           paddingX="large"
           style={isMobile ? { height: `${height - 50}px`, overflow: 'auto' } : {}}>

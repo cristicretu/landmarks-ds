@@ -21,7 +21,7 @@ export const stickyMenu = style({
   '@media': {
     [breakpoints.xx_laptop]: {
       position: 'sticky',
-      zIndex: 3,
+      zIndex: 4,
       top: 0,
       left: 0,
       right: 0
