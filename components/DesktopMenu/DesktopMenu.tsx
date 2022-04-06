@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 
 import { IUIComponent } from '../../utils/types'
-import { Box } from "../Box"
+import { Box } from '../Box'
 import { Container } from '../Container'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import * as styles from './styles.css'
@@ -18,8 +18,8 @@ interface CommonProps extends IUIComponent {
 }
 
 type ConditionalProps =
-  | { logoPlacement?: 'left', menuPlacement?: 'left' | 'center' | 'right' }
-  | { logoPlacement?: 'center', menuPlacement?: 'close' | 'far' }
+  | { logoPlacement?: 'left'; menuPlacement?: 'left' | 'center' | 'right' }
+  | { logoPlacement?: 'center'; menuPlacement?: 'close' | 'far' }
 
 export type TDesktopMenuProps = CommonProps & ConditionalProps
 
@@ -50,47 +50,42 @@ export function DesktopMenu({
   className,
   ...rest
 }: TDesktopMenuProps & styles.TLightDarkRecipe) {
-  const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
   })
 
   if (logoPlacement === 'left') {
     return (
-      <Box
-        component={contained ? Container : 'section'}
-        className={cls}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        userSelect='none'
-        {...rest}>
+      <Box component="section" className={cls} {...rest}>
         <Box
+          component={contained ? Container : 'div'}
           display="flex"
-          marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
-          {logo}
-          {extra}
-        </Box>
-        <Box
-          className={styles.hideOnMobile}
-          style={{
-            ...(menuPlacement === 'left') && { marginRight: 'auto' },
-            ...(menuPlacement === 'right') && { marginLeft: 'auto' },
-          }}>
-          {Children.map(children, (child) => (
-            cloneElement(child, {
-              hue,
-            })
-          ))}
-        </Box>
-        <Box
-          className={styles.hideOnMobile}
-          display="flex"
-          marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
-          <LanguageSwitcher
-            variant="sidebyside"
-            hue={hue} />
-          {cta}
+          justifyContent="space-between"
+          alignItems="center"
+          userSelect="none">
+          <Box display="flex" marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
+            {logo}
+            {extra}
+          </Box>
+          <Box
+            className={styles.hideOnMobile}
+            style={{
+              ...(menuPlacement === 'left' && { marginRight: 'auto' }),
+              ...(menuPlacement === 'right' && { marginLeft: 'auto' })
+            }}>
+            {Children.map(children, (child) =>
+              cloneElement(child, {
+                hue
+              })
+            )}
+          </Box>
+          <Box
+            className={styles.hideOnMobile}
+            display="flex"
+            marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
+            <LanguageSwitcher variant="sidebyside" hue={hue} />
+            {cta}
+          </Box>
         </Box>
       </Box>
     )
@@ -100,36 +95,34 @@ export function DesktopMenu({
     const buttonOrder = childCount + 1
 
     return (
-      <Box
-        component={contained ? Container : 'section'}
-        className={cls}
-        display="flex"
-        justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
-        alignItems="center"
-        userSelect='none'
-        {...rest}>
+      <Box component="section" className={cls} {...rest}>
         <Box
+          component={contained ? Container : 'div'}
           display="flex"
-          style={{
-            ...(menuPlacement === 'far') && { margin: 'auto' },
-            order: logoOrder,
-          }}>
-          {logo}
-          {extra}
+          justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
+          alignItems="center"
+          userSelect="none">
+          <Box
+            display="flex"
+            style={{
+              ...(menuPlacement === 'far' && { margin: 'auto' }),
+              order: logoOrder
+            }}>
+            {logo}
+            {extra}
+          </Box>
+          {Children.map(children, (child, i) =>
+            cloneElement(child, {
+              className: cn(styles.hideOnMobile, child.props.className),
+              hue,
+              style: {
+                order: i < logoOrder ? i : logoOrder + 1
+              }
+            })
+          )}
+          <LanguageSwitcher className={styles.hideOnMobile} style={{ order: childCount }} />
+          <div style={{ order: buttonOrder }}>{cta}</div>
         </Box>
-        {Children.map(children, (child, i) => cloneElement(child, {
-          className: cn(styles.hideOnMobile, child.props.className),
-          hue,
-          style: {
-            order: i < logoOrder ? i : logoOrder + 1
-          }
-        }))}
-        <LanguageSwitcher
-          className={styles.hideOnMobile}
-          style={{ order: childCount }} />
-        <div style={{ order: buttonOrder }}>
-          {cta}
-        </div>
       </Box>
     )
   }

@@ -17,17 +17,17 @@ export const noPadding = style({
   padding: 0,
 })
 
-export const stickyMenu = style([
-  sprinkles({
-    position: 'fixed',
-    zIndex: 3,
-  }),
-  {
-    top: 0,
-    left: 0,
-    right: 0,
+export const stickyMenu = style({
+  '@media': {
+    [breakpoints.xx_laptop]: {
+      position: 'sticky',
+      zIndex: 3,
+      top: 0,
+      left: 0,
+      right: 0
+    }
   }
-])
+})
 
 export const mainButton = style({
   display: 'none',
