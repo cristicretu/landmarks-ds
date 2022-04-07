@@ -59,6 +59,7 @@ export const Box = ({
   cursor,
   textAlign,
   textTransform,
+  transition,
   userSelect,
   fontSize,
   fontWeight,
@@ -117,6 +118,7 @@ export const Box = ({
     fontFamily,
     lineHeight,
     textTransform,
+    transition,
     userSelect
   })
 
