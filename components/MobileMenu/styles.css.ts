@@ -92,6 +92,7 @@ export const bottomChrome = style([
   sprinkles({
     position: 'fixed',
     background: 'chrome',
+    zIndex: 4
   }),
   {
     left: 0,
