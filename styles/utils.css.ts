@@ -261,15 +261,3 @@ export const absoluteStretch = sprinkles({
   right: 0,
   bottom: 0
 })
-
-export const linearGradient = styleVariants({
-  horizontal: {
-    background: `linear-gradient(90deg, ${vars.color.gradientFrom}, ${vars.color.gradientTo})`
-  },
-  vertical: {
-    background: `linear-gradient(${vars.color.gradientFrom}, ${vars.color.gradientTo})`
-  },
-  diagonal: {
-    background: `linear-gradient(135deg, ${vars.color.gradientFrom}, ${vars.color.gradientTo})`
-  }
-})
