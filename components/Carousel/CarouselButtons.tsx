@@ -2,7 +2,6 @@ import { Box, Button } from 'landmarks-ds'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import cn from 'classnames'
 import * as style from './styles.css'
-import { genericHover } from '@styles/utils.css'
 
 interface IDotButtonProps {
   selected: boolean

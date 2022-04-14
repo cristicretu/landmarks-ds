@@ -1,5 +1,5 @@
 import * as styles from './styles.css'
-import * as styleUtils from 'site/styles/utils.css'
+import * as styleUtils from 'landmarks-ds/styles/utils.css'
 
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'

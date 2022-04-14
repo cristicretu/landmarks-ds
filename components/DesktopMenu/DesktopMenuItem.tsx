@@ -18,7 +18,7 @@ interface IProps extends IUIComponent {
   [key: string]: any
 }
 
-import * as styleUtils from '../../../site/styles/utils.css'
+import * as styleUtils from 'landmarks-ds/styles/utils.css'
 
 export type TDesktopMenuItemProps = IProps & styles.TLightDarkRecipe & styles.TVariantRecipe
 
