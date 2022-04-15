@@ -6,7 +6,6 @@ import { IUIComponent } from '../../utils/types'
 import { Button } from '../Button'
 import { Box } from '../Box'
 import { CUSTOM_EVENTS, logEvent } from '../../utils/gtm'
-import { useScrollDirection } from 'use-scroll-direction'
 
 import * as styles from './styles.css'
 import { useScrollDirectionStable } from '../../main'
