@@ -3,23 +3,31 @@ import { sprinkles } from "site/styles/sprinkles.css"
 import { breakpoints, overwrites, vars } from "site/styles/theme.css"
 
 
-export const menuContainer = style({
-  paddingTop: overwrites.MENU_HEIGHT,
+export const menuContainer = style([
+  {
+    paddingTop: overwrites.MENU_HEIGHT,
 
-  '@media': {
-    [breakpoints.xx_laptop]: {
-      display: 'none'
+    '@media': {
+      [breakpoints.xx_laptop]: {
+        display: 'none'
+      }
     }
   }
-})
+])
 
-export const menu = style({
-  left: 0,
-  right: 0,
-  bottom: 0,
-  height: `${overwrites.MENU_HEIGHT}px`,
-  zIndex: 4,
-})
+export const menu = style([
+  sprinkles({
+    transition: 'all 0.3s'
+  }),
+  {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: `${overwrites.MENU_HEIGHT}px`,
+    zIndex: 4,
+    transform: 'translateY(0)'
+  }
+])
 
 export const toggle = style({
   display: 'flex',
@@ -101,3 +109,11 @@ export const bottomChrome = style([
     height: '200px',
   }
 ])
+
+export const hidden = style({
+  selectors: {
+    [`${menuContainer} &`]: {
+      transform: `translateY(${overwrites.MENU_HEIGHT}px)`
+    }
+  }
+})
