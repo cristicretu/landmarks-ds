@@ -95,12 +95,6 @@ globalStyle(`${unit}:hover .cls-1`, {
 export const unitInactiv = style({
   cursor: 'default'
 })
-globalStyle(`${unitInactiv}:hover text`, {
-  opacity: INITIAL_TEXT_OPACITY
-})
-globalStyle(`${unitInactiv}:hover .cls-1`, {
-  opacity: INITIAL_BG_OPACITY,
-})
 
 export const pin = style([
   sprinkles({
