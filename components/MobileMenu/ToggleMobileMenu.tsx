@@ -11,7 +11,6 @@ import * as styles from './styles.css'
 import { Box } from '../Box'
 import { SimpleMobileMenu } from '.'
 import { IUIComponent } from '../../utils/types'
-import { Typography } from '../Typography'
 
 const defaultLabels = {
   close: 'inchide',
@@ -29,10 +28,11 @@ const defaultClasses = {
 }
 
 interface IProps extends IUIComponent {
-  title?: string
-  subtitle?: string
   phone: string
   children: ({ toggleMenu }: { toggleMenu: any }) => void
+  title?: string
+  subtitle?: string
+  autohide?: boolean
 
   decoration?: string
   classes?: Partial<typeof defaultClasses>
@@ -42,6 +42,7 @@ interface IProps extends IUIComponent {
 export function ToggleMobileMenu({
   title,
   subtitle,
+  autohide = true,
   decoration,
   phone,
   children,
@@ -68,6 +69,7 @@ export function ToggleMobileMenu({
   return (
     <>
       <SimpleMobileMenu
+        autohide={isOpen ? false : autohide}
         phone={phone}
         labels={labels}
         classes={classes}

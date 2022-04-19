@@ -4,11 +4,11 @@ import { sprinkles } from 'site/styles/sprinkles.css'
 
 export const floorplanContainer = style([
   sprinkles({
-    userSelect: 'none',
+    userSelect: 'none'
   }),
   {
     overflowX: 'auto',
-    transform: 'scale(1)', // fix zIndex bugs with svg
+    transform: 'scale(1)' // fix zIndex bugs with svg
   }
 ])
 
@@ -17,10 +17,10 @@ export const floorplanExpanded = style({
 
   '@media': {
     [breakpoints.x_tablet]: {
-      minWidth: '1500px',
+      minWidth: '1500px'
     },
     [breakpoints.xx_laptop]: {
-      minWidth: 'auto',
+      minWidth: 'auto'
     }
   }
 })
@@ -31,16 +31,13 @@ export const containerSVG = sprinkles({
   zIndex: 2
 })
 
-export const enabledBuildingSVG = style({
-
-})
+export const enabledBuildingSVG = style({})
 
 export const buildingSVG = style({
-  overflow: 'visible',
+  overflow: 'visible'
 })
 
-export const floor = style({
-})
+export const floor = style({})
 
 export const building = style({
   fill: '#fff',
@@ -50,8 +47,8 @@ export const building = style({
   selectors: {
     [`${enabledBuildingSVG}:hover &`]: {
       cursor: 'pointer',
-      opacity: 0.4,
-    },
+      opacity: 0.4
+    }
   }
 })
 
@@ -59,14 +56,14 @@ export const unit = style({
   fill: vars.color.secondary,
   cursor: 'pointer',
   overflow: 'visible',
-  userSelect: 'none',
+  userSelect: 'none'
 })
 
 export const unitStatusVariants = styleVariants({
   disponibil: { fill: vars.color.secondary },
   rezervat: { fill: vars.color.disabled },
   vandut: { fill: vars.color.disabled },
-  inactiv: { fill: vars.color.disabled },
+  inactiv: { fill: vars.color.disabled }
 })
 
 const INITIAL_TEXT_OPACITY = 0.5
@@ -85,22 +82,13 @@ globalStyle(`${unit}:hover text`, {
 
 globalStyle(`${unit} .cls-1`, {
   transition: 'all 0.3s',
-  opacity: INITIAL_BG_OPACITY,
+  opacity: INITIAL_BG_OPACITY
 })
 globalStyle(`${unit}:hover .cls-1`, {
   opacity: 1
 })
 
-// Keep this last to overwrite CSS
-export const unitInactiv = style({
-  cursor: 'default'
-})
-globalStyle(`${unitInactiv}:hover text`, {
-  opacity: INITIAL_TEXT_OPACITY
-})
-globalStyle(`${unitInactiv}:hover .cls-1`, {
-  opacity: INITIAL_BG_OPACITY,
-})
+export const unitInactiv = style({})
 
 export const pin = style([
   sprinkles({
@@ -110,11 +98,11 @@ export const pin = style([
     overflow: 'hidden',
     cursor: 'pointer',
     marginLeft: 'medium',
-    boxShadow: 'medium',
+    boxShadow: 'medium'
   }),
   {
     height: '80px',
-    userSelect: 'none',
+    userSelect: 'none'
   }
 ])
 
@@ -122,7 +110,7 @@ export const foreignObject = style({
   transition: 'all 0.3s',
   selectors: {
     [`${enabledBuildingSVG}:hover &`]: {
-      transform: 'translateY(-20px) !important',
+      transform: 'translateY(-20px) !important'
     }
   }
 })
@@ -136,7 +124,7 @@ export const pinTitle = style([
     alignItems: 'center',
     fontFamily: 'heading',
     fontSize: '6x',
-    lineHeight: '2x',
+    lineHeight: '2x'
   }),
   {
     textTransform: 'uppercase',
@@ -153,7 +141,7 @@ export const pinDescription = sprinkles({
   color: 'onLight',
   fontSize: '-1x',
   lineHeight: '1x',
-  padding: 'medium',
+  padding: 'medium'
 })
 
 export const arrowDown = style({

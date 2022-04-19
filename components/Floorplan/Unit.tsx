@@ -11,7 +11,7 @@ const defaultClasses = {
   disponibil: styles.unitStatusVariants.disponibil,
   rezervat: styles.unitStatusVariants.rezervat,
   vandut: styles.unitStatusVariants.vandut,
-  inactiv: styles.unitStatusVariants.inactiv,
+  inactiv: styles.unitStatusVariants.inactiv
 }
 
 interface IProps {
@@ -46,7 +46,7 @@ export function Unit({
   const inactiv = !isAvailable(status)
   const mergedClasses = {
     ...defaultClasses,
-    ...classes,
+    ...classes
   }
 
   useEffect(() => {
@@ -59,38 +59,28 @@ export function Unit({
       }
       // Replace room count with status
       if (descriptionEl) {
-        const description = inactiv
-          ? status
-          : rooms === 1
-            ? 'o cameră'
-            : `${rooms} camere`
+        const description = inactiv ? status : rooms === 1 ? 'o cameră' : `${rooms} camere`
         descriptionEl.innerHTML = description
       }
     }
   }, [number])
-
-  const withoutLink = (
-    <animated.g
-      ref={modelGroup}
-      style={animation}
-      dangerouslySetInnerHTML={{ __html: path }} />
-  )
-
-  const withLink = (
-    <Link href={url}>
-      <a>
-        {withoutLink}
-      </a>
-    </Link>
-  )
 
   return (
     <svg
       className={cn(styles.unit, className, mergedClasses[status], {
         [styles.unitInactiv]: inactiv
       })}
-      x={`${x}px`} y={`${y}px`}>
-      {inactiv ? withoutLink : withLink}
+      x={`${x}px`}
+      y={`${y}px`}>
+      <Link href={url}>
+        <a>
+          <animated.g
+            ref={modelGroup}
+            style={animation}
+            dangerouslySetInnerHTML={{ __html: path }}
+          />
+        </a>
+      </Link>
     </svg>
   )
 }
