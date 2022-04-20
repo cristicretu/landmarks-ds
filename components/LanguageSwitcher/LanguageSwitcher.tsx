@@ -42,6 +42,7 @@ export function LanguageSwitcher({
       <Box display="flex" marginRight="large" {...rest}>
         {locales?.map((l: string) => (
           <DesktopMenuItem
+            key={l}
             hue={hue}
             active={l === locale}
             title={l.toUpperCase()}
