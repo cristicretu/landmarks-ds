@@ -16,7 +16,7 @@ export function useWindowSize(withListener = false, withMenu = true) {
     handleResize()
 
     if (withListener) {
-      window.addEventListener('resize', handleResize)
+      window.addEventListener('resize', handleResize, { passive: true })
       return () => window.removeEventListener('resize', handleResize)
     }
   }, [withListener, withMenu])
