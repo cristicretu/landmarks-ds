@@ -21,9 +21,13 @@ export function Poi({ position, title, link, triggerColor = 'primary' }: IProps)
     <svg x={`${x}px`} y={`${y}px`}>
       <foreignObject width="80" height="80">
         <Popover
-          trigger={<Box className={styles.poiTrigger}><Box component="span" background={triggerColor} className={styles.poiDot} /></Box>}
+          trigger={
+            <Box className={styles.poiTrigger}>
+              <Box component="span" background={triggerColor} className={styles.poiDot} />
+            </Box>
+          }
           className={styles.poiTriggerContainer}>
-          {title}
+          <Box lineHeight="1x">{title}</Box>
           {!!link && (
             <Button
               href={link}

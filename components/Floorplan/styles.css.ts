@@ -162,7 +162,7 @@ const pulse = keyframes({
 })
 
 export const poiTriggerContainer = sprinkles({
-  display: 'grid'
+  textAlign: 'center'
 })
 
 export const poiTrigger = style([
