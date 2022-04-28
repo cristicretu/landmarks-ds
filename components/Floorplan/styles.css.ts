@@ -144,22 +144,6 @@ export const pinDescription = sprinkles({
   padding: 'medium'
 })
 
-export const arrowDown = style({
-  width: 0,
-  height: 0,
-  borderLeft: '15px solid transparent',
-  borderRight: '15px solid transparent',
-  borderTop: `15px solid ${vars.color.primary}`,
-  position: 'absolute',
-  left: '32px',
-  bottom: '5px',
-  selectors: {
-    [`${enabledBuildingSVG} &`]: {
-      borderTopColor: vars.color.secondary
-    }
-  }
-})
-
 export const poi = style([sprinkles({
 })])
 
