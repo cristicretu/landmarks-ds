@@ -1,4 +1,4 @@
-import { style, globalStyle, styleVariants } from '@vanilla-extract/css'
+import { style, globalStyle, styleVariants, keyframes } from '@vanilla-extract/css'
 import { breakpoints, vars } from 'site/styles/theme.css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
@@ -159,3 +159,48 @@ export const arrowDown = style({
     }
   }
 })
+
+export const poi = style([sprinkles({
+})])
+
+const pulse = keyframes({
+  '0%': {
+    boxShadow: '0 0 0 0 rgba(255,255,255, 0.8)'
+  },
+
+  '70%': {
+    boxShadow: '0 0 0 20px rgba(255,255,255, 0)'
+  },
+
+  '100%': {
+    boxShadow: '0 0 0 0 rgba(255,255,255, 0)'
+  }
+})
+
+export const poiTrigger = style([
+  sprinkles({
+    cursor: 'pointer'
+  }),
+  {
+    overflow: 'hidden',
+    boxShadow: '0 0 0 0 rgba(255,255,255, 1)',
+    selectors: {
+      '&:after': {
+        content: '" "',
+        display: 'block',
+        width: '30px',
+        height: '30px',
+        border: `3px solid ${vars.color.white}`,
+        borderRadius: vars.border.radius.full,
+        background: vars.color.secondary,
+        margin: vars.spacing.large,
+        transition: 'all 0.3s',
+        animation: `${pulse} 1.5s infinite`
+      },
+      '&:hover:after': {
+        boxShadow: '0 0 0 4px rgba(255,255,255, 1)',
+        animation: 'none'
+      }
+    }
+  }
+])
