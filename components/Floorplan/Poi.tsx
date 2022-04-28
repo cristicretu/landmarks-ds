@@ -7,27 +7,30 @@ import { vars } from '@styles/theme.css'
 import * as styles from './styles.css'
 
 interface IProps {
+  triggerColor: keyof typeof vars.color
   position: string
   title: string
   link?: string
-  triggerColor?: keyof typeof vars.color
 }
 
 export function Poi({ position, title, link, triggerColor = 'primary' }: IProps) {
   const { t } = useTranslation()
   const [x, y] = position.split('/')
 
-  const trigger = (
-    <Box color={triggerColor} className={styles.poiTrigger}></Box>
-  )
-
   return (
     <svg x={`${x}px`} y={`${y}px`}>
-      <foreignObject width="80" height="80" x="0px" y="0px">
-        <Popover trigger={trigger}>
+      <foreignObject width="80" height="80">
+        <Popover
+          trigger={<Box className={styles.poiTrigger}><Box component="span" background={triggerColor} className={styles.poiDot} /></Box>}
+          className={styles.poiTriggerContainer}>
           {title}
           {!!link && (
-            <Button href={link} variant="contained" size="small" borderRadius="small" marginLeft="medium">
+            <Button
+              href={link}
+              variant="contained"
+              size="small"
+              borderRadius="small"
+              marginTop="medium">
               {t('open')}
             </Button>
           )}

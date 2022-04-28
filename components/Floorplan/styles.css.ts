@@ -177,30 +177,35 @@ const pulse = keyframes({
   }
 })
 
+export const poiTriggerContainer = sprinkles({
+  display: 'grid'
+})
+
 export const poiTrigger = style([
   sprinkles({
-    cursor: 'pointer'
+    cursor: 'pointer',
+    overflow: 'hidden'
   }),
   {
-    overflow: 'hidden',
     boxShadow: '0 0 0 0 rgba(255,255,255, 1)',
-    selectors: {
-      '&:after': {
-        content: '" "',
-        display: 'block',
-        width: '30px',
-        height: '30px',
-        border: `3px solid ${vars.color.white}`,
-        borderRadius: vars.border.radius.full,
-        background: vars.color.secondary,
-        margin: vars.spacing.large,
-        transition: 'all 0.3s',
-        animation: `${pulse} 1.5s infinite`
-      },
-      '&:hover:after': {
-        boxShadow: '0 0 0 4px rgba(255,255,255, 1)',
-        animation: 'none'
-      }
+  }
+])
+
+export const poiDot = style([
+  sprinkles({
+    display: 'block',
+    borderRadius: 'full',
+    margin: 'large',
+    transition: 'all 0.3s'
+  }),
+  {
+    width: '30px',
+    height: '30px',
+    border: `3px solid ${vars.color.white}`,
+    animation: `${pulse} 1.5s infinite`,
+    ':hover': {
+      boxShadow: '0 0 0 4px rgba(255,255,255, 1)',
+      animation: 'none'
     }
   }
 ])
