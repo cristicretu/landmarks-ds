@@ -3,6 +3,7 @@ import { Atoms } from 'site/styles/sprinkles.css'
 export interface IUIComponent extends Atoms {
   style?: any
   className?: string
+  component?: any
 }
 
 export enum EUnitStatus {
