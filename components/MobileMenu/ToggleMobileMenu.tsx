@@ -1,12 +1,10 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import cn from 'classnames'
-import { useState, ReactElement, Children, cloneElement } from 'react'
+import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { MdMenu, MdClose } from 'react-icons/md'
 
 import { Button } from '../Button'
-import { Grid, Col } from '../Grid'
 import * as styles from './styles.css'
 import { Box } from '../Box'
 import { SimpleMobileMenu } from '.'
@@ -16,7 +14,7 @@ const defaultLabels = {
   close: 'inchide',
   menu: 'meniu',
   callNow: 'Sună acum',
-  messageUsWhatsapp: 'Scrie-ne pe WhatsApp',
+  messageUsWhatsapp: 'Scrie-ne pe WhatsApp'
 }
 
 const defaultClasses = {
@@ -24,7 +22,7 @@ const defaultClasses = {
   mainButton: styles.defaultMainButton,
   mainButtonActive: styles.defaultMainButtonActive,
   otherButtons: styles.defaultOtherButtons,
-  content: styles.defaultContent,
+  content: styles.defaultContent
 }
 
 interface IProps extends IUIComponent {
@@ -52,11 +50,11 @@ export function ToggleMobileMenu({
 }: IProps) {
   const classes = {
     ...defaultClasses,
-    ...receivedClasses,
+    ...receivedClasses
   }
   const labels = {
     ...defaultLabels,
-    ...receivedLabels,
+    ...receivedLabels
   }
   const [isOpen, setOpen] = useState(false)
   const animation = useSpring({
@@ -78,25 +76,17 @@ export function ToggleMobileMenu({
           size="small"
           onClick={toggleMenu}
           className={cn(classes.mainButton, {
-            [classes.mainButtonActive]: isOpen,
+            [classes.mainButtonActive]: isOpen
           })}
-          prefix={(
-            <Box
-              component={isOpen ? MdClose : MdMenu}
-              fontSize="2x"
-              marginRight="small" />
-          )}>
+          prefix={<Box component={isOpen ? MdClose : MdMenu} fontSize="2x" marginRight="small" />}>
           {isOpen ? labels.close : labels.menu}
         </Button>
       </SimpleMobileMenu>
 
       <animated.nav className={cn(styles.content, classes.content)} style={animation}>
-        {children({toggleMenu})}
+        {children({ toggleMenu })}
         {decoration && (
-          <Box
-            position="absolute"
-            zIndex={-1}
-            className={styles.bgImage}>
+          <Box position="absolute" zIndex={-1} className={styles.bgImage}>
             <Image src={decoration} alt="decoration" />
           </Box>
         )}

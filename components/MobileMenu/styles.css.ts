@@ -36,14 +36,20 @@ export const toggle = style({
   top: 0,
 })
 
-export const content = style({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 3,
-})
+export const content = style([
+  sprinkles({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingBottom: 'xxxlarge',
+    zIndex: 3
+  }),
+  {
+    overflow: 'auto'
+  }
+])
 
 export const item = style([
   sprinkles({

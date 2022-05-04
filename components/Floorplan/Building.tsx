@@ -50,7 +50,6 @@ export function Building({
             <strong>{title}</strong>
           </div>
           <div className={styles.pinDescription}>{description}</div>
-          <div className={styles.arrowDown} />
         </div>
       </animated.foreignObject>
       <g className={styles.building} dangerouslySetInnerHTML={{ __html: path }} />

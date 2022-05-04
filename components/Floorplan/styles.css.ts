@@ -1,4 +1,4 @@
-import { style, globalStyle, styleVariants } from '@vanilla-extract/css'
+import { style, globalStyle, styleVariants, keyframes } from '@vanilla-extract/css'
 import { breakpoints, vars } from 'site/styles/theme.css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
@@ -144,18 +144,52 @@ export const pinDescription = sprinkles({
   padding: 'medium'
 })
 
-export const arrowDown = style({
-  width: 0,
-  height: 0,
-  borderLeft: '15px solid transparent',
-  borderRight: '15px solid transparent',
-  borderTop: `15px solid ${vars.color.primary}`,
-  position: 'absolute',
-  left: '32px',
-  bottom: '5px',
-  selectors: {
-    [`${enabledBuildingSVG} &`]: {
-      borderTopColor: vars.color.secondary
-    }
+export const poi = style([sprinkles({
+})])
+
+const pulse = keyframes({
+  '0%': {
+    boxShadow: '0 0 0 0 rgba(255,255,255, 0.8)'
+  },
+
+  '70%': {
+    boxShadow: '0 0 0 20px rgba(255,255,255, 0)'
+  },
+
+  '100%': {
+    boxShadow: '0 0 0 0 rgba(255,255,255, 0)'
   }
 })
+
+export const poiTriggerContainer = sprinkles({
+  textAlign: 'center'
+})
+
+export const poiTrigger = style([
+  sprinkles({
+    cursor: 'pointer',
+    overflow: 'hidden'
+  }),
+  {
+    boxShadow: '0 0 0 0 rgba(255,255,255, 1)',
+  }
+])
+
+export const poiDot = style([
+  sprinkles({
+    display: 'block',
+    borderRadius: 'full',
+    margin: 'large',
+    transition: 'all 0.3s'
+  }),
+  {
+    width: '30px',
+    height: '30px',
+    border: `3px solid ${vars.color.white}`,
+    animation: `${pulse} 1.5s infinite`,
+    ':hover': {
+      boxShadow: '0 0 0 4px rgba(255,255,255, 1)',
+      animation: 'none'
+    }
+  }
+])
