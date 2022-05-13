@@ -11,8 +11,8 @@ interface IProps {
   position: string
   pinPosition: string
   title: string
-  unitsCount: number
   availableUnitsCount: number
+  description?: string
   animation?: any
 }
 
@@ -22,17 +22,18 @@ export function Building({
   position,
   pinPosition,
   title,
-  unitsCount,
+  description,
   availableUnitsCount,
-  animation = {} }: IProps
-) {
+  animation = {}
+}: IProps) {
   const { t } = useTranslation()
   const [x, y] = position.split('/')
   const [pinX, pinY] = pinPosition.split('/')
   const isActive = availableUnitsCount > 0
-  const description = availableUnitsCount === 0
-    ? t('inactive')
-    : availableUnitsCount === 1
+  const unitsAvailableDescription =
+    availableUnitsCount === 0
+      ? t('inactive')
+      : availableUnitsCount === 1
       ? t('oneAvailableApartment')
       : t('multipleAvailableApartments', { count: availableUnitsCount })
 
@@ -49,7 +50,7 @@ export function Building({
           <div className={styles.pinTitle}>
             <strong>{title}</strong>
           </div>
-          <div className={styles.pinDescription}>{description}</div>
+          <div className={styles.pinDescription}>{description || unitsAvailableDescription}</div>
         </div>
       </animated.foreignObject>
       <g className={styles.building} dangerouslySetInnerHTML={{ __html: path }} />
@@ -58,16 +59,15 @@ export function Building({
 
   const contentWithLink = (
     <Link href={url}>
-      <a title={t('viewBuilding')}>
-        {contentWithoutLink}
-      </a>
+      <a title={t('viewBuilding')}>{contentWithoutLink}</a>
     </Link>
   )
 
   return (
     <svg
       className={cn(styles.buildingSVG, { [styles.enabledBuildingSVG]: isActive })}
-      x={`${x}px`} y={`${y}px`}>
+      x={`${x}px`}
+      y={`${y}px`}>
       {isActive ? contentWithLink : contentWithoutLink}
     </svg>
   )
