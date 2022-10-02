@@ -1,14 +1,13 @@
 import { createElement, AllHTMLAttributes, ElementType, Ref } from 'react'
 import cn from 'classnames'
-// import * as resetStyles from '../styles/reset.css'
 import { sprinkles, Atoms } from 'site/styles/sprinkles.css'
 
 export interface BoxProps
   extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
-    >,
-    Atoms {
+  AllHTMLAttributes<HTMLElement>,
+  'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
+  >,
+  Atoms {
   component?: ElementType
   innerRef?: Ref<HTMLElement>
   [key: string]: any
@@ -46,6 +45,7 @@ export const Box = ({
   borderTopRightRadius,
   borderBottomRightRadius,
   borderBottomLeftRadius,
+  gap,
   position,
   top,
   bottom,
@@ -101,6 +101,7 @@ export const Box = ({
     borderTopRightRadius,
     borderBottomRightRadius,
     borderBottomLeftRadius,
+    gap,
     position,
     top,
     bottom,
