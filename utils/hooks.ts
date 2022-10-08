@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useCallback, useLayoutEffect, useState } from 'react'
 import { overwrites } from 'site/styles/theme.css'
 import { useScrollDirection, ScrollDirectionType } from 'use-scroll-direction'
 
@@ -31,11 +30,11 @@ export function useWindowSize(withListener = false, withMenu = true) {
 export function useScrollDirectionStable(
   options:
     | Readonly<{
-        wait?: number | undefined
-        timeToReset?: number | undefined
-        ref?: import('react').RefObject<HTMLElement | null> | null | undefined
-        skip?: boolean
-      }>
+      wait?: number | undefined
+      timeToReset?: number | undefined
+      ref?: import('react').RefObject<HTMLElement | null> | null | undefined
+      skip?: boolean
+    }>
     | undefined = {}
 ): { scrollDirectionStable: ScrollDirectionType } {
   const { scrollDirection } = useScrollDirection(options)
@@ -49,4 +48,16 @@ export function useScrollDirectionStable(
   return {
     scrollDirectionStable
   }
+}
+
+export function useCloseOnEsc(cb: () => void): void {
+  const handleEsc = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      cb()
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('keyup', handleEsc)
+    return () => document.removeEventListener('keyup', handleEsc)
+  }, [])
 }
