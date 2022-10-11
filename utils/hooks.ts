@@ -54,6 +54,7 @@ export function useCloseOnEsc(cb: () => void): void {
   const handleEsc = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       cb()
+      e.stopPropagation()
     }
   }
   useEffect(() => {
