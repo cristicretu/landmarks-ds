@@ -1,7 +1,6 @@
 import * as styles from './styles.css'
 
 import { Box } from 'landmarks-ds'
-import CookieConsent from 'react-cookie-consent'
 import Head from 'next/head'
 import { IUIComponent } from '../../utils/types'
 import Script from 'next/script'
@@ -55,16 +54,6 @@ export function Page({
       <Box {...rest} className={cn(styles.page, className)}>
         {children}
       </Box>
-
-      <CookieConsent
-        disableStyles
-        enableDeclineButton
-        declineButtonText={t('consentDecline')}
-        buttonText={t('consentAccept')}>
-        <Box fontSize="-1x" marginBottom="large">
-          {consentMessage}
-        </Box>
-      </CookieConsent>
 
       <Script
         id="gtm-script"
