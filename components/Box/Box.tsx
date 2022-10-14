@@ -62,6 +62,7 @@ export const Box = ({
   textAlign,
   textTransform,
   transition,
+  animationDelay,
   userSelect,
   fontSize,
   fontWeight,
@@ -122,6 +123,7 @@ export const Box = ({
     lineHeight,
     textTransform,
     transition,
+    animationDelay,
     userSelect
   })
 
