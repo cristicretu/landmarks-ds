@@ -84,12 +84,14 @@ export function ToggleMobileMenu({
       </SimpleMobileMenu>
 
       <animated.nav className={cn(styles.content, classes.content)} style={animation}>
-        {children({ toggleMenu })}
-        {decoration && (
-          <Box position="absolute" zIndex={-1} className={styles.bgImage}>
-            <Image src={decoration} alt="decoration" />
-          </Box>
-        )}
+        <>
+          {children({ toggleMenu })}
+          {decoration && (
+            <Box position="absolute" zIndex={-1} className={styles.bgImage}>
+              <Image src={decoration} alt="decoration" />
+            </Box>
+          )}
+        </>
       </animated.nav>
       <Box className={styles.bottomChrome} />
     </>

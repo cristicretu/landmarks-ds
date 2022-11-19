@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.171",
-    "@types/react": "17.0.13",
     "eslint": "^8.7.0",
     "eslint-config-next": "^12.0.8",
     "prettier": "^2.5.1"
