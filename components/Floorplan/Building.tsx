@@ -58,8 +58,8 @@ export function Building({
   )
 
   const contentWithLink = (
-    <Link href={url}>
-      <a title={t('viewBuilding')}>{contentWithoutLink}</a>
+    <Link href={url} title={t('viewBuilding')}>
+      {contentWithoutLink}
     </Link>
   )
 

@@ -32,9 +32,9 @@ export function ListItem({ title, url, selected, extra, className, ...rest }: IP
   )
   return url
     ? (
-      <Link href={url} passHref>
+      <Link href={url} passHref legacyBehavior>
         {content}
       </Link>
     )
-    : content
+    : content;
 }

@@ -51,7 +51,7 @@ export const DesktopMenuItem = React.forwardRef(
     const processedTitle = variantHandler[variant]({ children: title })
     const content = (
       <Box
-        component="a"
+        component="span"
         innerRef={ref}
         title={title}
         className={cn(
@@ -80,10 +80,10 @@ export const DesktopMenuItem = React.forwardRef(
 
     if (href) {
       return (
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
           {content}
         </Link>
-      )
+      );
     }
 
     return content

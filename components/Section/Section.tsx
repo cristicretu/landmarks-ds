@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { useInView } from 'react-intersection-observer'
 import cn from 'classnames'
 

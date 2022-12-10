@@ -73,14 +73,14 @@ export function Unit({
       x={`${x}px`}
       y={`${y}px`}>
       <Link href={url}>
-        <a>
-          <animated.g
-            ref={modelGroup}
-            style={animation}
-            dangerouslySetInnerHTML={{ __html: path }}
-          />
-        </a>
+
+        <animated.g
+          ref={modelGroup}
+          style={animation}
+          dangerouslySetInnerHTML={{ __html: path }}
+        />
+
       </Link>
     </svg>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import cn from 'classnames'
 import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'

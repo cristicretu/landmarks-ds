@@ -6,7 +6,7 @@ export function useWindowSize(withListener = false, withMenu = true) {
   // [width, height]
   const [windowSize, setWindowSize] = useState([0, 0])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       const height = withMenu ? window.innerHeight - overwrites.MENU_HEIGHT : window.innerHeight
       setWindowSize([window.innerWidth, height])
@@ -30,11 +30,11 @@ export function useWindowSize(withListener = false, withMenu = true) {
 export function useScrollDirectionStable(
   options:
     | Readonly<{
-      wait?: number | undefined
-      timeToReset?: number | undefined
-      ref?: import('react').RefObject<HTMLElement | null> | null | undefined
-      skip?: boolean
-    }>
+        wait?: number | undefined
+        timeToReset?: number | undefined
+        ref?: import('react').RefObject<HTMLElement | null> | null | undefined
+        skip?: boolean
+      }>
     | undefined = {}
 ): { scrollDirectionStable: ScrollDirectionType } {
   const { scrollDirection } = useScrollDirection(options)
@@ -52,7 +52,7 @@ export function useScrollDirectionStable(
 
 export function useCloseOnEsc(cb: () => void): void {
   const handleEsc = (e: KeyboardEvent) => {
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       cb()
       e.stopPropagation()
     }

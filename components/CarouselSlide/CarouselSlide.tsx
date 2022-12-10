@@ -39,8 +39,7 @@ export function CarouselSlide({
             {
               [transitions.to[transitionType]]: active
             }
-          )}
-        >
+          )}>
           {children}
         </Container>
       </Box>
@@ -49,11 +48,11 @@ export function CarouselSlide({
       {/* TODO: try to pan the image on mobile */}
       <ImageWithSpinner
         priority
+        alt="something"
         src={backgroundImageUrl}
         layout="fill"
         objectFit="cover"
-        sizes="(min-width: 1000px) 100vw, (min-width: 700px) 1500px, 1200px"
-      >
+        sizes="(min-width: 1000px) 100vw, (min-width: 700px) 1500px, 1200px">
         <Spinner background="secondary" />
       </ImageWithSpinner>
     </Box>

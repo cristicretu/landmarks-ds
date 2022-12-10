@@ -48,11 +48,11 @@ export function Floor({ path, url, position, pinPosition, title, unitsCount, ava
   )
 
   const contentWithLink = (
-    <Link href={url}>
-      <a title={'something else'}>
-        {contentWithoutLink}
-      </a>
-    </Link>
+    (<Link href={url} title={'something else'}>
+
+      {contentWithoutLink}
+
+    </Link>)
   )
 
   return (

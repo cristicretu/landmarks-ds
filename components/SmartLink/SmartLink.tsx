@@ -12,12 +12,12 @@ interface IProps extends IUIComponent {
 export const SmartLink = ({ href, title, children, ...rest }: IProps) => {
   if (isInternalLink(href)) {
     return (
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <Box component="a" title={title} {...rest}>
           {children}
         </Box>
       </Link>
-    )
+    );
   }
 
   // mailto: and tel: links
