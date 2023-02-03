@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import cn from 'classnames'
 import { FaPhoneAlt } from 'react-icons/fa'
 
@@ -8,10 +8,11 @@ import { Box } from '../Box'
 import { CUSTOM_EVENTS, logEvent } from '../../utils/gtm'
 
 import * as styles from './styles.css'
+import { useScrollDirectionStable } from '../../main'
 
 const defaultLabels = {
   callNow: 'Sună acum',
-  messageUsWhatsapp: 'Scrie-ne pe WhatsApp',
+  messageUsWhatsapp: 'Scrie-ne pe WhatsApp'
 }
 
 const defaultClasses = {
@@ -22,12 +23,25 @@ const defaultClasses = {
 interface IProps extends IUIComponent {
   phone: string
   children: any
+  autohide?: boolean
 
   classes?: Partial<typeof defaultClasses>
   labels?: Partial<typeof defaultLabels>
 }
 
-export function SimpleMobileMenu({ phone, children, className, labels = defaultLabels, classes = defaultClasses, ...rest }: IProps) {
+export function SimpleMobileMenu({
+  phone,
+  children,
+  className,
+  autohide,
+  labels = defaultLabels,
+  classes = defaultClasses,
+  ...rest
+}: IProps) {
+  const { scrollDirectionStable } = useScrollDirectionStable({
+    skip: !autohide
+  })
+
   return (
     <Box component="section" className={cn(styles.menuContainer, className)} {...rest}>
       <Box
@@ -36,11 +50,11 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
         display="flex"
         alignItems="flex-start"
         justifyContent="space-between"
-        className={cn(styles.menu, classes.menu)}>
+        className={cn(styles.menu, classes.menu, scrollDirectionStable === 'DOWN' && styles.hidden)}>
         {children}
         <Box display="flex">
           <Button
-            size="medium"
+            size="small"
             href={`tel:${phone}`}
             marginRight="small"
             className={classes.otherButtons}
@@ -49,17 +63,13 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
             {labels.callNow}
           </Button>
           <Button
-            size="medium"
+            size="small"
             title={labels.messageUsWhatsapp}
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}
             className={classes.otherButtons}
             style={{ paddingTop: 0, paddingBottom: 0 }}>
-            <Image
-              src='/whatsapp.png'
-              width="32"
-              height="32"
-              alt={labels.messageUsWhatsapp} />
+            <Image src="/whatsapp.png" width="32" height="32" alt={labels.messageUsWhatsapp} />
           </Button>
         </Box>
       </Box>

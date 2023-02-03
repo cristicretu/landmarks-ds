@@ -14,7 +14,7 @@ interface IProps extends IUIComponent {
 
 export function MobileMenuItem({ title, href, toggleMenu = noop, className, ...rest }: IProps) {
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref legacyBehavior>
       <Box
         component="a"
         title={title}
@@ -24,5 +24,5 @@ export function MobileMenuItem({ title, href, toggleMenu = noop, className, ...r
         {title}
       </Box>
     </Link>
-  )
+  );
 }

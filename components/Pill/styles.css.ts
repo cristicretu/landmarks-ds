@@ -7,9 +7,9 @@ export const pill = style([
     fontSize: '-2x',
     paddingX: 'small',
     textAlign: 'center',
+    lineHeight: '1x',
   }),
   {
     minWidth: '40px',
-    lineHeight: '20px',
   }
 ])

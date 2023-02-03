@@ -1,3 +1,4 @@
+import { overwrites } from '@styles/theme.css'
 import { style } from '@vanilla-extract/css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 
@@ -5,6 +6,7 @@ export const container = style([
   sprinkles({
     position: { mobile: 'fixed', laptop: 'relative' },
     zIndex: 3,
+    userSelect: 'none',
   }),
   {
     touchAction: 'none',
@@ -15,7 +17,7 @@ export const container = style([
 
 export const stretch = style({
   alignItems: 'center',
-  height: '73px',
+  height: overwrites.MENU_HEIGHT,
 })
 
 export const headerContainer = style([
@@ -31,3 +33,18 @@ export const headerContainer = style([
 export const header = style({
   flex: 1,
 })
+
+// Default classes
+export const title = style([
+  sprinkles({
+    background: 'primary',
+    color: 'white'
+  })
+])
+
+export const list = style([
+  sprinkles({
+    background: 'secondary',
+    paddingY: 'large',
+  })
+])

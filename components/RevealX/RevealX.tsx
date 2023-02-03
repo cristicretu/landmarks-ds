@@ -1,6 +1,6 @@
 import { ReactElement, cloneElement, useCallback, useState } from 'react'
 
-import { Atoms } from "site/styles/sprinkles.css"
+import { Atoms } from 'site/styles/sprinkles.css'
 // @ts-ignore
 import Plx from 'react-plx'
 import { useWindowSize } from '../../main'
@@ -21,16 +21,20 @@ interface IProps extends Atoms {
   onPlxEnd?: () => void
 }
 
-const defaultPlx = [{
-  start: 'self',
-  startOffset: '25vh',
-  duration: '100vh',
-  properties: [{
-    startValue: 0,
-    endValue: -150,
-    property: "translateX"
-  }]
-}]
+const defaultPlx = [
+  {
+    start: 'self',
+    startOffset: '25vh',
+    duration: '100vh',
+    properties: [
+      {
+        startValue: 0,
+        endValue: -150,
+        property: 'translateX'
+      }
+    ]
+  }
+]
 
 export function RevealX({
   children,
@@ -43,24 +47,27 @@ export function RevealX({
 }: IProps) {
   const [isActive, setActive] = useState(false)
   const [windowWidth, windowHeight] = useWindowSize(false, false)
-  const getSizeFromLayout = useCallback((layout) => {
-    if (layout === 'full') {
-      const height = windowHeight + 20
-      const width = height * ratio
-      return {
-        width,
-        height,
+  const getSizeFromLayout = useCallback(
+    (layout: any) => {
+      if (layout === 'full') {
+        const height = windowHeight + 20
+        const width = height * ratio
+        return {
+          width,
+          height
+        }
+        // default return layout="square"
+      } else {
+        const height = windowWidth
+        const width = height * ratio
+        return {
+          width,
+          height
+        }
       }
-    // default return layout="square"
-    } else {
-      const height = windowWidth
-      const width = height * ratio
-      return {
-        width,
-        height,
-      }
-    }
-  }, [windowWidth])
+    },
+    [windowWidth]
+  )
 
   const renderChildren = useCallback(() => {
     const dimensions = getSizeFromLayout(layout)
@@ -69,7 +76,7 @@ export function RevealX({
     }
     return cloneElement(children, {
       ...dimensions,
-      sizes: `${dimensions.width}px`,
+      sizes: `${dimensions.width}px`
     })
   }, [children])
 
@@ -78,12 +85,15 @@ export function RevealX({
       position="relative"
       style={{
         // when creating full parallax effect, container needs to be 100vh larger
-        ...(layout === 'full') && { height: `calc(${parallaxData[0].end} + 100vh)` }
+        ...(layout === 'full' && { height: `calc(${parallaxData[0].end} + 100vh)` })
       }}
       {...rest}>
-      <Box position="sticky" top={0} style={{
-        overflow: 'hidden',
-      }}>
+      <Box
+        position="sticky"
+        top={0}
+        style={{
+          overflow: 'hidden'
+        }}>
         <Plx
           parallaxData={parallaxData}
           onPlxStart={() => setActive(true)}

@@ -26,7 +26,7 @@ interface IProps {
   overlays?: Array<React.ReactElement>
 }
 
-export const Floorplan = ({ background, backgroundSizes, children, extraContent, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor="brand", intro }: IProps) => {
+export const Floorplan = ({ background, backgroundSizes, children, extraContent, className, viewBox, globalTransform, blurDataURL, overlays = [], expandOnMobile, loadingColor="primary", intro }: IProps) => {
   const [loaded, setLoaded] = useState(false)
   const mobileViewportRef = useRef<HTMLDivElement>(null)
   const [_, animation] = useSpring(() => ({
@@ -60,6 +60,7 @@ export const Floorplan = ({ background, backgroundSizes, children, extraContent,
       ref={mobileViewportRef}>
       <Box
         position="relative"
+        userSelect="none"
         className={cn({ [styles.floorplanExpanded]: expandOnMobile })}>
         {extraContent}
         <ImageWithSpinner

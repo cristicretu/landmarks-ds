@@ -1,20 +1,23 @@
 import { createElement, AllHTMLAttributes, ElementType, Ref } from 'react'
 import cn from 'classnames'
-// import * as resetStyles from '../styles/reset.css'
 import { sprinkles, Atoms } from 'site/styles/sprinkles.css'
 
-export interface BoxProps extends Omit<
+export interface BoxProps
+  extends Omit<
   AllHTMLAttributes<HTMLElement>,
   'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
->,
+  >,
   Atoms {
   component?: ElementType
   innerRef?: Ref<HTMLElement>
+  [key: string]: any
 }
 
 export const Box = ({
   component = 'div',
   className,
+  aspectRatio,
+  boxShadow,
   padding,
   paddingX,
   paddingY,
@@ -42,6 +45,7 @@ export const Box = ({
   borderTopRightRadius,
   borderBottomRightRadius,
   borderBottomLeftRadius,
+  gap,
   position,
   top,
   bottom,
@@ -57,13 +61,20 @@ export const Box = ({
   cursor,
   textAlign,
   textTransform,
+  transition,
+  animationDelay,
+  userSelect,
   fontSize,
+  fontWeight,
   fontFamily,
+  lineHeight,
   innerRef,
   ...restProps
 }: BoxProps) => {
   // TODO: get reset to work https://github.com/seek-oss/vanilla-extract/discussions/301
   const atomClasses = sprinkles({
+    aspectRatio,
+    boxShadow,
     padding,
     paddingX,
     paddingY,
@@ -91,6 +102,7 @@ export const Box = ({
     borderTopRightRadius,
     borderBottomRightRadius,
     borderBottomLeftRadius,
+    gap,
     position,
     top,
     bottom,
@@ -106,8 +118,13 @@ export const Box = ({
     cursor,
     textAlign,
     fontSize,
+    fontWeight,
     fontFamily,
+    lineHeight,
     textTransform,
+    transition,
+    animationDelay,
+    userSelect
   })
 
   return createElement(component, {

@@ -17,17 +17,17 @@ export const noPadding = style({
   padding: 0,
 })
 
-export const stickyMenu = style([
-  sprinkles({
-    position: 'fixed',
-    zIndex: 3,
-  }),
-  {
-    top: 0,
-    left: 0,
-    right: 0,
+export const stickyMenu = style({
+  '@media': {
+    [breakpoints.xx_laptop]: {
+      position: 'sticky',
+      zIndex: 4,
+      top: 0,
+      left: 0,
+      right: 0
+    }
   }
-])
+})
 
 export const mainButton = style({
   display: 'none',
@@ -47,6 +47,7 @@ export const lightDarkRecipe = recipe({
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
+      userSelect: 'none',
     }),
     {
       textDecoration: 'none',
@@ -119,104 +120,11 @@ export const variantRecipe = recipe({
   variants: {
     variant: {
       regular: {},
-      split: [
-        sprinkles({
-          textTransform: 'uppercase',
-          paddingBottom: 'small',
-        }),
-        {
-          lineHeight: '1.5rem',
-        }
-      ]
-    }
-  }
-})
-
-export const activeIndicatorPartialUnderlineRecipe = recipe({
-  base: [
-    sprinkles({
-      position: 'relative',
-    }),
-    {
-      selectors: {
-        '&:after': {
-          content: '" "',
-          position: 'absolute',
-          transition: 'all 0.3s',
-          bottom: 0,
-          left: 0,
-          width: '25px',
-          // neutral 3 works on both light and dark
-          borderBottom: `3px solid ${vars.color.neutral_3}`
-        }
-      }
-    }
-  ],
-  variants: {
-    active: {
-      true: {
-        selectors: {
-          '&:after': {
-            borderBottomColor: vars.color.primary
-          }
-        }
-      },
-      false: {
-        selectors: {
-          '&:after': {
-            opacity: 0,
-            transform: 'translateY(10px)'
-          },
-          '&:hover:after': {
-            opacity: 1,
-            transform: 'translateY(0px)'
-          }
-        }
-      }
-    }
-  }
-})
-
-export const activeIndicatorFullUnderlineRecipe = recipe({
-  base: [
-    sprinkles({
-      position: 'relative',
-    }),
-    {
-      selectors: {
-        '&:after': {
-          content: '" "',
-          position: 'absolute',
-          transition: 'all 0.3s',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          borderBottom: `2px solid ${vars.color.neutral_3}`
-        }
-      }
-    }
-  ],
-  variants: {
-    active: {
-      true: {
-        selectors: {
-          '&:after': {
-            borderBottomColor: vars.color.primary
-          }
-        }
-      },
-      false: {
-        selectors: {
-          '&:after': {
-            opacity: 0,
-            transform: 'scaleX(0.4)'
-          },
-          '&:hover:after': {
-            opacity: 1,
-            transform: 'scaleX(1)'
-          }
-        }
-      }
+      split: sprinkles({
+        textTransform: 'uppercase',
+        paddingBottom: 'small',
+        lineHeight: '1x',
+      }),
     }
   }
 })

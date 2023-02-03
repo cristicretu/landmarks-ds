@@ -11,7 +11,3 @@ export const container = style({
     }
   }
 })
-
-export const noGutter = style({
-  padding: 0,
-})

@@ -65,7 +65,7 @@ export function MapboxMap({ location, title, subtitle, className, googleMapsLink
       mapInstance.flyTo({
         zoom: endZoom,
         center: location,
-        speed: 0.3
+        speed: 0.6
       })
       setInitialView(false)
     }

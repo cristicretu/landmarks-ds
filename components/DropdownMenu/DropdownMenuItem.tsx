@@ -14,7 +14,7 @@ interface IDropdownMenuItemProps extends IUIComponent {
 export function DropdownMenuItem({ children, href, className, ...rest }: IDropdownMenuItemProps) {
   if (href) {
     return (
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <Menu.Item asChild>
           {/* Not sure this works properly, might need to forwardRef to innerRef */}
           <Box
@@ -25,7 +25,7 @@ export function DropdownMenuItem({ children, href, className, ...rest }: IDropdo
           </Box>
         </Menu.Item>
       </Link>
-    )
+    );
   }
 
   return (

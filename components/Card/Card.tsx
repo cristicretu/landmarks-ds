@@ -3,16 +3,22 @@ import * as styles from './styles.css'
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
 import { TCardRecipe } from './styles.css'
+import { Typography } from '../Typography'
 import cn from 'classnames'
+import { SmartLink } from '../SmartLink'
 
 interface IProps extends IUIComponent {
   children: any
+  interactive?: boolean
+  href?: string
+  title?: string
   [key: string]: any
 }
 
 interface ICardMediaProps extends IUIComponent {
   children: any
   height: string
+  title?: any
 }
 
 export function Card({
@@ -20,11 +26,25 @@ export function Card({
   className,
   elevation,
   radius,
+  href,
+  interactive,
+  title,
   ...rest
 }: IProps & TCardRecipe) {
   return (
     <Box
-      className={cn(styles.cardRecipe({ elevation, radius }), className)}
+      {...href && {
+        component: SmartLink,
+        href,
+        title,
+      }}
+      className={cn(
+        className,
+        styles.cardRecipe({ elevation, radius }),
+        {
+          [styles.onHoverScale]: href || interactive
+        }
+      )}
       {...rest}
     >
       {children}
@@ -32,10 +52,25 @@ export function Card({
   )
 }
 
-export function CardMedia({ children, height, ...rest }: ICardMediaProps) {
+export function CardMedia({
+  children,
+  height,
+  title,
+  ...rest
+}: ICardMediaProps) {
   return (
-    <Box position="relative" style={{ height }} {...rest}>
+    <Box
+      position="relative"
+      style={{ height }}
+      {...rest}
+      className={styles.vignette}
+    >
       {children}
+      {title && (
+        <Box className={styles.mediaTitle}>
+          {title}
+        </Box>
+      )}
     </Box>
   )
 }

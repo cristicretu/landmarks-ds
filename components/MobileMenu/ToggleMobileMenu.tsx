@@ -1,14 +1,11 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import cn from 'classnames'
-import { useState, ReactElement, Children, cloneElement } from 'react'
+import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { MdMenu, MdClose } from 'react-icons/md'
 
 import { Button } from '../Button'
-import { Grid, Col } from '../Grid'
 import * as styles from './styles.css'
-import { H2 } from '../Headings'
 import { Box } from '../Box'
 import { SimpleMobileMenu } from '.'
 import { IUIComponent } from '../../utils/types'
@@ -16,9 +13,8 @@ import { IUIComponent } from '../../utils/types'
 const defaultLabels = {
   close: 'inchide',
   menu: 'meniu',
-  logoTitle: 'Inapoi la pagina principala',
   callNow: 'Sună acum',
-  messageUsWhatsapp: 'Scrie-ne pe WhatsApp',
+  messageUsWhatsapp: 'Scrie-ne pe WhatsApp'
 }
 
 const defaultClasses = {
@@ -26,15 +22,15 @@ const defaultClasses = {
   mainButton: styles.defaultMainButton,
   mainButtonActive: styles.defaultMainButtonActive,
   otherButtons: styles.defaultOtherButtons,
-  content: styles.defaultContent,
+  content: styles.defaultContent
 }
 
 interface IProps extends IUIComponent {
+  phone: string
+  children: ({ toggleMenu }: { toggleMenu: any }) => void
   title?: string
   subtitle?: string
-  logo: ReactElement
-  phone: string
-  children: any
+  autohide?: boolean
 
   decoration?: string
   classes?: Partial<typeof defaultClasses>
@@ -44,7 +40,7 @@ interface IProps extends IUIComponent {
 export function ToggleMobileMenu({
   title,
   subtitle,
-  logo,
+  autohide = true,
   decoration,
   phone,
   children,
@@ -54,11 +50,11 @@ export function ToggleMobileMenu({
 }: IProps) {
   const classes = {
     ...defaultClasses,
-    ...receivedClasses,
+    ...receivedClasses
   }
   const labels = {
     ...defaultLabels,
-    ...receivedLabels,
+    ...receivedLabels
   }
   const [isOpen, setOpen] = useState(false)
   const animation = useSpring({
@@ -70,68 +66,34 @@ export function ToggleMobileMenu({
 
   return (
     <>
-      <Box
-        position="fixed"
-        background="chrome"
-        className={styles.bottomChrome} />
-
       <SimpleMobileMenu
+        autohide={isOpen ? false : autohide}
         phone={phone}
         labels={labels}
         classes={classes}
         {...rest}>
         <Button
-          size="large"
+          size="small"
           onClick={toggleMenu}
           className={cn(classes.mainButton, {
-            [classes.mainButtonActive]: isOpen,
+            [classes.mainButtonActive]: isOpen
           })}
-          startIcon={isOpen
-            ? <MdClose className={styles.icon} />
-            : <MdMenu className={styles.icon} />}>
+          prefix={<Box component={isOpen ? MdClose : MdMenu} fontSize="2x" marginRight="small" />}>
           {isOpen ? labels.close : labels.menu}
         </Button>
       </SimpleMobileMenu>
 
       <animated.nav className={cn(styles.content, classes.content)} style={animation}>
-        <Box
-          marginBottom="xxlarge">
-          <Link href="/" passHref>
-            <Box
-              component="a"
-              title={labels.logoTitle}
-              color="white"
-              display="block"
-              style={{ textDecoration: 'none' }}>
-              <Grid>
-                <Col mobile="fit">
-                  {logo}
-                </Col>
-                {title ? (
-                  <Col mobile="fit">
-                    <H2>{title}</H2>
-                    <small>{subtitle}</small>
-                  </Col>
-                ) : <></>}
-              </Grid>
+        <>
+          {children({ toggleMenu })}
+          {decoration && (
+            <Box position="absolute" zIndex={-1} className={styles.bgImage}>
+              <Image src={decoration} alt="decoration" />
             </Box>
-          </Link>
-        </Box>
-        {Children.map(children, (child) => {
-          return cloneElement(child, {
-            key: child.props.title,
-            toggleMenu
-          })
-        })}
-        {decoration && (
-          <Box
-            position="absolute"
-            zIndex={-1}
-            className={styles.bgImage}>
-            <Image src={decoration} alt="decoration" />
-          </Box>
-        )}
+          )}
+        </>
       </animated.nav>
+      <Box className={styles.bottomChrome} />
     </>
   )
 

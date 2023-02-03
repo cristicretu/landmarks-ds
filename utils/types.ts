@@ -1,8 +1,10 @@
 import { Atoms } from 'site/styles/sprinkles.css'
 
 export interface IUIComponent extends Atoms {
+  id?: string
   style?: any
   className?: string
+  component?: any
 }
 
 export enum EUnitStatus {

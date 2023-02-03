@@ -1,5 +1,6 @@
 import { EUnitStatus, ISize } from './types'
 
+import Link from 'next/link'
 import flatten from 'lodash/flatten'
 import get from 'lodash/get'
 import isArray from 'lodash/isArray'
@@ -13,15 +14,12 @@ export function addLocaleToPaths(locales: string[], paths: any[]): any[] {
   return flatten(localizedPaths)
 }
 
-/**
- * We use this to call already deployed nextjs apis at build time
- */
-export async function fetchUnits(sheetTitle: string): Promise<any[]> {
-  const rawResponse = await fetch(
-    `${process.env.APP_URL}/api/get-units?secret=${process.env.API_SECRET}&sheetTitle=${sheetTitle}`
-  )
-  const { data } = await rawResponse.json()
-  return data
+export function isInternalLink(href: string): boolean {
+  return !!href && (href.startsWith('/') || href.startsWith('#'))
+}
+
+export function isActionLink(href: string): boolean {
+  return !!href && (href.startsWith('tel:') || href.startsWith('mailto:'))
 }
 
 export function isAvailable(status: string): boolean {
@@ -40,11 +38,7 @@ export function getDefaultLocale(
  * description = { en: 'Hi', ro: 'Salut', etc }
  * This function only keeps the curent language translation : description = 'Salut' because next generates a page for each locale
  */
-export function keepTranslationsFor(
-  source: any | any[],
-  translatedFields: string[],
-  lang: string
-) {
+export function keepTranslationsFor(source: any | any[], translatedFields: string[], lang: string) {
   if (isArray(source)) {
     return source.map(strip)
   }
@@ -69,11 +63,7 @@ export function keepTranslationsFor(
 /**
  * Hacky way to strip translations from fields like content_ro/content_en/etc
  */
-export function keepDocumentTranslationFor(
-  source: any,
-  translatedField: string,
-  lang: string
-) {
+export function keepDocumentTranslationFor(source: any, translatedField: string, lang: string) {
   return Object.keys(source).reduce((acc: any, key: string) => {
     const [_, fieldLang] = key.split('_')
     const value = source[key]
@@ -91,13 +81,12 @@ export function keepDocumentTranslationFor(
 /**
  * Calculate total appartment or terrace size
  */
-export function getTotalSize(items: ISize[]): number {
+export function getTotalSize(items: ISize[], rounded: boolean = true): string {
   if (!items) {
-    return 0
+    return '0'
   }
-  return Math.round(
-    items.reduce((acc, current) => acc + parseFloat(current.size), 0)
-  )
+  const total = items.reduce((acc, current) => acc + parseFloat(current.size), 0)
+  return rounded ? Math.round(total).toFixed(2) : total.toFixed(2)
 }
 
 export function extractFirstNumber(str: string): string | null {
@@ -109,11 +98,7 @@ export function extractFirstNumber(str: string): string | null {
  * Some strings contain bulshit that we want to strip.
  * With this function we want to try and remove that
  */
-export function splitAndGet(
-  str: string,
-  separator: string,
-  get: number
-): string {
+export function splitAndGet(str: string, separator: string, get: number): string {
   const sections = str.split(separator)
   return sections[get] || str
 }
@@ -123,9 +108,7 @@ export function splitAndGet(
  */
 export function mergeUnitData(dbUnits: any, sheetUnits: any) {
   return dbUnits.map((unit: any) => {
-    const matchingUnit = sheetUnits.find(
-      (sheetUnit: any) => sheetUnit.id === unit.id
-    )
+    const matchingUnit = sheetUnits.find((sheetUnit: any) => sheetUnit.id === unit.id)
     return {
       ...unit,
       ...matchingUnit
